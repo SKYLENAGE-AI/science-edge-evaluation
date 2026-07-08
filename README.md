@@ -1,28 +1,3 @@
----
-license: cc-by-nc-4.0
-task_categories:
-- visual-question-answering
-- question-answering
-language:
-- zh
-pretty_name: Science Edge Evaluation
-size_categories:
-- 1K<n<10K
-tags:
-- scientific-benchmark
-- multimodal
-- chemistry
-- biology
-- materials-science
-- laboratory-science
-- benchmark
-configs:
-- config_name: default
-  data_files:
-  - split: public
-    path: data/questions_public.jsonl
----
-
 # Science Edge Evaluation (SEE)
 
 [English](README.md) | [中文](README_zh.md)
