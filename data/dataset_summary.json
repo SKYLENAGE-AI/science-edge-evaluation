@@ -1,0 +1,34 @@
+{
+  "name": "Science Edge Evaluation (SEE)",
+  "public_questions": 1049,
+  "withheld_questions": 67,
+  "total_questions_in_internal_benchmark": 1116,
+  "image_references": 1110,
+  "unique_images": 1110,
+  "questions_with_options": 823,
+  "open_answer_questions": 226,
+  "main_discipline_counts": {
+    "化学": 700,
+    "材料科学": 352,
+    "生物学": 489
+  },
+  "subject_tag_counts": {
+    "金属材料": 49,
+    "物理化学": 321,
+    "分析化学": 423,
+    "生物化学": 311,
+    "分子生物学": 230,
+    "细胞生物学": 158,
+    "无机化学": 106,
+    "无机非金属材料": 97,
+    "有机化学": 224,
+    "高分子化学和物理": 167,
+    "有机和高分子材料": 183,
+    "复合材料": 67,
+    "结构生物学": 151,
+    "生物物理学": 144,
+    "遗传学": 34,
+    "免疫学": 29,
+    "生理学": 18
+  }
+}

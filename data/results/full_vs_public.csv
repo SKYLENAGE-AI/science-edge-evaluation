@@ -1,0 +1,14 @@
+model,category,full_total,full_correct,full_accuracy,subset_total,subset_correct,subset_accuracy,delta_subset_minus_full
+gemini-3.1-pro,General,1116,504,0.4516,1049,478,0.4557,0.0041
+gpt-5.5-xhigh,General,1116,461,0.4131,1049,433,0.4128,-0.0003
+gemini-3.5-flash,General,1116,431,0.3862,1049,410,0.3908,0.0046
+claude-opus-4.8-max,General,1116,406,0.3638,1049,377,0.3594,-0.0044
+qwen3.7-plus,General,1116,365,0.3271,1049,346,0.3298,0.0028
+qwen3.6-plus,General,1116,341,0.3056,1049,321,0.3060,0.0005
+MiniMax-M3,General,1116,314,0.2814,1049,302,0.2879,0.0065
+doubao-2.0-pro,General,1116,315,0.2823,1049,298,0.2841,0.0018
+kimi-k2.6,General,1116,286,0.2563,1049,266,0.2536,-0.0027
+intern-s2-preview,Science,1116,266,0.2384,1049,252,0.2402,0.0019
+glm-5v-turbo,General,1116,259,0.2321,1049,245,0.2336,0.0015
+intern-s1-pro,Science,1116,225,0.2016,1049,215,0.2050,0.0033
+mimo-v2.5,General,1116,196,0.1756,1049,185,0.1764,0.0007

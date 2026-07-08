@@ -1,0 +1,14 @@
+model,category,total,valid,correct,accuracy
+gemini-3.1-pro,General,1049,1049,478,0.4557
+gpt-5.5-xhigh,General,1049,1049,433,0.4128
+gemini-3.5-flash,General,1049,1049,410,0.3908
+claude-opus-4.8-max,General,1049,1049,377,0.3594
+qwen3.7-plus,General,1049,1049,346,0.3298
+qwen3.6-plus,General,1049,1049,321,0.3060
+MiniMax-M3,General,1049,1049,302,0.2879
+doubao-2.0-pro,General,1049,1049,298,0.2841
+kimi-k2.6,General,1049,1049,266,0.2536
+intern-s2-preview,Science,1049,1049,252,0.2402
+glm-5v-turbo,General,1049,1049,245,0.2336
+intern-s1-pro,Science,1049,1049,215,0.2050
+mimo-v2.5,General,1049,1049,185,0.1764

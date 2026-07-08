@@ -1,0 +1,8 @@
+setting,model,total,correct,accuracy
+with-tool web search,Gemini 3.1 Pro,1049,462,0.4404
+with-tool web search,GPT-5.5 (xhigh),1049,453,0.4318
+with-tool web search,Claude Opus 4.8 (Max),1049,407,0.3880
+with-tool web search,Qwen 3.7 Plus,1049,327,0.3117
+with-tool web search,Seed2.0 Pro,1049,256,0.2440
+with-tool web search,MiMo-V2.5,1049,203,0.1935
+with-tool web search,Kimi K2.6,1049,196,0.1868

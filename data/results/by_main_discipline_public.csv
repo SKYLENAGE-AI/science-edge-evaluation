@@ -1,0 +1,14 @@
+model,category,Chemistry_correct,Chemistry_valid,Chemistry_acc,Biology_correct,Biology_valid,Biology_acc,Materials_correct,Materials_valid,Materials_acc
+gemini-3.1-pro,General,328,700,0.4686,215,489,0.4397,150,352,0.4261
+gpt-5.5-xhigh,General,273,700,0.3900,212,489,0.4335,119,352,0.3381
+gemini-3.5-flash,General,290,700,0.4143,169,489,0.3456,133,352,0.3778
+claude-opus-4.8-max,General,260,700,0.3714,167,489,0.3415,107,352,0.3040
+qwen3.7-plus,General,214,700,0.3057,169,489,0.3456,91,352,0.2585
+qwen3.6-plus,General,221,700,0.3157,137,489,0.2802,100,352,0.2841
+MiniMax-M3,General,217,700,0.3100,117,489,0.2393,99,352,0.2812
+doubao-2.0-pro,General,177,700,0.2529,154,489,0.3149,72,352,0.2045
+kimi-k2.6,General,180,700,0.2571,118,489,0.2413,91,352,0.2585
+intern-s2-preview,Science,199,700,0.2843,84,489,0.1718,96,352,0.2727
+glm-5v-turbo,General,156,700,0.2229,118,489,0.2413,67,352,0.1903
+intern-s1-pro,Science,166,700,0.2371,72,489,0.1472,85,352,0.2415
+mimo-v2.5,General,115,700,0.1643,88,489,0.1800,49,352,0.1392
