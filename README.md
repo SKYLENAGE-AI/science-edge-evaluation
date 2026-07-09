@@ -50,10 +50,9 @@ The results suggest that current multimodal models are not yet ready for reliabl
 This repository releases the public subset of SEE for reproducible research:
 
 - `data/questions_public.jsonl`: public benchmark questions.
-- `images/`: model-facing image inputs referenced by the questions.
+- `data/images/`: model-facing image inputs referenced by the questions.
 - `prompts/`: generation and judging prompts used in the evaluation protocol.
 - `docs/evaluation_protocol.md`: scoring rules and evaluation details.
-- `data/results/`: public-subset baseline and with-tool result summaries.
 
 The public data files include Chinese question text, answer options when present, image references, standard answers, discipline labels, and knowledge-point tags. English-translated fields and solution rationales are not included in the public data files.
 
@@ -67,7 +66,7 @@ The main file is `data/questions_public.jsonl`. Each line is one benchmark examp
   "index": 1,
   "question": "...",
   "options": ["A. ...", "B. ..."],
-  "images": ["images/275cb15e-8f18-4d6b-96f1-d6e66896444f.png"],
+  "images": ["data/images/275cb15e-8f18-4d6b-96f1-d6e66896444f.png"],
   "answer": "D",
   "subject_tags": ["金属材料", "物理化学"],
   "main_disciplines": ["化学", "材料科学"],

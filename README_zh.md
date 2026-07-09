@@ -50,10 +50,9 @@ SEE 通过分阶段流程构建，包括专家命题、数据标准化、质量�
 本仓库发布 SEE 的公开子集，用于复现和后续研究：
 
 - `data/questions_public.jsonl`：公开题目数据。
-- `images/`：题目引用的模型输入图片。
+- `data/images/`：题目引用的模型输入图片。
 - `prompts/`：评测使用的生成 prompt 和 judge prompt。
 - `docs/evaluation_protocol.md`：评分规则和评测细节。
-- `data/results/`：公开子集 baseline 和 with-tool 结果摘要。
 
 公开数据文件包含中文题干、选项、图片路径、标准答案、学科标签和知识点标签。公开数据文件不包含英文翻译字段和解析过程。
 
@@ -67,7 +66,7 @@ SEE 通过分阶段流程构建，包括专家命题、数据标准化、质量�
   "index": 1,
   "question": "...",
   "options": ["A. ...", "B. ..."],
-  "images": ["images/275cb15e-8f18-4d6b-96f1-d6e66896444f.png"],
+  "images": ["data/images/275cb15e-8f18-4d6b-96f1-d6e66896444f.png"],
   "answer": "D",
   "subject_tags": ["金属材料", "物理化学"],
   "main_disciplines": ["化学", "材料科学"],

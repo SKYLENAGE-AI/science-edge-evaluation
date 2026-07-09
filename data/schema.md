@@ -13,7 +13,7 @@ The public benchmark is released in two equivalent formats:
 | `index` | integer | 1-based index in the public release. |
 | `question` | string | Chinese question text. |
 | `options` | list[string] | Chinese answer options. Empty for open-answer questions. |
-| `images` | list[string] | Image paths relative to the repository root. |
+| `images` | list[string] | Image paths relative to the repository root, under `data/images/`. |
 | `answer` | string | Reference answer. |
 | `subject_tags` | list[string] | Fine-grained discipline tags in Chinese. |
 | `main_disciplines` | list[string] | Normalized main disciplines in Chinese: `化学`, `生物学`, and/or `材料科学`. |

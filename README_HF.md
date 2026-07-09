@@ -29,6 +29,6 @@ This is the Hugging Face dataset-card template for SEE. Before publishing to Hug
 
 Public data file: `data/questions_public.jsonl`
 
-Model-facing images: `images/`
+Model-facing images: `data/images/`
 
 Evaluation prompts: `prompts/`
