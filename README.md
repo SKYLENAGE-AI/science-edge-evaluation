@@ -82,17 +82,6 @@ The standard no-tool setting provides the model with question text, options when
 
 The prompts are in `prompts/`, and the detailed protocol is in `docs/evaluation_protocol.md`.
 
-## Git LFS
-
-Images are intended to be tracked with Git LFS. Before pushing this repository:
-
-```bash
-git lfs install
-git lfs track "*.png" "*.jpg" "*.jpeg" "*.webp" "*.tif" "*.tiff"
-```
-
-The `.gitattributes` file is already included.
-
 ## Citation
 
 If you use SEE, please cite the accompanying paper and this dataset release. A draft `CITATION.cff` is included and should be updated with the final paper URL, DOI, or arXiv identifier once available.

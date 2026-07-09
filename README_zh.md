@@ -82,17 +82,6 @@ SEE 采用严格的二元评分协议：
 
 提示词位于 `prompts/`，详细评测协议位于 `docs/evaluation_protocol.md`。
 
-## Git LFS
-
-图片建议使用 Git LFS 管理。发布前可在仓库目录执行：
-
-```bash
-git lfs install
-git lfs track "*.png" "*.jpg" "*.jpeg" "*.webp" "*.tif" "*.tiff"
-```
-
-仓库中已经包含 `.gitattributes`。
-
 ## 引用
 
 如果使用 SEE，请引用配套论文和本数据集发布版本。当前 `CITATION.cff` 是草稿，等论文 URL、DOI 或 arXiv 编号确定后再更新。
