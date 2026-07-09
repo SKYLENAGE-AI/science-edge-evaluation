@@ -2,7 +2,7 @@
 
 [English](README.md) | [中文](README_zh.md)
 
-**多模态大语言模型准备好进入真实实验室科学了吗？**
+**多模态大语言模型准备好进入真实实验室了吗？**
 
 <!-- TODO: 发布前替换为最终公开地址 -->
 🔗 **链接：** [论文](TODO_ARXIV_URL) | [GitHub](TODO_GITHUB_URL) | [Hugging Face](TODO_HUGGINGFACE_URL)
