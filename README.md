@@ -9,6 +9,10 @@
 
 **Overall accuracy:** The best-performing evaluated model reaches 45.2% accuracy on the full SEE benchmark.
 
+This result highlights the difficulty of expert-level laboratory science for current multimodal models: even strong systems still leave substantial room for improvement in visual grounding, experimental reasoning, and cross-disciplinary evidence use.
+
+![SEE overall accuracy results](./assets/accuracy_overall.png)
+
 Science Edge Evaluation (SEE) is a multimodal interdisciplinary benchmark for evaluating whether multimodal large language models can solve expert-level problems grounded in real laboratory science. Unlike textbook-style science benchmarks, SEE is built from peer-reviewed literature, experimental figures, and expert-designed research scenarios across chemistry, biology, materials science, and their intersections.
 
 ![SEE question examples](./assets/question_examples.png)
