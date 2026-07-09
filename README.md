@@ -88,7 +88,7 @@ The prompts are in `prompts/`, and the detailed protocol is in `docs/evaluation_
 
 ## Citation
 
-If you use SEE, please cite the accompanying paper and this dataset release. A draft `CITATION.cff` is included and should be updated with the final paper URL, DOI, or arXiv identifier once available.
+If you use SEE, please cite the accompanying paper once it becomes available.
 
 ## License
 
