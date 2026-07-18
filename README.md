@@ -5,9 +5,13 @@
 **Are Multimodal Large Language Models Ready for Real Laboratory Science?**
 
 <!-- TODO: replace with the final public URLs before release -->
-🔗 **Links:** [Paper](TODO_ARXIV_URL) | [GitHub](TODO_GITHUB_URL) | [Hugging Face](TODO_HUGGINGFACE_URL)
+🔗 **Links:** [Paper](TODO_ARXIV_URL) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation) | [Hugging Face](https://huggingface.co/datasets/skylenage-ai/science-edge-evaluation)
 
 **Overall accuracy:** The best-performing evaluated model reaches 45.2% accuracy on the full SEE benchmark.
+
+**Current evaluation snapshot:** We evaluate 15 MLLMs, including 4 science-specialized models. Science-specialized models reach 22.2% accuracy on average, below the 31.6% average of general-purpose models, although Intern-S2 Preview-397B reaches 29.0%, narrowing the gap relative to earlier science-specialized models and outperforming several mid-tier general-purpose models.
+
+**Model-version note:** S1-VL refers to the S1-VL-32B-RL checkpoint. Intern-S2 Preview-397B refers to the [InternLM release on Hugging Face](https://huggingface.co/internlm/Intern-S2-Preview-397B).
 
 This result highlights the difficulty of expert-level laboratory science for current multimodal models: even strong systems still leave substantial room for improvement in visual grounding, experimental reasoning, and cross-disciplinary evidence use.
 

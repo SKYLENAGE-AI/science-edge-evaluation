@@ -5,9 +5,13 @@
 **多模态大语言模型准备好进入真实实验室了吗？**
 
 <!-- TODO: 发布前替换为最终公开地址 -->
-🔗 **链接：** [论文](TODO_ARXIV_URL) | [GitHub](TODO_GITHUB_URL) | [Hugging Face](TODO_HUGGINGFACE_URL)
+🔗 **链接：** [论文](TODO_ARXIV_URL) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation) | [Hugging Face](https://huggingface.co/datasets/skylenage-ai/science-edge-evaluation)
 
 **总体准确率：** 在完整 SEE 基准上，当前评测中表现最好的模型准确率为 45.2%。
+
+**当前评测概览：** 我们共评测 15 个 MLLM，其中包括 4 个科学专门模型。科学专门模型平均准确率为 22.2%，低于通用模型平均值 31.6%；其中 Intern-S2 Preview-397B 达到 29.0%，相比更早的科学专门模型缩小了差距，并超过若干中等表现的通用模型。
+
+**模型版本说明：** 文中 S1-VL 指 S1-VL-32B-RL checkpoint。Intern-S2 Preview-397B 指 [InternLM 在 Hugging Face 发布的版本](https://huggingface.co/internlm/Intern-S2-Preview-397B)。
 
 这一结果表明，专家级实验室科学问题对当前多模态模型仍然具有明显挑战；即使是表现较强的模型，在图像证据理解、实验逻辑推理和跨学科证据整合方面仍有较大提升空间。
 
