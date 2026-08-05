@@ -7,9 +7,9 @@
 <!-- TODO: replace with the final public URLs before release -->
 🔗 **Links:** [Paper](TODO_ARXIV_URL) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation) | [Hugging Face](https://huggingface.co/datasets/skylenage-ai/science-edge-evaluation)
 
-**Overall accuracy:** The best-performing evaluated model reaches 45.2% accuracy on the full SEE benchmark.
+**Overall accuracy:** The best-performing evaluated model reaches 48.7% accuracy on the full SEE benchmark, and no model exceeds 50% in the standard evaluation setting.
 
-**Current evaluation snapshot:** We evaluate 15 MLLMs, including 4 science-specialized models. Science-specialized models reach 22.2% accuracy on average, below the 31.6% average of general-purpose models, although Intern-S2 Preview-397B reaches 29.0%, narrowing the gap relative to earlier science-specialized models and outperforming several mid-tier general-purpose models.
+**Current evaluation snapshot:** We evaluate 19 MLLMs, including 15 general-purpose and 4 science-specialized models. Science-specialized models reach 22.2% accuracy on average, below the 34.9% average of general-purpose models, although Intern-S2 Preview-397B reaches 29.0%, narrowing the gap relative to earlier science-specialized models and outperforming several mid-tier general-purpose models.
 
 **Model-version note:** S1-VL refers to the S1-VL-32B-RL checkpoint. Intern-S2 Preview-397B refers to the [InternLM release on Hugging Face](https://huggingface.co/internlm/Intern-S2-Preview-397B).
 
@@ -89,6 +89,12 @@ SEE uses a strict binary scoring protocol:
 The standard no-tool setting provides the model with question text, options when present, and associated image inputs. No retrieval, browsing, calculator, code execution, or external tools are allowed.
 
 The prompts are in `prompts/`, and the detailed protocol is in `docs/evaluation_protocol.md`.
+
+## Tool-Augmented Visual-Agent Evaluation
+
+We additionally evaluate six MLLMs in a visual-agent setting with web search and a code interpreter. All six models improve over standard multimodal inference, with gains of 1.9 to 7.6 percentage points and a mean gain of 4.6 points. GPT-5.6-Sol (Max) achieves the highest tool-augmented accuracy at 52.7%, showing that tools help but do not yet make current systems reliable on SEE.
+
+![SEE tool-augmented visual-agent results](./assets/agent_vs_baseline.png)
 
 ## Citation
 

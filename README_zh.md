@@ -7,9 +7,9 @@
 <!-- TODO: 发布前替换为最终公开地址 -->
 🔗 **链接：** [论文](TODO_ARXIV_URL) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation) | [Hugging Face](https://huggingface.co/datasets/skylenage-ai/science-edge-evaluation)
 
-**总体准确率：** 在完整 SEE 基准上，当前评测中表现最好的模型准确率为 45.2%。
+**总体准确率：** 在完整 SEE 基准上，当前评测中表现最好的模型准确率为 48.7%；在标准评测设置下，没有模型超过 50%。
 
-**当前评测概览：** 我们共评测 15 个 MLLM，其中包括 4 个科学专门模型。科学专门模型平均准确率为 22.2%，低于通用模型平均值 31.6%；其中 Intern-S2 Preview-397B 达到 29.0%，相比更早的科学专门模型缩小了差距，并超过若干中等表现的通用模型。
+**当前评测概览：** 我们共评测 19 个 MLLM，其中包括 15 个通用模型和 4 个科学专门模型。科学专门模型平均准确率为 22.2%，低于通用模型平均值 34.9%；其中 Intern-S2 Preview-397B 达到 29.0%，相比更早的科学专门模型缩小了差距，并超过若干中等表现的通用模型。
 
 **模型版本说明：** 文中 S1-VL 指 S1-VL-32B-RL checkpoint。Intern-S2 Preview-397B 指 [InternLM 在 Hugging Face 发布的版本](https://huggingface.co/internlm/Intern-S2-Preview-397B)。
 
@@ -89,6 +89,12 @@ SEE 采用严格的二元评分协议：
 标准 no-tool 设置只向模型提供题干、选项和图片输入，不允许检索、浏览网页、计算器、代码执行或外部工具。
 
 提示词位于 `prompts/`，详细评测协议位于 `docs/evaluation_protocol.md`。
+
+## 工具增强视觉智能体评测
+
+我们进一步在可使用网页搜索和代码解释器的视觉智能体设置下评测了 6 个 MLLM。相较于标准多模态推理，6 个模型均有提升，增幅为 1.9 至 7.6 个百分点，平均提升 4.6 个百分点。GPT-5.6-Sol (Max) 的工具增强准确率最高，达到 52.7%，说明工具能够带来帮助，但仍不足以使当前系统在 SEE 上达到可靠水平。
+
+![SEE 工具增强视觉智能体结果](./assets/agent_vs_baseline.png)
 
 ## 引用
 
