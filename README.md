@@ -5,13 +5,13 @@
 **Are Multimodal Large Language Models Ready for Real Laboratory Science?**
 
 <!-- TODO: replace with the final public URLs before release -->
-🔗 **Links:** [Paper](TODO_ARXIV_URL) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation) | [Hugging Face](https://huggingface.co/datasets/skylenage-ai/science-edge-evaluation)
+🔗 **Links:** [Paper](TODO_ARXIV_URL) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation)
 
 **Overall accuracy:** The best-performing evaluated model reaches 48.7% accuracy on the full SEE benchmark, and no model exceeds 50% in the standard evaluation setting.
 
 **Current evaluation snapshot:** We evaluate 19 MLLMs, including 15 general-purpose and 4 science-specialized models. Science-specialized models reach 22.2% accuracy on average, below the 34.9% average of general-purpose models, although Intern-S2 Preview-397B reaches 29.0%, narrowing the gap relative to earlier science-specialized models and outperforming several mid-tier general-purpose models.
 
-**Model-version note:** S1-VL refers to the S1-VL-32B-RL checkpoint. Intern-S2 Preview-397B refers to the [InternLM release on Hugging Face](https://huggingface.co/internlm/Intern-S2-Preview-397B).
+**Model-version note:** S1-VL refers to the S1-VL-32B-RL checkpoint. Intern-S2 Preview-397B refers to the InternLM release.
 
 This result highlights the difficulty of expert-level laboratory science for current multimodal models: even strong systems still leave substantial room for improvement in visual grounding, experimental reasoning, and cross-disciplinary evidence use.
 
@@ -102,4 +102,4 @@ If you use SEE, please cite the accompanying paper once it becomes available.
 
 ## License
 
-The repository is currently prepared under `CC BY-NC 4.0` for non-commercial research use. If the intended public release should permit commercial use, update `LICENSE` and the Hugging Face metadata before publishing.
+The repository is currently prepared under `CC BY-NC 4.0` for non-commercial research use. If the intended public release should permit commercial use, update `LICENSE` before publishing.

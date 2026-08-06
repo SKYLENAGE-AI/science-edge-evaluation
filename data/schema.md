@@ -2,7 +2,7 @@
 
 The public benchmark is released in two equivalent formats:
 
-- `questions_public.jsonl`: one JSON object per line, recommended for Hugging Face and streaming.
+- `questions_public.jsonl`: one JSON object per line, recommended for streaming.
 - `questions_public.json`: pretty-printed JSON array, convenient for inspection.
 
 ## Fields
