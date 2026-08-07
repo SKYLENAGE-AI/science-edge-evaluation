@@ -2,7 +2,7 @@
 
 [English](README.md) | [中文](README_zh.md)
 
-**Are Multimodal Large Language Models Ready for Real Laboratory Science?**
+**Science Edge Evaluation: SEE the Missing Step Toward Real Scientific Discovery**
 
 <!-- TODO: replace with the final public URLs before release -->
 🔗 **Links:** [Paper](TODO_ARXIV_URL) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation)

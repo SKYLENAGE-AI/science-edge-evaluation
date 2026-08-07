@@ -2,7 +2,7 @@
 
 [English](README.md) | [中文](README_zh.md)
 
-**多模态大语言模型准备好进入真实实验室了吗？**
+**Science Edge Evaluation：SEE——迈向真实科学发现的缺失一步**
 
 <!-- TODO: 发布前替换为最终公开地址 -->
 🔗 **链接：** [论文](TODO_ARXIV_URL) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation)
