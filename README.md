@@ -17,6 +17,16 @@ This result highlights the difficulty of expert-level laboratory science for cur
 
 ![SEE overall accuracy results](./assets/accuracy_overall.png)
 
+## Tool-Augmented Visual-Agent Evaluation
+
+We additionally evaluate six MLLMs in a visual-agent setting with web search and a code interpreter. All six models improve over standard multimodal inference, with gains of 1.9 to 7.6 percentage points and a mean gain of 4.6 points. GPT-5.6-Sol (Max) achieves the highest tool-augmented accuracy at 52.7%, showing that tools help but do not yet make current systems reliable on SEE.
+
+![SEE tool-augmented visual-agent results](./assets/agent_vs_baseline.png)
+
+Trajectory-level attribution shows that tool use has bidirectional effects: across the six models, 411 corrections are substantively attributed to tool use, while 145 tool-attributed errors arise from evidence integration, action selection, observation interpretation, and execution-control failures. This indicates that tool augmentation turns static multimodal reasoning into an evidence-management problem along the tool-use trajectory.
+
+![Effects of using tools in tool-augmented visual agents](./assets/figure8.png)
+
 Science Edge Evaluation (SEE) is a multimodal interdisciplinary benchmark for evaluating whether multimodal large language models can solve expert-level problems grounded in real laboratory science. Unlike textbook-style science benchmarks, SEE is built from peer-reviewed literature, experimental figures, and expert-designed research scenarios across chemistry, biology, materials science, and their intersections.
 
 ![SEE question examples](./assets/question_examples.png)
@@ -89,12 +99,6 @@ SEE uses a strict binary scoring protocol:
 The standard no-tool setting provides the model with question text, options when present, and associated image inputs. No retrieval, browsing, calculator, code execution, or external tools are allowed.
 
 The prompts are in `prompts/`, and the detailed protocol is in `docs/evaluation_protocol.md`.
-
-## Tool-Augmented Visual-Agent Evaluation
-
-We additionally evaluate six MLLMs in a visual-agent setting with web search and a code interpreter. All six models improve over standard multimodal inference, with gains of 1.9 to 7.6 percentage points and a mean gain of 4.6 points. GPT-5.6-Sol (Max) achieves the highest tool-augmented accuracy at 52.7%, showing that tools help but do not yet make current systems reliable on SEE.
-
-![SEE tool-augmented visual-agent results](./assets/agent_vs_baseline.png)
 
 ## Citation
 
