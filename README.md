@@ -4,8 +4,7 @@
 
 **Science Edge Evaluation: SEE the Missing Step Toward Real Scientific Discovery**
 
-<!-- TODO: replace with the final public URLs before release -->
-🔗 **Links:** [Paper](TODO_ARXIV_URL) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation)
+🔗 **Links:** [Paper (arXiv:2608.06931)](https://arxiv.org/abs/2608.06931) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation)
 
 **Overall accuracy:** The best-performing evaluated model reaches 48.7% accuracy on the full SEE benchmark, and no model exceeds 50% in the standard evaluation setting.
 
@@ -102,7 +101,17 @@ The prompts are in `prompts/`, and the detailed protocol is in `docs/evaluation_
 
 ## Citation
 
-If you use SEE, please cite the accompanying paper once it becomes available.
+If you use SEE, please cite the accompanying paper:
+
+```bibtex
+@article{han2026see,
+  title   = {Science Edge Evaluation: SEE the Missing Step Toward Real Scientific Discovery},
+  author  = {Han, Taolin and Zhang, Yuchen and Wang, Jinghang and Wu, Yun and Chiu, Wai Yuet and Li, Zhaohai and Zhang, Yifei and Wang, Jinxin and Zhou, Yuhao and Zhao, Chen and Li, Jiajia and Li, Jiaxin and Jin, Qile and Sun, Kewei and Wu, Shuang and Zhai, Weiqi and Lv, Renquan and Li, Junchao and Chen, Ruodan and Chen, Qingteng and Yang, Zhibo and Wei, Hu and Qu, Lin and Bai, Shuai and Zhao, Bing},
+  journal = {arXiv preprint arXiv:2608.06931},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2608.06931}
+}
+```
 
 ## License
 

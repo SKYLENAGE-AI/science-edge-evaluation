@@ -4,8 +4,7 @@
 
 **Science Edge Evaluation：“看见”大模型探索科学领域的能力边界**
 
-<!-- TODO: 发布前替换为最终公开地址 -->
-🔗 **链接：** [论文](TODO_ARXIV_URL) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation)
+🔗 **链接：** [论文 (arXiv:2608.06931)](https://arxiv.org/abs/2608.06931) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation)
 
 **总体准确率：** 在完整 SEE 基准上，当前评测中表现最好的模型准确率为 48.7%；在标准评测设置下，没有模型超过 50%。
 
@@ -102,7 +101,17 @@ SEE 采用严格的二元评分协议：
 
 ## 引用
 
-如果使用 SEE，请在配套论文发布后引用该论文。
+如果使用 SEE，请引用配套论文：
+
+```bibtex
+@article{han2026see,
+  title   = {Science Edge Evaluation: SEE the Missing Step Toward Real Scientific Discovery},
+  author  = {Han, Taolin and Zhang, Yuchen and Wang, Jinghang and Wu, Yun and Chiu, Wai Yuet and Li, Zhaohai and Zhang, Yifei and Wang, Jinxin and Zhou, Yuhao and Zhao, Chen and Li, Jiajia and Li, Jiaxin and Jin, Qile and Sun, Kewei and Wu, Shuang and Zhai, Weiqi and Lv, Renquan and Li, Junchao and Chen, Ruodan and Chen, Qingteng and Yang, Zhibo and Wei, Hu and Qu, Lin and Bai, Shuai and Zhao, Bing},
+  journal = {arXiv preprint arXiv:2608.06931},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2608.06931}
+}
+```
 
 ## 许可证
 
