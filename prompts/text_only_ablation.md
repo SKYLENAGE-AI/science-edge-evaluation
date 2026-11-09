@@ -8,4 +8,6 @@ Use `generation_prompt.md` with:
 - `{options}` filled by the original options when present,
 - no image attachments.
 
-The ablation measures whether a model explicitly recognizes missing visual evidence. Unsupported final answers are treated as evidence-insensitive attempts. Empty outputs, generation errors, generic refusals, and other non-answer cases are not counted as explicit missing-image acknowledgments.
+The ablation compares accuracy with and without images and separately measures whether a model explicitly recognizes missing visual evidence. Empty outputs, generation errors, generic refusals, and other non-answer cases are not counted as explicit missing-image acknowledgments.
+
+Accuracy and acknowledgment rates should be interpreted separately. Textual cues remain available and the generation prompt requests an answer, so lack of acknowledgment alone does not establish hallucination.

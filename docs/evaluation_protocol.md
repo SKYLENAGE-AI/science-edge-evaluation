@@ -37,14 +37,16 @@ The exact judge prompt is provided in `prompts/judge_prompt.md`.
 
 ## Text-Only Ablation
 
-The text-only ablation removes image inputs while preserving the textual question content. The goal is to measure whether models recognize that visual evidence is missing rather than hallucinating an answer from textual priors alone.
+The text-only ablation removes image inputs while preserving the textual question content. It compares image-conditioned and text-only accuracy and separately measures whether models explicitly acknowledge that visual evidence is missing.
+
+Accuracy and acknowledgment rates should be interpreted separately: textual cues remain available and the generation prompt requests an answer, so lack of acknowledgment alone does not establish hallucination.
 
 See `prompts/text_only_ablation.md`.
 
 ## With-Tool Setting
 
-The with-tool setting adds optional web search to the same multimodal inputs used in the standard baseline. Web search is the only added capability. It is optional rather than forced for every question.
+The tool-augmented visual-agent evaluation covers eleven models and uses the same multimodal inputs as the standard baseline. Gemini 4 Argon can use web search; the other ten models can use both web search and a code interpreter. The code interpreter supports programmatic image inspection, measurement, and computation. Tool use is optional and iterative rather than forced for every question.
 
-Tool-augmented failures, refusals, unanswered outputs, and outputs without an identifiable final answer are scored as incorrect under the same binary judging protocol.
+Accuracy comparisons use the main leaderboard no-tool baselines, although evaluation interfaces may differ between runs. Tool-augmented failures, refusals, unanswered outputs, and outputs without an identifiable final answer are scored as incorrect under the same binary judging protocol.
 
 See `prompts/with_tool_protocol.md`.

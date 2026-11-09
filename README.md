@@ -6,25 +6,31 @@
 
 🔗 **Links:** [Paper (arXiv:2608.06931)](https://arxiv.org/abs/2608.06931) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation)
 
-**Overall accuracy:** The best-performing evaluated model reaches 48.7% accuracy on the full SEE benchmark, and no model exceeds 50% in the standard evaluation setting.
+**Overall accuracy:** Gemini 4 Argon achieves the best result on the full SEE benchmark at 54.9% accuracy, and no model exceeds 55% in the standard evaluation setting.
 
-**Current evaluation snapshot:** We evaluate 19 MLLMs, including 15 general-purpose and 4 science-specialized models. Science-specialized models reach 22.2% accuracy on average, below the 34.9% average of general-purpose models, although Intern-S2 Preview-397B reaches 29.0%, narrowing the gap relative to earlier science-specialized models and outperforming several mid-tier general-purpose models.
+**Current evaluation snapshot:** We evaluate 28 MLLMs, including 24 general-purpose and 4 science-specialized models. Science-specialized models reach 25.0% accuracy on average, below the 37.3% average of general-purpose models, although Intern-S2 Preview-397B reaches 29.0%, narrowing the gap relative to earlier science-specialized models and outperforming several mid-tier general-purpose models.
 
-**Model-version note:** S1-VL refers to the S1-VL-32B-RL checkpoint. Intern-S2 Preview-397B refers to the InternLM release.
+**Model-version note:** Intern-S2 Preview-397B refers to the InternLM release.
 
 This result highlights the difficulty of expert-level laboratory science for current multimodal models: even strong systems still leave substantial room for improvement in visual grounding, experimental reasoning, and cross-disciplinary evidence use.
 
-![SEE overall accuracy results](./assets/accuracy_overall.png)
+![SEE overall accuracy results for 28 MLLMs](./assets/accuracy_overall.png)
+
+## Visual Evidence and Interdisciplinary Reasoning
+
+Removing image inputs lowers accuracy for every evaluated model, by 14.5 percentage points on average across all 28 models. Only 2,888 of 31,248 text-only responses (9.2%) explicitly acknowledge the missing visual evidence and withhold a concrete answer, suggesting limited awareness of evidentiary boundaries.
+
+![SEE visual-evidence ablation across 28 MLLMs](./assets/visual_evidence_ablation.png)
+
+Average accuracy also drops from 38.6% on questions within a single main discipline to 32.0% on cross-disciplinary questions, a gap of 6.6 percentage points.
 
 ## Tool-Augmented Visual-Agent Evaluation
 
-We additionally evaluate six MLLMs in a visual-agent setting with web search and a code interpreter. All six models improve over standard multimodal inference, with gains of 1.9 to 7.6 percentage points and a mean gain of 4.6 points. GPT-5.6-Sol (Max) achieves the highest tool-augmented accuracy at 52.7%, showing that tools help but do not yet make current systems reliable on SEE.
+We additionally evaluate eleven MLLMs in a tool-augmented visual-agent setting. Gemini 4 Argon can use web search; the other ten models can use both web search and a code interpreter. Tool-enabled accuracy exceeds the corresponding no-tool baseline for all eleven models. Gemini 4 Argon achieves the highest tool-augmented accuracy at 56.1%, while Qwen3.8 Flash shows the largest improvement, from 36.6% to 45.5%. These results show that tools help but do not yet make current systems reliable on SEE.
 
-![SEE tool-augmented visual-agent results](./assets/agent_vs_baseline.png)
+Trajectory-level attribution shows that tool use has bidirectional effects: across the eleven models, 708 corrections and 250 regressions are substantively attributed to tool use. Tool-attributed regressions arise from evidence integration, action selection, observation interpretation, and execution-control failures. This indicates that tool augmentation turns static multimodal reasoning into an evidence-management problem along the tool-use trajectory.
 
-Trajectory-level attribution shows that tool use has bidirectional effects: across the six models, 411 corrections are substantively attributed to tool use, while 145 tool-attributed errors arise from evidence integration, action selection, observation interpretation, and execution-control failures. This indicates that tool augmentation turns static multimodal reasoning into an evidence-management problem along the tool-use trajectory.
-
-![Effects of using tools in tool-augmented visual agents](./assets/figure8.png)
+![SEE tool-augmented visual-agent results and trajectory attribution](./assets/tool_augmented_evaluation.png)
 
 Science Edge Evaluation (SEE) is a multimodal interdisciplinary benchmark for evaluating whether multimodal large language models can solve expert-level problems grounded in real laboratory science. Unlike textbook-style science benchmarks, SEE is built from peer-reviewed literature, experimental figures, and expert-designed research scenarios across chemistry, biology, materials science, and their intersections.
 
