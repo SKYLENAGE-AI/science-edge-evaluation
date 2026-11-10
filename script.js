@@ -3,7 +3,7 @@ document.documentElement.classList.add('js');
 const models = [];
 
 const organizations = [
-  { prefix: 'HY4', logo: 'hy4', logoExtension: 'svg', name: 'Tencent' },
+  { prefix: 'HY4', logo: 'hy4', name: 'Tencent' },
   { prefix: 'Gemini', logo: 'google', name: 'Google' },
   { prefix: 'GPT', logo: 'openai', name: 'OpenAI' },
   { prefix: 'Claude', logo: 'anthropic', name: 'Anthropic' },
