@@ -19,7 +19,7 @@ WORKSPACE = SITE.parent
 MIRROR = WORKSPACE / 'see-arxiv/experiments/local/see-cvpr'
 LIVE = WORKSPACE.parent / 'see-cvpr'
 CURRENT = MIRROR / 'data/results'
-HISTORICAL = Path('/Users/hantaolin/Documents/past/SEE/data/results')
+HISTORICAL = WORKSPACE.parent / 'past/SEE/data/results'
 
 
 def read(path):

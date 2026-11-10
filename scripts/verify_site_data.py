@@ -58,8 +58,14 @@ def assemble(destination):
     destination.mkdir(parents=True, exist_ok=True)
     for filename in ('index.html', 'script.js', 'styles.css', 'blue-theme.css', 'favicon.svg'):
         shutil.copy2(SITE / filename, destination / filename)
-    for folder in ('assets', 'prompts', 'docs'):
+    for folder in ('assets', 'prompts'):
         shutil.copytree(SITE / folder, destination / folder, dirs_exist_ok=True)
+    public_docs = destination / 'docs'
+    public_docs.mkdir(exist_ok=True)
+    for path in public_docs.iterdir():
+        if path.is_file() and path.name != 'evaluation_protocol.md':
+            path.unlink()
+    shutil.copy2(SITE / 'docs/evaluation_protocol.md', public_docs / 'evaluation_protocol.md')
     (destination / 'data').mkdir(exist_ok=True)
     for filename in ('questions_public.json', 'questions_public.jsonl', 'schema.md'):
         shutil.copy2(SITE / 'data' / filename, destination / 'data' / filename)
