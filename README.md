@@ -6,6 +6,10 @@
 
 🔗 **Links:** [Paper (arXiv:2608.06931)](https://arxiv.org/abs/2608.06931) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation)
 
+Website maintenance: [experiment data, adding models, and GitHub Pages synchronization](./docs/website_data_workflow.md).
+
+**Website data update (2026-11-10):** The interactive website additionally includes Tencent HY4: 476/1,116 (42.65%) overall and 443/1,049 (42.23%) on public questions. It now contains 29 standard-evaluation models, 11 tool-augmented models, and 41,960 public response records. HY4 tool probes are not included as full evaluation runs. The paper snapshot and figures below retain their published 28-model scope.
+
 **Overall accuracy:** Gemini 4 Argon achieves the best result on the full SEE benchmark at 54.9% accuracy, and no model exceeds 55% in the standard evaluation setting.
 
 **Current evaluation snapshot:** We evaluate 28 MLLMs, including 24 general-purpose and 4 science-specialized models. Science-specialized models reach 25.0% accuracy on average, below the 37.3% average of general-purpose models, although Intern-S2 Preview-397B reaches 29.0%, narrowing the gap relative to earlier science-specialized models and outperforming several mid-tier general-purpose models.

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="370" viewBox="0 0 600 370" fill="none">
+  <title>From observation to supported inference</title>
+  <desc>Conceptual scientific illustration. Molecular geometry and spectral peaks are schematic, not measured experimental data.</desc>
+  <defs>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" stroke="#DCE6F2" stroke-width=".6"/></pattern>
+    <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0V7" stroke="#CDD8E7" stroke-width="1"/></pattern>
+    <radialGradient id="halo"><stop stop-color="#D6E6FF" stop-opacity=".8"/><stop offset="1" stop-color="#F8FBFF" stop-opacity="0"/></radialGradient>
+    <radialGradient id="atom" cx=".3" cy=".2" r=".8"><stop stop-color="#FFF"/><stop offset=".38" stop-color="#E7EFF9"/><stop offset="1" stop-color="#7B98BE"/></radialGradient>
+    <radialGradient id="blue" cx=".3" cy=".2" r=".8"><stop stop-color="#9CC8FF"/><stop offset=".4" stop-color="#3979EC"/><stop offset="1" stop-color="#17469C"/></radialGradient>
+    <linearGradient id="area" x1="0" y1="80" x2="0" y2="207" gradientUnits="userSpaceOnUse"><stop stop-color="#3677EE" stop-opacity=".25"/><stop offset="1" stop-color="#3677EE" stop-opacity=".02"/></linearGradient>
+    <linearGradient id="fade"><stop stop-color="#EAF2FF"/><stop offset="1" stop-color="#F7FAFF"/></linearGradient>
+  </defs>
+  <rect x=".5" y=".5" width="599" height="369" rx="10" fill="#F9FBFE" stroke="#E0E8F2"/>
+  <rect x="1" y="42" width="598" height="200" fill="url(#grid)" opacity=".65"/>
+  <path d="M20 42H580M294 58V230M20 246H580" stroke="#DCE5F0"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <g fill="#173A67" font-size="10" font-weight="600" letter-spacing="1">
+      <text x="20" y="26" fill="#2563EB">a</text><text x="39" y="26">STRUCTURAL CONTEXT</text>
+      <text x="313" y="26" fill="#2563EB">b</text><text x="332" y="26">OBSERVED SIGNAL</text>
+    </g>
+    <ellipse cx="151" cy="144" rx="124" ry="98" fill="url(#halo)"/>
+    <g stroke="#B7CBE4" stroke-width=".8">
+      <ellipse cx="151" cy="142" rx="104" ry="69" stroke-dasharray="2 5"/>
+      <ellipse cx="151" cy="142" rx="88" ry="46" transform="rotate(-28 151 142)"/>
+      <path d="M40 142H58M244 142H262M151 66V78M151 207V219"/>
+    </g>
+    <g stroke-linecap="round">
+      <path d="M102 119 148 96 195 122 196 171 148 190 103 166Z M148 96 149 65M195 122 230 105M196 171 230 192M103 166 74 188M102 119 73 100" stroke="#90A9CB" stroke-width="7"/>
+      <path d="M102 119 148 96 195 122 196 171 148 190 103 166Z M148 96 149 65M195 122 230 105M196 171 230 192M103 166 74 188M102 119 73 100" stroke="#E2EBF8" stroke-width="2"/>
+      <path d="M114 123 147 107M185 129V163M144 178 114 162" stroke="#8AA8CC" stroke-width="2"/>
+    </g>
+    <g fill="url(#atom)" stroke="#8EA9CD" stroke-width=".6">
+      <circle cx="102" cy="119" r="10"/><circle cx="148" cy="96" r="11"/><circle cx="195" cy="122" r="10"/><circle cx="196" cy="171" r="11"/><circle cx="148" cy="190" r="10"/><circle cx="103" cy="166" r="10"/>
+      <circle cx="230" cy="105" r="6"/><circle cx="230" cy="192" r="6"/><circle cx="74" cy="188" r="6"/><circle cx="73" cy="100" r="6"/>
+    </g>
+    <circle cx="149" cy="65" r="9" fill="url(#blue)"/>
+    <path d="M161 65H186L200 55" stroke="#7398CD" stroke-width=".8"/>
+    <text x="205" y="57" fill="#3D6DAF" font-size="9" font-family="monospace">OH</text>
+    <g font-size="8" fill="#6C819E" font-family="monospace">
+      <text x="22" y="230">MOLECULAR GEOMETRY</text><text x="269" y="230" text-anchor="end">SCHEMATIC</text>
+    </g>
+    <g stroke="#D5E1EF" stroke-width=".8"><path d="M340 82H575M340 121H575M340 160H575M340 199H575"/><path d="M340 72V200H575" stroke="#91A8C7"/></g>
+    <g font-family="monospace" font-size="8" fill="#7588A2">
+      <text x="331" y="85" text-anchor="end">1.0</text><text x="331" y="163" text-anchor="end">0.3</text><text x="331" y="202" text-anchor="end">0</text>
+      <text x="340" y="215">0</text><text x="453" y="215">0.5</text><text x="575" y="215" text-anchor="end">1.0</text>
+      <text x="341" y="61">INTENSITY / a.u.</text><text x="575" y="231" text-anchor="end">NORMALIZED SPECTRAL AXIS</text>
+    </g>
+    <path d="M340 194L350 193 359 195 366 191 374 193C379 193 379 165 384 165S388 192 395 193L406 191C412 192 413 83 420 83S426 192 434 193L447 191C452 191 453 146 459 146S465 193 472 192L482 194C488 193 489 112 496 112S502 191 510 192L522 193C529 193 528 175 534 175S540 193 547 192L558 194 568 192 575 193V200H340Z" fill="url(#area)"/>
+    <path d="M340 194L350 193 359 195 366 191 374 193C379 193 379 165 384 165S388 192 395 193L406 191C412 192 413 83 420 83S426 192 434 193L447 191C452 191 453 146 459 146S465 193 472 192L482 194C488 193 489 112 496 112S502 191 510 192L522 193C529 193 528 175 534 175S540 193 547 192L558 194 568 192 575 193" stroke="#2965D8" stroke-width="1.8" stroke-linejoin="round"/>
+    <path d="M420 78V200M496 106V200" stroke="#7DA4DF" stroke-dasharray="3 4" stroke-width=".8"/>
+    <g fill="#FFF" stroke="#2965D8" stroke-width="1.5"><circle cx="420" cy="83" r="3"/><circle cx="496" cy="112" r="3"/></g>
+    <g fill="#2965D8" font-family="monospace" font-size="9"><text x="429" y="85">α</text><text x="505" y="114">β</text></g>
+    <text x="20" y="270" fill="#2563EB" font-size="10" font-weight="600">c</text>
+    <text x="39" y="270" fill="#173A67" font-size="10" font-weight="600" letter-spacing="1">THE LIMIT OF INFERENCE</text>
+    <rect x="20" y="285" width="361" height="44" rx="4" fill="url(#fade)"/>
+    <rect x="382" y="285" width="198" height="44" rx="4" fill="url(#hatch)" opacity=".65"/>
+    <path d="M38 307H365" stroke="#4D7DCA" stroke-width="1.2"/>
+    <path d="M386 307H561" stroke="#9EADC1" stroke-dasharray="3 4"/>
+    <g fill="#FFF" stroke="#2965D8" stroke-width="1.5"><circle cx="48" cy="307" r="4"/><circle cx="190" cy="307" r="4"/><circle cx="340" cy="307" r="4"/></g>
+    <path d="M381 280V337" stroke="#2965D8" stroke-width="1.5"/>
+    <circle cx="381" cy="280" r="2.5" fill="#2965D8"/>
+    <text x="480" y="310" text-anchor="middle" font-size="9" fill="#61758F" letter-spacing="1.5">UNKNOWN</text>
+    <g font-size="8" font-family="monospace" fill="#4F6F99">
+      <text x="20" y="350">01 OBSERVE</text><text x="157" y="350">02 INTERPRET</text><text x="300" y="350">03 SUPPORT</text>
+      <text x="580" y="350" text-anchor="end" fill="#2965D8">EVIDENCE BOUNDARY</text>
+    </g>
+  </g>
+</svg>

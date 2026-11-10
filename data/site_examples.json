@@ -1,0 +1,142 @@
+[
+  {
+    "id": "3a6dc412-7d7d-4d1b-9d43-f821fdbfc134",
+    "label": "SEE–038",
+    "title_en": "Identify a structure from an integrated NMR spectrum",
+    "title_zh": "核磁共振氢谱结构识别",
+    "discipline_en": "Chemistry · NMR spectroscopy",
+    "discipline_zh": "化学 · 核磁共振氢谱",
+    "question_en": "Based on the integrated $^1\\mathrm{H}$ NMR spectrum, which of the following structures does this spectrum correspond to?",
+    "question_zh": "根据已经积分好的核磁共振氢谱图，分析该氢谱属于下面哪个结构？",
+    "options_en": [
+      "A. 3,7-dimethyloct-6-en-1-yl 4-methylbenzenesulfonate",
+      "B. 2,7-dimethyloct-6-en-1-yl 4-methylbenzenesulfonate",
+      "C. 3,7-dimethyloct-6-en-1-yl 3-methylbenzenesulfonate",
+      "D. 2,7-dimethyloct-6-en-1-yl 3-methylbenzenesulfonate"
+    ],
+    "options_zh": [
+      "A. 3,7-dimethyloct-6-en-1-yl 4-methylbenzenesulfonate",
+      "B. 2,7-dimethyloct-6-en-1-yl 4-methylbenzenesulfonate",
+      "C. 3,7-dimethyloct-6-en-1-yl 3-methylbenzenesulfonate",
+      "D. 2,7-dimethyloct-6-en-1-yl 3-methylbenzenesulfonate"
+    ],
+    "image": "data/images/fcace75b-ee77-408c-b032-378e1f433d81.png",
+    "reference_en": "A",
+    "reference_zh": "A",
+    "responses": [
+      {
+        "model": "GPT-6 Astra",
+        "logo": "openai",
+        "mode": "Search + code available",
+        "answer": "A",
+        "analysis": "首先看芳香区：δ约7.8和7.3 ppm处有两组双峰，积分分别为2.00和2.02，各对应2H，符合对位二取代苯环的特征，因此排除苯环间位取代的C、D。δ约2.45 ppm处的单峰积分为3.08，对应苯环上的甲基。其次，δ约5.0 ppm处积分为1.00，对应烯烃氢；δ约1.6～1.7 ppm处包含两个烯基甲基信号，与选项中的末端—CH=C(CH3)2片段相符。区分A、B的关键是连氧亚甲基：δ约4.05 ppm处积分为2.12，其多重峰形更符合—OCH2—CH2—的耦合，而不是B中的—OCH2—CH(CH3)—。此外，δ约0.82 ppm处积分为3.10的双峰，以及其余脂肪区信号的分布，均与3位带甲基的侧链相符。因此该谱应归属于3,7-二甲基辛-6-烯-1-基对甲苯磺酸酯。",
+        "trace": [
+          {
+            "type": "search",
+            "detail": "\"citronellyl tosylate\" \"4.0\" NMR",
+            "sources": 3,
+            "url": "https://pubs.acs.org/doi/suppl/10.1021/acs.jafc.6b01645/suppl_file/jf6b01645_si_001.pdf"
+          },
+          {
+            "type": "search",
+            "detail": "Find \"3,7-Dimethyl\" in page",
+            "sources": 0,
+            "url": "https://hal.science/hal-03834825/file/Manuscrit_v1.pdf"
+          },
+          {
+            "type": "search",
+            "detail": "\"dimethyloct-6-en-1-yl\" \"4.06\" \"7.78\"",
+            "sources": 6,
+            "url": "https://pubs.rsc.org/gc/article-supplement/851997/pdf/d4gc03452j1_suppl/"
+          }
+        ]
+      },
+      {
+        "model": "Qwen3.8-Max",
+        "logo": "qwen",
+        "mode": "Search + code available",
+        "answer": "A",
+        "analysis": "1) 芳氢区：δ≈7.78 和 7.34 处各有一个积分 2H 的双峰（2.00、2.02），加上 δ≈2.45 的单峰（3H，ArCH3），为典型的对位二取代苯（AA'BB'）图案，即 4-甲基苯磺酸酯（tosylate）；若为间位（3-甲基）则芳区应出现 4 组 1:1:1:1 的多重峰，故排除 C、D。2) 烯烃部分：δ≈5.08（1H，三重峰样）为 (CH3)2C=CH- 的乙烯基 H，δ≈1.68 与 1.60 两个单峰共 6H 为双键上两个甲基，δ≈1.95（2H）为烯丙位 CH2，符合 6-烯-7-甲基结构。3) 关键判据：δ≈4.05–4.12（2H）的 -OCH2- 呈多重峰（与相邻 CH2 耦合），说明存在 -CH2-CH2-OTs 片段，即甲基支链在 C3 位（3,7-二甲基）；若为 2,7-二甲基异构体（B），-OCH2- 只与 C2 上一个 CH 耦合，应在 δ≈3.85 处呈现干净的双峰，与谱图不符。4) δ≈0.9（3H，双峰）为 CH3-CH<（C3 甲基），1.2–1.6 区多个各 1H 的多重峰为其余 CH2/CH；总积分约 26H，与分子式 C17H26O3S 相符。综上，该谱对应香茅醇甲苯磺酸酯（citronellyl tosylate），即 3,7-dimethyloct-6-en-1-yl 4-methylbenzenesulfonate。",
+        "trace": [
+          {
+            "type": "search",
+            "detail": "citronellyl tosylate 1H NMR (3,7-dimethyl-6-octen-1-yl tosylate) NMR shifts",
+            "sources": 17,
+            "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C141140&Mask=200"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "59f6938d-ab5a-4439-8a04-457d93930f2d",
+    "label": "SEE–039",
+    "title_en": "Fit electron mass with the LK formula",
+    "title_zh": "使用 LK 公式拟合电子质量",
+    "discipline_en": "Chemistry · Quantum oscillations",
+    "discipline_zh": "化学 · 量子振荡",
+    "question_en": "The corresponding magnetic field in this figure is 6.5 T. Please use the LK formula to fit the data in the figure to determine the electron mass represented by the data.",
+    "question_zh": "这幅图中相应的磁场是6.5T请用LK公式拟合出图中数据代表的电子质量",
+    "options_en": [],
+    "options_zh": [],
+    "image": "data/images/edc1b7a5-04bd-49f3-a49b-b915ee8f0cb2.png",
+    "reference_en": "1.27 ±0.06 bare electron mass",
+    "reference_zh": "1.27±0.06裸电子质量",
+    "responses": [
+      {
+        "model": "GPT-6 Astra",
+        "logo": "openai",
+        "mode": "Search + code available",
+        "answer": "LK拟合得到电子的回旋有效质量m*≈1.27m_e，约为1.15×10⁻³⁰ kg；考虑读图精度，可表述为m*≈1.3m_e。",
+        "analysis": "将图中δR视为固定磁场下的量子振荡振幅，并假定其他衰减因子不随温度变化。LK公式的温度衰减项为：δR(T)=A₀X/sinh(X)，其中X=2π²k_BTm*/(ℏeB)=14.69(m*/m_e)T/B，T以K计，B以T计，m_e为自由电子质量。([journals.aps.org](https://journals.aps.org/prb/supplemental/10.1103/PhysRevB.106.L041113/SI.pdf)) 代入B=6.5 T，得到X=2.260(m*/m_e)T。从图中蓝色圆圈中心近似读取(T,δR)，单位分别为K和kΩ：(0.078,1.641)、(0.398,1.436)、(0.638,1.169)、(0.799,0.913)、(1.082,0.494)、(1.201,0.337)、(1.518,0.066)、(1.599,0.025)、(1.956,0.016)、(2.392,0.044)。以A₀和m*/m_e为自由参数，对这些读图数据进行无额外常数背景的非线性最小二乘拟合，得到A₀≈1.746 kΩ、m*/m_e≈1.267，即δR(T)≈1.746×(2.864T)/sinh(2.864T) kΩ。由于数据来自图片读取，结果应作为近似估计，不宜保留过多有效数字。",
+        "trace": [
+          {
+            "type": "search",
+            "detail": "Lifshitz Kosevich thermal damping factor X sinh X 14.69 effective mass",
+            "sources": 11,
+            "url": "https://journals.aps.org/prb/supplemental/10.1103/PhysRevB.106.L041113/SI.pdf"
+          },
+          {
+            "type": "code",
+            "detail": "Python · NumPy / SciPy curve fitting",
+            "code": "import numpy as np\nfrom scipy.optimize import curve_fit\ncenters=np.array([[215,161],[318,226],[395,311],[447,392],[538,525],[576,575],[678,661],[704,674],[819,677],[959,668]])\nt=(centers[:,0]-190)/321.5\na=(682-centers[:,1])/317.5\ndef lk(t,A,m):\n    x=14.69*m*t/6.5\n    return A*x/np.sinh(x)\np,c=curve_fit(lk,t,a,p0=[1.8,1.5])\nt,a,p,np.sqrt(np.diag(c))\n",
+            "output": "(array([0.0777605 , 0.39813375, 0.63763608, 0.79937792, 1.08242613,\n        1.20062208, 1.51788491, 1.59875583, 1.95645412, 2.39191291]),\n array([1.64094488, 1.43622047, 1.16850394, 0.91338583, 0.49448819,\n        0.33700787, 0.06614173, 0.02519685, 0.01574803, 0.04409449]),\n array([1.74571866, 1.26728144]),\n array([0.07944031, 0.06722804]))"
+          }
+        ]
+      },
+      {
+        "model": "Qwen3.8-Max",
+        "logo": "qwen",
+        "mode": "Search + code available",
+        "answer": "m* ≈ 1.3 m_e(约1.3倍自由电子质量,即≈1.2×10⁻³⁰ kg;拟合值约1.3±0.1 m_e)",
+        "analysis": "图中给出的是量子振荡(Shubnikov–de Haas振荡)振幅δR随温度T的衰减曲线,灰色线为Lifshitz–Kosevich(LK)公式的热阻尼因子拟合。LK公式的温度阻尼项为 R_T = X/sinh(X),其中 X = 2π²k_B T m*/(ħeB) ≈ 14.69·(m*/m_e)·(T/B)。从图中读取数据点( T/K, δR/kΩ ):(0.05,1.65),(0.35,1.45),(0.60,1.15),(0.78,0.90),(1.05,0.45),(1.20,0.30),(1.50,0.10),(1.62,0.03),(1.98,0.05),(2.40,0.05)。用 δR(T)=A·X/sinh(X)、X=14.69(m*/m_e)T/B 在 B=6.5 T 下做最小二乘拟合,得到 A≈1.72 kΩ,m*≈1.31±0.06 m_e。校验:半衰温度约0.74 K对应X≈2.1,即14.69·m*·0.74/6.5≈2.1→m*≈1.26;各数据点单独反推的m*在1.2–1.4之间,与整体拟合一致。因此拟合得到的电子有效质量约为自由电子质量的1.3倍,即 m*≈1.3 m_e≈1.2×10⁻³⁰ kg。",
+        "trace": [
+          {
+            "type": "code",
+            "detail": "Python · NumPy / SciPy curve fitting",
+            "code": "import numpy as np\nfrom scipy.optimize import curve_fit\n\n# Digitized data points from the figure (T in K, deltaR in kOhm)\nT = np.array([0.05, 0.35, 0.60, 0.78, 1.05, 1.20, 1.50, 1.62, 1.98, 2.40])\nR = np.array([1.65, 1.45, 1.15, 0.90, 0.45, 0.30, 0.10, 0.03, 0.05, 0.05])\n\nB = 6.5  # Tesla\n\n# LK thermal damping factor: R_T = X/sinh(X), X = 2*pi^2*kB*T*m*/(hbar*e*B) = 14.693*(m*/me)*T/B\ndef lk(T, A, m):\n    X = 14.693 * m * T / B\n    return A * X / np.sinh(X)\n\npopt, pcov = curve_fit(lk, T, R, p0=[1.7, 1.0])\nA, m = popt\nperr = np.sqrt(np.diag(pcov))\nprint(\"Amplitude A =\", A, \"kOhm\")\nprint(\"effective mass m* =\", m, \"+-\", perr[1], \"m_e\")\n\n# residuals check\nres = R - lk(T, *popt)\nprint(\"residuals:\", np.round(res,3))\n\n# cross-check: half-max temperature\nfrom scipy.optimize import brentq\nhalf = brentq(lambda t: lk(t,*popt)-A/2, 0.1, 3)\nprint(\"T at half max:\", half)\n\n# check individual points: X needed for observed ratio\nfor t, r in zip(T, R):\n    ratio = r/A\n    if 0.05 < ratio < 0.95:\n        X = brentq(lambda x: x/np.sinh(x)-ratio, 0.01, 10)\n        print(f\"T={t}, ratio={ratio:.2f}, X={X:.2f}, m*={X*B/(14.693*t):.2f}\")",
+            "output": "```\nAmplitude A = 1.719332050138111 kOhm\neffective mass m* = 1.3057115726982387 +- 0.05509848620009091 m_e\nresiduals: [-0.063  0.002  0.083  0.1   -0.031 -0.053 -0.082 -0.108 -0.008  0.03 ]\nT at half max: 0.7376964339891873\nT=0.35, ratio=0.84, X=1.03, m*=1.30\nT=0.6, ratio=0.67, X=1.62, m*=1.19\nT=0.78, ratio=0.52, X=2.10, m*=1.19\nT=1.05, ratio=0.26, X=3.20, m*=1.35\nT=1.2, ratio=0.17, X=3.77, m*=1.39\nT=1.5, ratio=0.06, X=5.18, m*=1.53\n\n```"
+          },
+          {
+            "type": "search",
+            "detail": "Lifshitz-Kosevich fit 6.5 T effective mass temperature dependence Shubnikov-de Haas oscillations deltaR kOhm",
+            "sources": 18,
+            "url": "https://arxiv.org/html/2310.06419v1"
+          },
+          {
+            "type": "search",
+            "detail": "\"δR (kΩ)\" quantum oscillations Lifshitz-Kosevich 6.5 T effective mass",
+            "sources": 19,
+            "url": "https://arxiv.org/abs/2310.06419"
+          },
+          {
+            "type": "search",
+            "detail": "SmSb Shubnikov-de Haas effective mass Lifshitz-Kosevich 6.5 T",
+            "sources": 30,
+            "url": "https://link.aps.org/doi/10.1103/vcsb-xcqy"
+          }
+        ]
+      }
+    ]
+  }
+]

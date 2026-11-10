@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Science Edge Evaluation is a multimodal benchmark for expert-level, evidence-grounded reasoning in real laboratory science.">
+  <meta name="theme-color" content="#155eef">
+  <meta property="og:title" content="SEE — Science Edge Evaluation">
+  <meta property="og:description" content="Can AI see the missing step toward real scientific discovery? Explore the benchmark, evaluation results, and public dataset.">
+  <meta property="og:type" content="website">
+  <title>SEE — Science Edge Evaluation</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css?v=beafb0f5103f">
+  <link rel="stylesheet" href="./blue-theme.css?v=experiments-hy4-20261110">
+  <script src="./script.js?v=experiments-hy4-20261110" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-en="Skip to content" data-zh="跳转到主要内容">Skip to content</a>
+
+  <header class="site-header" id="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="SEE home">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M4 15V4h11M25 4h11v11M36 25v11H25M15 36H4V25" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="20" cy="20" r="5" fill="currentColor"/>
+          <path d="M20 10v5M20 25v5M10 20h5M25 20h5" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span class="brand-name">SEE</span>
+        <span class="brand-full">Science Edge<br>Evaluation</span>
+      </a>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#top" data-en="Leaderboard" data-zh="总榜">Leaderboard</a>
+        <a href="#research" data-en="Research" data-zh="研究">Research</a>
+        <a href="#results" data-en="Results" data-zh="结果">Results</a>
+        <a href="#questions" data-en="Examples" data-zh="题目示例">Examples</a>
+        <a href="#benchmark" data-en="Benchmark" data-zh="基准">Benchmark</a>
+        <a href="#dataset" data-en="Dataset" data-zh="数据集">Dataset</a>
+        <a href="https://arxiv.org/abs/2608.06931" target="_blank" rel="noreferrer">arXiv ↗</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="language-toggle" id="language-toggle" type="button" aria-label="Switch to Chinese">中文</button>
+        <a class="github-link" href="https://github.com/SKYLENAGE-AI/science-edge-evaluation" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .7a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.55v-2.15c-3.22.7-3.9-1.37-3.9-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.69 1.25 3.35.95.1-.74.4-1.25.72-1.54-2.57-.29-5.27-1.28-5.27-5.72 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.05 0 0 .96-.31 3.16 1.18a10.98 10.98 0 0 1 5.76 0c2.19-1.49 3.16-1.18 3.16-1.18.62 1.58.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.45-2.7 5.43-5.28 5.71.41.36.78 1.06.78 2.14v3.17c0 .3.21.66.8.55A11.5 11.5 0 0 0 12 .7Z"/></svg>
+          <span>GitHub</span>
+          <span class="external-arrow">↗</span>
+        </a>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Open menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="leaderboard-hero" id="top" aria-labelledby="leaderboard-title">
+      <div class="container leaderboard-hero-grid">
+        <div class="leaderboard-intro">
+          <div class="eyebrow"><span class="status-dot"></span><span data-en="SEE · Overall leaderboard" data-zh="SEE · 模型总体排行榜">SEE · Overall leaderboard</span></div>
+          <h2 id="leaderboard-title" data-en="Who excels in real experimental science?" data-zh="谁更擅长真实实验科学？">Who excels in real experimental science?</h2>
+          <p data-en="Overall accuracy of 29 multimodal models on 1,116 expert-curated questions in chemistry, biology, and materials science." data-zh="29 个多模态模型在 1,116 道化学、生物学和材料科学专家题目上的总体准确率。">Overall accuracy of 29 multimodal models on 1,116 expert-curated questions in chemistry, biology, and materials science.</p>
+          <div class="leaderboard-stats">
+            <div><strong>29</strong><span data-en="models" data-zh="个模型">models</span></div>
+            <div><strong>54.9%</strong><span data-en="best score" data-zh="最佳准确率">best score</span></div>
+            <div><strong>1,116</strong><span data-en="questions" data-zh="道问题">questions</span></div>
+          </div>
+          <a class="text-link" href="#results"><span data-en="Explore all evaluations" data-zh="查看全部评测">Explore all evaluations</span><span>↓</span></a>
+        </div>
+        <div class="leaderboard-card">
+          <div class="leaderboard-card-head"><span data-en="OVERALL ACCURACY" data-zh="总体准确率">OVERALL ACCURACY</span><span>FULL SET · 1,116</span></div>
+          <div class="top-models" id="top-models"></div>
+          <div class="leaderboard-card-foot"><span data-en="Standard no-tool evaluation" data-zh="标准无工具评测">Standard no-tool evaluation</span><a href="#results"><span data-en="View all 29 models" data-zh="查看全部 29 个模型">View all 29 models</span> →</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero" id="overview">
+      <div class="container hero-grid">
+        <div class="hero-copy" data-reveal>
+          <div class="eyebrow"><span class="status-dot"></span><span data-en="A benchmark for real laboratory science" data-zh="面向真实实验室科学的评测基准">A benchmark for real laboratory science</span></div>
+          <h1>
+            <span data-en="Can AI see" data-zh="大模型能否看见">Can AI see</span><br>
+            <em data-en="the missing step?" data-zh="缺失的一步？">the missing step?</em>
+          </h1>
+          <p class="hero-lead" data-en="Scientific discovery needs more than the right answer. SEE tests whether multimodal models can draw justified conclusions from real experimental evidence—without seeing beyond what the data supports." data-zh="科学发现需要的不只是正确答案。SEE 检验多模态模型能否基于真实实验证据得出有依据的结论，同时不越过数据所能支持的边界。">Scientific discovery needs more than the right answer. SEE tests whether multimodal models can draw justified conclusions from real experimental evidence—without seeing beyond what the data supports.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#results"><span data-en="Explore the results" data-zh="探索评测结果">Explore the results</span><span class="button-arrow">↓</span></a>
+            <a class="text-link" href="https://arxiv.org/abs/2608.06931" target="_blank" rel="noreferrer"><span data-en="Read the paper" data-zh="阅读论文">Read the paper</span><span>↗</span></a>
+          </div>
+          <div class="hero-meta">
+            <span>arXiv:2608.06931</span>
+            <span class="meta-divider"></span>
+            <span data-en="Multimodal · Expert-curated · Open" data-zh="多模态 · 专家构建 · 开放数据">Multimodal · Expert-curated · Open</span>
+          </div>
+        </div>
+
+        <div class="evidence-wrap research-plate" data-reveal>
+          <div class="evidence-panel">
+            <div class="panel-header">
+              <span>SEE <span class="plate-header-divider">/</span> EVIDENCE ATLAS</span>
+              <span class="panel-status"><i></i> FIGURE 01</span>
+            </div>
+            <div class="plate-heading">
+              <span class="plate-eyebrow">OBSERVATION → UNDERSTANDING</span>
+              <h2 data-en="Where evidence meets inference." data-zh="从可见证据，到可信推断。">Where evidence meets inference.</h2>
+              <p data-en="A scientific answer begins with what the data can support." data-zh="科学的回答，始于数据能够支持的边界。">A scientific answer begins with what the data can support.</p>
+            </div>
+            <div class="plate-visual">
+              <img src="./assets/evidence-atlas.svg?v=restored-20261110" width="600" height="370" alt="科学示意：分子结构、谱图，以及可信推断与未知之间的证据边界。 Schematic: molecular structure, spectrum, and the boundary of supported inference.">
+            </div>
+            <div class="plate-caption"><span data-en="SCHEMATIC · NOT EXPERIMENTAL DATA" data-zh="科学示意 · 非实验数据">SCHEMATIC · NOT EXPERIMENTAL DATA</span><span>SEE / 01</span></div>
+            <div class="plate-result">
+              <div class="plate-score"><span data-en="BEST STANDARD SCORE" data-zh="标准评测最佳成绩">BEST STANDARD SCORE</span><strong>54.9<small>%</small></strong></div>
+              <div class="plate-result-context">
+                <p data-en="The frontier is still open." data-zh="科学探索，仍有未竟之境。">The frontier is still open.</p>
+                <span data-en="Still short of reliable scientific discovery." data-zh="距离可靠的科学发现，仍有差距。">Still short of reliable scientific discovery.</span>
+                <div class="plate-meter" role="img" aria-label="Best standard score: 54.9 out of 100"><i></i></div>
+                <div class="plate-meter-labels"><span>0</span><span>ACCURACY / 100</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="container stats-grid" data-reveal>
+        <div class="stat"><strong>1,116</strong><span data-en="Expert-curated questions" data-zh="专家构建的问题">Expert-curated questions</span></div>
+        <div class="stat"><strong>29</strong><span data-en="Multimodal models evaluated" data-zh="受评多模态模型">Multimodal models evaluated</span></div>
+        <div class="stat"><strong>17</strong><span data-en="Scientific subfields" data-zh="科学子领域">Scientific subfields</span></div>
+        <div class="stat"><strong>3</strong><span data-en="Connected disciplines" data-zh="相互交叉的学科">Connected disciplines</span></div>
+      </div>
+    </section>
+
+    <section class="section research-section" id="research">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <span class="section-number">01 / WHY SEE</span>
+          <h2 data-en="A benchmark for the work between the lines." data-zh="评测数据之外、推理之中的关键能力。">A benchmark for the work between the lines.</h2>
+          <p data-en="Laboratory science is not a textbook exercise. It means interpreting imperfect observations, connecting methods across disciplines, and knowing where the evidence ends." data-zh="实验室科学并非教材练习。它要求研究者解释并不完美的观察、连接跨学科方法，并知道证据在哪里止步。">Laboratory science is not a textbook exercise. It means interpreting imperfect observations, connecting methods across disciplines, and knowing where the evidence ends.</p>
+        </div>
+
+        <div class="principles-grid">
+          <article class="principle-card" data-reveal>
+            <div class="principle-icon">
+              <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 38h36M10 34V12m0 21 7-8 6 3 7-14 8 5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="30" cy="14" r="3" fill="currentColor"/></svg>
+            </div>
+            <span class="card-index">01</span>
+            <h3 data-en="Grounded in practice" data-zh="源于真实科研实践">Grounded in practice</h3>
+            <p data-en="Questions come from peer-reviewed literature, experimental figures, and first-hand research scenarios—not synthetic textbook prompts." data-zh="问题来自同行评议文献、实验图和一手科研场景，而非合成的教材式提示。">Questions come from peer-reviewed literature, experimental figures, and first-hand research scenarios—not synthetic textbook prompts.</p>
+            <span class="card-tag" data-en="REAL LABORATORY DATA" data-zh="真实实验室数据">REAL LABORATORY DATA</span>
+          </article>
+          <article class="principle-card featured" data-reveal>
+            <div class="principle-icon">
+              <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 10h32v28H8zM8 19h32M19 19v19" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m25 28 4 4 7-8" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            </div>
+            <span class="card-index">02</span>
+            <h3 data-en="Bounded by evidence" data-zh="严守证据边界">Bounded by evidence</h3>
+            <p data-en="Every answer must be licensed by the observations provided. SEE probes whether models recognize when the available evidence is insufficient." data-zh="每个答案都必须得到所给观察的支持。SEE 检验模型能否识别现有证据何时并不充分。">Every answer must be licensed by the observations provided. SEE probes whether models recognize when the available evidence is insufficient.</p>
+            <span class="card-tag" data-en="EVIDENCE-BOUNDED REASONING" data-zh="证据约束下的推理">EVIDENCE-BOUNDED REASONING</span>
+          </article>
+          <article class="principle-card" data-reveal>
+            <div class="principle-icon">
+              <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="14" cy="24" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="34" cy="24" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M24 8v8M24 32v8" stroke="currentColor" stroke-width="1.7"/></svg>
+            </div>
+            <span class="card-index">03</span>
+            <h3 data-en="Connected across fields" data-zh="跨越学科边界">Connected across fields</h3>
+            <p data-en="Chemistry, biology, and materials science intersect in the same question, testing coordination rather than isolated factual recall." data-zh="化学、生物学和材料科学在同一问题中交叉，考查协同推理而非孤立的事实记忆。">Chemistry, biology, and materials science intersect in the same question, testing coordination rather than isolated factual recall.</p>
+            <span class="card-tag" data-en="INTERDISCIPLINARY BY DESIGN" data-zh="为交叉学科而设计">INTERDISCIPLINARY BY DESIGN</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section results-section" id="results">
+      <div class="container">
+        <div class="section-heading section-heading-dark" data-reveal>
+          <span class="section-number">02 / EVALUATION</span>
+          <h2 data-en="Evidence, measured." data-zh="让证据能力可测量。">Evidence, measured.</h2>
+          <p data-en="Even the best model does not exceed 55% in the standard setting. Explore 29 multimodal models and 11 tool-augmented agents on the same scientific questions." data-zh="在标准设置下，即使最佳模型也未超过 55%。对比 29 个多模态模型和 11 个工具增强模型在相同科学题目上的表现。">Even the best model does not exceed 55% in the standard setting. Explore 29 multimodal models and 11 tool-augmented agents on the same scientific questions.</p>
+        </div>
+
+        <div class="insight-grid" data-reveal>
+          <div class="insight"><span class="insight-value">29</span><p data-en="Models with full standard evaluation records" data-zh="具有完整标准评测记录的模型">Models with full standard evaluation records</p></div>
+          <div class="insight"><span class="insight-value">11</span><p data-en="Models with tool-augmented evaluation records" data-zh="具有工具增强评测记录的模型">Models with tool-augmented evaluation records</p></div>
+          <div class="insight"><span class="insight-value">−6.6<small>pp</small></span><p data-en="Accuracy gap on cross-disciplinary questions" data-zh="跨学科问题上的准确率差距">Accuracy gap on cross-disciplinary questions</p></div>
+        </div>
+
+        <div class="results-panel" data-reveal>
+          <div class="results-topline">
+            <div class="view-tabs" role="tablist" aria-label="Evaluation view">
+              <button class="view-tab active" id="tab-standard" type="button" role="tab" aria-selected="true" data-view="standard" data-en="Standard" data-zh="标准评测">Standard</button>
+              <button class="view-tab" id="tab-tool" type="button" role="tab" aria-selected="false" data-view="tool" data-en="With tools" data-zh="工具增强">With tools</button>
+            </div>
+            <div class="filter-group" role="group" aria-label="Model type">
+              <button class="filter-button active" type="button" data-filter="all" data-en="All models" data-zh="全部模型">All models</button>
+              <button class="filter-button" type="button" data-filter="general" data-en="General" data-zh="通用模型">General</button>
+              <button class="filter-button" type="button" data-filter="science" data-en="Science" data-zh="科学模型">Science</button>
+            </div>
+          </div>
+
+          <div class="results-heading">
+            <div>
+              <span class="results-kicker" id="results-kicker">STANDARD EVALUATION</span>
+              <h3 id="results-title">Overall accuracy</h3>
+            </div>
+            <span class="results-count" id="results-count" aria-live="polite"></span>
+          </div>
+
+          <div class="result-labels" aria-hidden="true"><span data-en="MODEL" data-zh="模型">MODEL</span><span id="score-label">ACCURACY</span></div>
+          <div class="results-list" id="results-list" role="tabpanel" aria-labelledby="tab-standard"></div>
+          <div class="empty-state" id="empty-state" hidden></div>
+          <button class="show-all" id="show-all" type="button"></button>
+          <div class="results-footer">
+            <div class="legend"><span><i class="legend-general"></i><span data-en="General-purpose" data-zh="通用模型">General-purpose</span></span><span><i class="legend-science"></i><span data-en="Science-specialized" data-zh="科学专门模型">Science-specialized</span></span><span id="baseline-legend" hidden><i class="legend-baseline"></i><span data-en="No-tool baseline" data-zh="无工具基线">No-tool baseline</span></span></div>
+            <p id="results-note"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section agents-section" id="agents">
+      <div class="container agents-grid">
+        <div class="agents-copy" data-reveal>
+          <span class="section-number">03 / TOOL-AUGMENTED AGENTS</span>
+          <h2 data-en="More information. A new kind of problem." data-zh="更多信息，也带来了新的问题。">More information. A new kind of problem.</h2>
+          <p data-en="Tools improve every evaluated model, but access is not understanding. The bottleneck shifts from acquiring information to deciding what to trust, how to integrate it, and when to stop." data-zh="工具提升了所有受评模型的表现，但获取信息不等于理解信息。瓶颈从信息获取转向：该相信什么、如何整合，以及何时停止。">Tools improve every evaluated model, but access is not understanding. The bottleneck shifts from acquiring information to deciding what to trust, how to integrate it, and when to stop.</p>
+          <a class="text-link" href="./prompts/with_tool_protocol.md"><span data-en="Read the evaluation protocol" data-zh="查看评测协议">Read the evaluation protocol</span><span>→</span></a>
+        </div>
+        <div class="trajectory-card" data-reveal>
+          <div class="trajectory-head"><span data-en="TOOL-ATTRIBUTED TRANSITIONS" data-zh="工具归因的结果转变">TOOL-ATTRIBUTED TRANSITIONS</span><span>11 MODELS</span></div>
+          <div class="trajectory-flow" aria-hidden="true">
+            <span>INPUT</span><i>→</i><span>SELECT</span><i>→</i><span>USE TOOL</span><i>→</i><span>INTEGRATE</span><i>→</i><span>ANSWER</span>
+          </div>
+          <div class="transition-grid">
+            <div class="transition correction"><span class="transition-label" data-en="CORRECTIONS" data-zh="由错改对">CORRECTIONS</span><strong>708</strong><p data-en="Relevant actions, visual inspection, fact retrieval, and cross-checking help models recover." data-zh="相关动作、图像检查、事实检索与交叉验证帮助模型纠正答案。">Relevant actions, visual inspection, fact retrieval, and cross-checking help models recover.</p></div>
+            <div class="transition regression"><span class="transition-label" data-en="REGRESSIONS" data-zh="由对转错">REGRESSIONS</span><strong>250</strong><p data-en="Evidence integration, action selection, observation, and execution control introduce new failures." data-zh="证据整合、动作选择、观察解释与执行控制也会引入新的失败。">Evidence integration, action selection, observation, and execution control introduce new failures.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section question-lab-section" id="questions">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-number">INTERACTIVE / QUESTION LAB</span>
+          <h2 data-en="See the question. Inspect the reasoning." data-zh="看见题目，也看见推理过程。">See the question. Inspect the reasoning.</h2>
+          <p data-en="Explore public SEE questions with recorded model answers and native tool trajectories. Switch questions and models to compare how evidence is used." data-zh="探索公开 SEE 题目、真实模型回答和原生工具轨迹。切换题目与模型，比较它们如何使用证据。">Explore public SEE questions with recorded model answers and native tool trajectories. Switch questions and models to compare how evidence is used.</p>
+        </div>
+
+        <div class="question-browser">
+          <div class="question-browser-head"><strong data-en="Public question library" data-zh="公开题库">Public question library</strong><span id="library-count" role="status"></span></div>
+          <div class="question-filters">
+            <label class="question-search"><span data-en="Search questions" data-zh="搜索题目">Search questions</span><input id="question-search" type="search" placeholder="ID, keyword, technique…" autocomplete="off"></label>
+            <label><span data-en="Discipline" data-zh="学科">Discipline</span><select id="question-subject"><option value="all" data-en="All disciplines" data-zh="全部学科">All disciplines</option><option value="化学" data-en="Chemistry" data-zh="化学">Chemistry</option><option value="生物学" data-en="Biology" data-zh="生物学">Biology</option><option value="材料科学" data-en="Materials science" data-zh="材料科学">Materials science</option></select></label>
+            <label class="recorded-filter"><input id="recorded-only" type="checkbox"><span data-en="With model runs" data-zh="仅看有运行记录">With model runs</span></label>
+          </div>
+          <div class="question-switch" id="question-switch" aria-label="Questions"></div>
+          <div class="library-pagination"><button id="questions-prev" type="button" data-en="← Previous" data-zh="← 上一页">← Previous</button><span id="questions-page"></span><button id="questions-next" type="button" data-en="Next →" data-zh="下一页 →">Next →</button></div>
+        </div>
+
+        <div class="question-workspace">
+          <article class="question-card">
+            <div class="question-card-head"><span id="question-label">SEE–038</span><span id="question-discipline"></span></div>
+            <div class="question-image-frame">
+              <img id="question-image" src="./data/images/fcace75b-ee77-408c-b032-378e1f433d81.png" alt="Experimental question figure">
+              <a id="question-image-link" href="./data/images/fcace75b-ee77-408c-b032-378e1f433d81.png" target="_blank" rel="noreferrer"><span data-en="Full image" data-zh="查看大图">Full image</span> ↗</a>
+            </div>
+            <div id="question-image-tabs" class="question-image-tabs" aria-label="Question figures"></div>
+            <h3 id="question-title"></h3>
+            <p class="question-text" id="question-text"></p>
+            <ol class="question-options" id="question-options"></ol>
+            <details class="reference-answer">
+              <summary><span data-en="Show reference answer" data-zh="查看参考答案">Show reference answer</span></summary>
+              <strong id="reference-answer"></strong>
+            </details>
+          </article>
+
+          <article class="response-card">
+            <div class="experiment-mode"><label for="experiment-mode" data-en="Experiment" data-zh="实验模式">Experiment</label><select id="experiment-mode"><option value="tool" data-en="With tools · 11 models" data-zh="工具增强 · 11 个模型">With tools · 11 models</option><option value="standard" data-en="Standard · 29 models" data-zh="标准评测 · 29 个模型">Standard · 29 models</option></select></div>
+            <p id="experiment-coverage" class="experiment-coverage" role="status"></p>
+            <div id="response-empty" class="response-empty" hidden></div>
+            <div id="recorded-response">
+            <div class="comparison-heading" data-en="Recorded answers at a glance" data-zh="模型回答对比">Recorded answers at a glance</div>
+            <div id="response-comparison" class="response-comparison"></div>
+            <div class="response-model-tabs" id="response-model-tabs" role="tablist" aria-label="Model response"></div>
+            <div class="response-view-tabs" role="tablist" aria-label="Response view">
+              <button class="response-view-tab active" id="response-answer-tab" type="button" role="tab" aria-selected="true" data-response-view="answer" data-en="Final response" data-zh="最终回答">Final response</button>
+              <button class="response-view-tab" id="response-trace-tab" type="button" role="tab" aria-selected="false" data-response-view="trace" data-en="Tool trajectory" data-zh="工具轨迹">Tool trajectory</button>
+            </div>
+            <div class="response-answer-view" id="response-answer-view" role="tabpanel" aria-labelledby="response-answer-tab">
+              <div class="response-model-heading"><span id="response-model-name"></span><span class="recorded-badge" data-en="RECORDED RUN" data-zh="真实运行记录">RECORDED RUN</span></div>
+              <div class="final-response"><span data-en="FINAL ANSWER" data-zh="最终答案">FINAL ANSWER</span><strong id="response-final-answer"></strong></div>
+              <div id="response-verdict" class="response-verdict"></div>
+              <details id="response-provenance" class="model-analysis"><summary data-en="Run source and judging details" data-zh="运行来源与判分详情">Run source and judging details</summary><div id="response-provenance-content"></div></details>
+              <details class="model-analysis">
+                <summary><span data-en="Read model analysis" data-zh="查看模型分析">Read model analysis</span></summary>
+                <p id="response-analysis"></p>
+              </details>
+            </div>
+            <div class="response-trace-view" id="response-trace-view" role="tabpanel" aria-labelledby="response-trace-tab" hidden>
+              <div class="trace-heading"><span data-en="NATIVE TOOL CALLS" data-zh="原生工具调用">NATIVE TOOL CALLS</span><span id="trace-count"></span></div>
+              <div id="trace-metrics" class="trace-metrics"></div>
+              <p class="trace-help" data-en="Select a step to inspect its recorded input and result. Arrows indicate call order." data-zh="点击节点查看该步的真实输入与结果；箭头表示调用顺序。">Select a step to inspect its recorded input and result. Arrows indicate call order.</p>
+              <div id="trace-flow" class="trace-flow" aria-label="Recorded trajectory"></div>
+              <div class="trace-navigation"><button id="trace-prev" type="button" data-en="← Previous step" data-zh="← 上一步">← Previous step</button><span id="trace-position"></span><button id="trace-next" type="button" data-en="Next step →" data-zh="下一步 →">Next step →</button></div>
+              <ol class="response-trace" id="response-trace"></ol>
+            </div>
+            </div>
+            <p class="response-note" data-en="Original answers and judge results are preserved. Calls show recorded queries, sources, code, and text outputs; tool availability does not imply a call or successful retrieval. Data covers public questions only." data-zh="保留原始回答与判分。调用展示记录中的查询、来源、代码和文本输出；工具可用不代表实际调用或检索成功。仅展示公开题目数据。">Original answers and judge results are preserved. Calls show recorded queries, sources, code, and text outputs; tool availability does not imply a call or successful retrieval. Data covers public questions only.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section benchmark-section" id="benchmark">
+      <div class="container benchmark-grid">
+        <div class="benchmark-intro" data-reveal>
+          <span class="section-number">04 / BENCHMARK</span>
+          <h2 data-en="Built like a research process." data-zh="像科研过程一样构建。">Built like a research process.</h2>
+          <p data-en="Every question moves through expert design, standardization, quality control, visual-evidence checking, and final review. The result is a benchmark that tests scientific judgment, not just scientific vocabulary." data-zh="每道题都经过专家设计、标准化、质量控制、视觉证据检查和最终复核，用于评测科学判断力，而不只是科学词汇。">Every question moves through expert design, standardization, quality control, visual-evidence checking, and final review. The result is a benchmark that tests scientific judgment, not just scientific vocabulary.</p>
+          <div class="discipline-tags"><span>Chemistry</span><span>Biology</span><span>Materials Science</span></div>
+        </div>
+        <ol class="pipeline" data-reveal>
+          <li><span class="pipeline-number">01</span><div><h3 data-en="Source authentic problems" data-zh="采集真实科研问题">Source authentic problems</h3><p data-en="Peer-reviewed figures and first-hand experimental scenarios." data-zh="来自同行评议论文图和一手实验场景。">Peer-reviewed figures and first-hand experimental scenarios.</p></div><span class="pipeline-status">SOURCE</span></li>
+          <li><span class="pipeline-number">02</span><div><h3 data-en="Standardize the evidence" data-zh="标准化证据与答案">Standardize the evidence</h3><p data-en="Normalize wording, answer structures, numerical tolerances, and images." data-zh="统一措辞、答案结构、数值容差和图像格式。">Normalize wording, answer structures, numerical tolerances, and images.</p></div><span class="pipeline-status">STRUCTURE</span></li>
+          <li><span class="pipeline-number">03</span><div><h3 data-en="Stress-test the question" data-zh="检验问题有效性">Stress-test the question</h3><p data-en="Check answer uniqueness, information sufficiency, and image necessity." data-zh="检查答案唯一性、信息充分性和图像必要性。">Check answer uniqueness, information sufficiency, and image necessity.</p></div><span class="pipeline-status">CHALLENGE</span></li>
+          <li><span class="pipeline-number">04</span><div><h3 data-en="Review with domain experts" data-zh="领域专家复核">Review with domain experts</h3><p data-en="At least two relevant experts cross-check each question before acceptance." data-zh="每道题在收录前至少由两位相关领域专家交叉检查。">At least two relevant experts cross-check each question before acceptance.</p></div><span class="pipeline-status">ACCEPT</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section dataset-section" id="dataset">
+      <div class="container dataset-grid">
+        <div class="dataset-copy" data-reveal>
+          <span class="section-number">05 / OPEN DATA</span>
+          <h2 data-en="Start with what we can share." data-zh="探索开放数据。">Start with what we can share.</h2>
+          <p data-en="The public release includes Chinese question text, answer options, image references, standard answers, discipline labels, and knowledge-point tags—ready for reproducible research." data-zh="公开版本包含中文题干、选项、图片路径、标准答案、学科标签和知识点标签，可直接用于可复现研究。">The public release includes Chinese question text, answer options, image references, standard answers, discipline labels, and knowledge-point tags—ready for reproducible research.</p>
+          <div class="dataset-actions">
+            <a class="button button-dark" href="./data/questions_public.jsonl" download><span data-en="Download JSONL" data-zh="下载 JSONL">Download JSONL</span><span>↓</span></a>
+            <a class="text-link" href="./data/schema.md"><span data-en="View data schema" data-zh="查看数据结构">View data schema</span><span>→</span></a>
+          </div>
+        </div>
+        <div class="release-card" data-reveal>
+          <div class="release-count"><strong>1,049</strong><span data-en="public questions" data-zh="道公开问题">public questions</span></div>
+          <div class="release-meta"><span>JSON / JSONL</span><span>CC BY-NC 4.0</span></div>
+          <pre aria-label="Example dataset record"><code>{
+  <span class="code-key">"id"</span>: <span class="code-string">"02ca31df-..."</span>,
+  <span class="code-key">"question"</span>: <span class="code-string">"..."</span>,
+  <span class="code-key">"options"</span>: [<span class="code-string">"A. ..."</span>, <span class="code-string">"B. ..."</span>],
+  <span class="code-key">"images"</span>: [<span class="code-string">"data/images/..."</span>],
+  <span class="code-key">"answer"</span>: <span class="code-string">"D"</span>,
+  <span class="code-key">"main_disciplines"</span>: [
+    <span class="code-string">"化学"</span>, <span class="code-string">"材料科学"</span>
+  ]
+}</code></pre>
+          <div class="release-foot"><span class="status-dot"></span><span data-en="67 questions withheld for unpublished research" data-zh="67 道题因涉及未发表研究而暂不公开">67 questions withheld for unpublished research</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing-section">
+      <div class="container closing-inner" data-reveal>
+        <span class="section-number">THE NEXT STEP IS YOURS</span>
+        <h2 data-en="SEE what today’s models miss." data-zh="看见当下大模型遗漏的一步。">SEE what today’s models miss.</h2>
+        <div class="closing-actions">
+          <a class="button button-acid" href="https://github.com/SKYLENAGE-AI/science-edge-evaluation" target="_blank" rel="noreferrer"><span data-en="Use the benchmark" data-zh="使用评测基准">Use the benchmark</span><span>↗</span></a>
+          <button class="citation-button" id="citation-button" type="button"><span data-en="Copy citation" data-zh="复制引用">Copy citation</span><span>⌘</span></button>
+        </div>
+        <span class="copy-status" id="copy-status" role="status"></span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <a class="brand footer-brand" href="#top">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 15V4h11M25 4h11v11M36 25v11H25M15 36H4V25" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="20" cy="20" r="5" fill="currentColor"/></svg>
+        <span class="brand-name">SEE</span>
+      </a>
+      <p data-en="Science Edge Evaluation: SEE the Missing Step Toward Real Scientific Discovery" data-zh="Science Edge Evaluation：看见迈向真实科学发现所缺失的一步">Science Edge Evaluation: SEE the Missing Step Toward Real Scientific Discovery</p>
+      <div class="footer-links"><a href="https://arxiv.org/abs/2608.06931" target="_blank" rel="noreferrer">arXiv ↗</a><a href="https://github.com/SKYLENAGE-AI/science-edge-evaluation" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+    </div>
+    <div class="container footer-bottom"><span>© 2026 SEE Research Team</span><span data-en="Real evidence. Rigorous reasoning. Reliable discovery." data-zh="真实证据 · 严谨推理 · 可靠发现">Real evidence. Rigorous reasoning. Reliable discovery.</span></div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,326 @@
+{
+  "description": "Website experiment sources. SHA256 pins original judged files; only public question UUIDs are exported. Modes: standard or tool.",
+  "runs": [
+    {
+      "model": "HY4",
+      "mode": "standard",
+      "root": "live",
+      "file": "data/results/baseline_20261029/hy4/data_judged.json",
+      "sha256": "0534e09e733d3ea653e18ba40092168d21209b7ecc2fedfa09c679e7adc7123e",
+      "expected_correct": 476,
+      "note": "Configured model: Tencent HY4 via evamux. Per-answer actual model metadata is absent in the original records."
+    },
+    {
+      "model": "GPT-5.6-Sol (Max)",
+      "mode": "standard",
+      "root": "historical",
+      "file": "baseline/gpt-5.6-sol-max/data_judged.json",
+      "sha256": "ff4ad7895165d531f38ccdc0c34cb7173aa65f7899e73cbc06816d140da5363b",
+      "expected_correct": 543
+    },
+    {
+      "model": "Gemini 3.1 Pro",
+      "mode": "standard",
+      "root": "historical",
+      "file": "baseline/gemini-3.1-pro/data_judged.json",
+      "sha256": "b9f1f81463f965e6c807db644221dc2dc2beb1d843cf859a616d9777a12d1306",
+      "expected_correct": 504
+    },
+    {
+      "model": "Claude Opus 5 (Max)",
+      "mode": "standard",
+      "root": "historical",
+      "file": "baseline/claude-opus-5-max/data_judged.json",
+      "sha256": "294414ff1d79fdc6b9da5684512b7604bbb88b5b965ce6c1df98a0d09a4bd703",
+      "expected_correct": 495
+    },
+    {
+      "model": "Qwen3.8-Max",
+      "mode": "standard",
+      "root": "historical",
+      "file": "baseline/qwen3.8-max/data_judged.json",
+      "sha256": "219fb9cf36225836094edda48091788cb9ad67fd320d8c6fd55410b35b9c7817",
+      "expected_correct": 466
+    },
+    {
+      "model": "GPT-5.5 (xhigh)",
+      "mode": "standard",
+      "root": "historical",
+      "file": "baseline/gpt-5.5-xhigh/data_judged.json",
+      "sha256": "dde08c87405121c5f524024f738dfb93d9eae8e49e63ba0e070cbe8e43ac3810",
+      "expected_correct": 461
+    },
+    {
+      "model": "Kimi K3",
+      "mode": "standard",
+      "root": "historical",
+      "file": "baseline/kimi-k3/data_judged.json",
+      "sha256": "72defa4e1b83122197762fbac0243f486f9aede0f927c0afc5fd459c9e438609",
+      "expected_correct": 432
+    },
+    {
+      "model": "Gemini 3.5 Flash",
+      "mode": "standard",
+      "root": "historical",
+      "file": "baseline/gemini-3.5-flash/data_judged.json",
+      "sha256": "fda0f1498e43fc93653a3b2d9a1561143d2660a9a42ff8620a9403ff83c685a2",
+      "expected_correct": 431
+    },
+    {
+      "model": "Claude Opus 4.8 (Max)",
+      "mode": "standard",
+      "root": "historical",
+      "file": "baseline/claude-opus-4.8-max/data_judged.json",
+      "sha256": "a27340674ae3f57da1261f468453bb7b59fd9eef10ff8fa562f00c806d3b34af",
+      "expected_correct": 406
+    },
+    {
+      "model": "Seed2.1 Pro",
+      "mode": "standard",
+      "root": "historical",
+      "file": "baseline/doubao-2.1-pro/data_judged.json",
+      "sha256": "2c794599cfeaae7bc8dde53dafbd9341634a452cba00c6e4ad4ca0d8a34e6d36",
+      "expected_correct": 377
+    },
+    {
+      "model": "Qwen3.7-Plus",
+      "mode": "standard",
+      "root": "historical",
+      "file": "baseline/qwen3.7-plus/data_judged.json",
+      "sha256": "faa27195d88b2d64902c33d500b6695571fe151af0e4605d5aecf3397b30c40c",
+      "expected_correct": 365
+    },
+    {
+      "model": "Intern-S2 Preview-397B",
+      "mode": "standard",
+      "root": "historical",
+      "file": "baseline/intern-s2-preview-397b/data_judged.json",
+      "sha256": "bdf2c51813856819534888c3d2b342d2665a037b27eaef1192e3c5d5fb10c044",
+      "expected_correct": 324
+    },
+    {
+      "model": "Seed2.0 Pro",
+      "mode": "standard",
+      "root": "historical",
+      "file": "baseline/doubao-2.0-pro/data_judged.json",
+      "sha256": "897aeb889c0530ef62358126ea16586298818b8b62c033efc0fcaa4434ca3282",
+      "expected_correct": 315
+    },
+    {
+      "model": "MiniMax-M3",
+      "mode": "standard",
+      "root": "historical",
+      "file": "baseline/MiniMax-M3/data_judged.json",
+      "sha256": "2f12bb137246f1191faf20527ea43b3a65e8ccff3837f89cedb0433d5f1e8e01",
+      "expected_correct": 314
+    },
+    {
+      "model": "Kimi K2.6",
+      "mode": "standard",
+      "root": "historical",
+      "file": "baseline/kimi-k2.6/data_judged.json",
+      "sha256": "c4fae396c27fb690fd93a8533f8735a0c15d39fe3b43576cd1054d1ebd8e0279",
+      "expected_correct": 286
+    },
+    {
+      "model": "Intern-S2 Preview-35B",
+      "mode": "standard",
+      "root": "current",
+      "file": "data/results/intern_refresh_20261107/baseline/intern-s2-preview/data_judged.json",
+      "sha256": "be3d5e12922cebe0c359662545a94e9cf6c15cf357dd68de158fb227b7e6cb6f",
+      "expected_correct": 246
+    },
+    {
+      "model": "GLM-5V-Turbo",
+      "mode": "standard",
+      "root": "historical",
+      "file": "baseline/glm-5v-turbo/data_judged.json",
+      "sha256": "0e0627dc60b95c0943eb977381156ec6fb95d961a456957bda332d837081bdf5",
+      "expected_correct": 259
+    },
+    {
+      "model": "Intern-S1 Pro",
+      "mode": "standard",
+      "root": "current",
+      "file": "data/results/intern_refresh_20261107/baseline/intern-s1-pro/data_judged.json",
+      "sha256": "e800c86c8e1e25e37c7849de8746bfac098f46931b4911359a29859a4d8bc21a",
+      "expected_correct": 182
+    },
+    {
+      "model": "MiMo-V2.5",
+      "mode": "standard",
+      "root": "historical",
+      "file": "baseline/mimo-v2.5/data_judged.json",
+      "sha256": "cb547151592d317f0f64d8536ac28eea75278fe1add04ac165e1dc52019e1434",
+      "expected_correct": 196
+    },
+    {
+      "model": "GPT-6.1 Sol (Max)",
+      "mode": "standard",
+      "root": "current",
+      "file": "data/results/baseline_20261029/gpt-6.1-sol-max/data_judged.json",
+      "sha256": "431d2d2d3d8112df054152db9457139928105f510ae6640cfda3a9b8577550e5",
+      "expected_correct": 594
+    },
+    {
+      "model": "Claude Opus 5.5 (Max)",
+      "mode": "standard",
+      "root": "current",
+      "file": "data/results/baseline_20261029/claude-opus-5.5-max/data_judged.json",
+      "sha256": "d1484e7fd04cb3fad62e8c2b09b1186b214ce00e6cffb184f368df676cb7a67f",
+      "expected_correct": 342
+    },
+    {
+      "model": "Gemini 4 Argon",
+      "mode": "standard",
+      "root": "current",
+      "file": "data/results/baseline_20261029/gemini-4-argon/data_judged.json",
+      "sha256": "df2dc8a6c0bea47889f75f591a4b6338e0d4049ed1a29db7377605c49cb8eb9e",
+      "expected_correct": 613
+    },
+    {
+      "model": "DeepSeek V4.1 Flash (1017)",
+      "mode": "standard",
+      "root": "current",
+      "file": "data/results/baseline_20261029/deepseek-v4.1-flash-1017/data_judged.json",
+      "sha256": "7ef37de90717c1950cbd6aa10918056ddd9b6c8ab548ac1a14f42ac9134dba31",
+      "expected_correct": 389
+    },
+    {
+      "model": "Qwen3.8 Flash",
+      "mode": "standard",
+      "root": "current",
+      "file": "data/results/baseline_20261029/qwen3.8-flash/data_judged.json",
+      "sha256": "c266981c011930d815c8b21bb64d064a2cab25a629bfd8a7a767dbba34ad7074",
+      "expected_correct": 409
+    },
+    {
+      "model": "Kimi K3.1 Pro",
+      "mode": "standard",
+      "root": "current",
+      "file": "data/results/baseline_20261029/kimi-k3.1-pro/data_judged.json",
+      "sha256": "b787c8f2448e5bd4ac6bed023914f351684d43ed4e9fbf191f7700d92783d21c",
+      "expected_correct": 493
+    },
+    {
+      "model": "Grok 4.7",
+      "mode": "standard",
+      "root": "current",
+      "file": "data/results/baseline_20261029/grok-4.7/data_judged.json",
+      "sha256": "c2ba31e081a8ef0fcaf0e9ef04df4b0436d8fe9c574fb0a54395575917d0eb4a",
+      "expected_correct": 413
+    },
+    {
+      "model": "MiMo V2.6 Pro",
+      "mode": "standard",
+      "root": "current",
+      "file": "data/results/baseline_20261029/mimo-v2.6-pro/data_judged.json",
+      "sha256": "3065e58e0f77df7725d33a812388e00b739c17aff2f1ec8f4e47638fde9ecc76",
+      "expected_correct": 282
+    },
+    {
+      "model": "Intern-S2",
+      "mode": "standard",
+      "root": "current",
+      "file": "data/results/intern_refresh_20261107/baseline/intern-s2/data_judged.json",
+      "sha256": "40927745ca88d23a12e9856a49d0912e74773624c828020e390af2966d1f46bd",
+      "expected_correct": 366
+    },
+    {
+      "model": "GPT-6 Astra (Max)",
+      "mode": "standard",
+      "root": "current",
+      "file": "data/results/astra_max_20261105/baseline/gpt-6-astra-max/data_judged.json",
+      "sha256": "8ca77e6b5a54dcc7a74ea061bfa99f69524d4cf4d463aa2d39edbbde9ca0eebb",
+      "expected_correct": 599
+    },
+    {
+      "model": "Gemini 4 Argon",
+      "mode": "tool",
+      "root": "current",
+      "file": "data/results/with_tools_full_20261101/gemini-4-argon/S/data_judged.json",
+      "sha256": "d0c651254d7a9f3c5281a8a08f68781965a59a55c1f21392d5db8f8747aa264c",
+      "expected_correct": 626
+    },
+    {
+      "model": "GPT-6.1 Sol (Max)",
+      "mode": "tool",
+      "root": "current",
+      "file": "data/results/with_tools_full_20261101/gpt-6.1-sol-max/SC/data_judged.json",
+      "sha256": "5c1a577f4853515868de796eddf93f561a3cec4b37036e0c01ea188ed71e02f8",
+      "expected_correct": 608
+    },
+    {
+      "model": "DeepSeek V4.1 Flash (1017)",
+      "mode": "tool",
+      "root": "current",
+      "file": "data/results/with_tools_full_20261101/deepseek-v4.1-flash-1017/SC/data_judged.json",
+      "sha256": "ce41219f84471f6102571120ae72a0712e289f167ac90614c619a9e8898fff07",
+      "expected_correct": 455
+    },
+    {
+      "model": "Qwen3.8-Max",
+      "mode": "tool",
+      "root": "current",
+      "file": "data/results/with_tools_full_20261101/qwen3.8-max/SC/data_judged.json",
+      "sha256": "6ae67862300a6a92f2a3b9fc1f5806b6b8b59fc427356aaff36ad76b9ff04b4f",
+      "expected_correct": 534
+    },
+    {
+      "model": "Qwen3.8 Flash",
+      "mode": "tool",
+      "root": "current",
+      "file": "data/results/with_tools_full_20261101/qwen3.8-flash/SC/data_judged.json",
+      "sha256": "cedf0e3df4c4c8d33d991e5d7435c846b4ececd40fe8003c7211c57218d268db",
+      "expected_correct": 508
+    },
+    {
+      "model": "GPT-6 Astra (Max)",
+      "mode": "tool",
+      "root": "current",
+      "file": "data/results/astra_max_20261105/native/SC/data_judged.json",
+      "sha256": "4952513b92ecd6d5c51635cf8374a5207a5e220a873920aa51707b9433dc5798",
+      "expected_correct": 600
+    },
+    {
+      "model": "GPT-5.6-Sol (Max)",
+      "mode": "tool",
+      "root": "historical",
+      "file": "with_tools_comparsion/gpt-5.6-sol-max-ci-search/data_judged.json",
+      "sha256": "d9aad638a57b4c14d541411b9e6fbecf38472cf7094fd0f0331aec7c3160c864",
+      "expected_correct": 588
+    },
+    {
+      "model": "Gemini 3.1 Pro",
+      "mode": "tool",
+      "root": "historical",
+      "file": "with_tools_comparsion/gemini-3.1-pro-ci-search/data_judged.json",
+      "sha256": "d20b7355827c94b8a4e23fe3b2b4873a8a7eb6c4d263de66e93010509e9a988e",
+      "expected_correct": 525
+    },
+    {
+      "model": "Claude Opus 5 (Max)",
+      "mode": "tool",
+      "root": "historical",
+      "file": "with_tools_comparsion/claude-opus-5-max-ci-search/data_judged_by_gemini-3.5-flash.json",
+      "sha256": "e69f77ed9827fc8d83d32a24be49396936e9486d1b4f2c7a2363f9d2e61ff971",
+      "expected_correct": 537
+    },
+    {
+      "model": "GPT-5.5 (xhigh)",
+      "mode": "tool",
+      "root": "historical",
+      "file": "with_tools_comparsion/gpt-5.5-xhigh-ci-search/data_judged.json",
+      "sha256": "136ba38767a6f1ceb8d5e908b9b4187baf537954e5628764f90160917a64b2e8",
+      "expected_correct": 546
+    },
+    {
+      "model": "Gemini 3.5 Flash",
+      "mode": "tool",
+      "root": "historical",
+      "file": "with_tools_comparsion/gemini-3.5-flash-ci-search/data_judged.json",
+      "sha256": "ae12ccb7a8f70d857adb3d3e7309ae2637d6fc3f800a3f96f66da272f90b9ddf",
+      "expected_correct": 486
+    }
+  ]
+}
