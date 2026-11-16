@@ -4,6 +4,14 @@ from export_site_experiments import response_record, trace_step
 
 
 class ExportTests(unittest.TestCase):
+    def test_chinese_response_fields_are_preserved(self):
+        public = {'question': 'Q', 'options': [], 'answer': 'A'}
+        row = {'question': 'Q', 'answer': 'A', 'model_response': '{"分析过程":"推理", "答案":"B"}', 'judge_result': False}
+        record = response_record(row, 'Model', 'standard', 'run-01', public)
+        self.assertEqual(record['answer'], 'B')
+        self.assertEqual(record['analysis'], '推理')
+        self.assertIs(record['judge_result'], False)
+
     def test_multiline_response_and_original_false_judgment_are_preserved(self):
         public = {'question': 'Q', 'options': [], 'answer': 'A'}
         row = {'question': 'Q', 'options': [], 'answer': 'A', 'model_response': '{"analysis":"line one\nline two", "answer":"B"}', 'judge_result': False}

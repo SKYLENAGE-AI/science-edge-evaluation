@@ -6,6 +6,8 @@
 
 🔗 **链接：** [论文 (arXiv:2608.06931)](https://arxiv.org/abs/2608.06931) | [网站](https://skylenage-ai.github.io/science-edge-evaluation/) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation)
 
+**记录补跑（2026-11-16）：** 已补跑 Gemini 3.1 Pro 的 5 条基线连接失败、Claude Opus 5 Max 的 8 条基线失败，以及 Gemini 3.1 Pro 的 1 条工具回答。新增回答由 Qwen3.8 Flash 判题。Claude Opus 5 Max 现为 498/1,116，其中 8 条补跑有 1 条返回拒答。网页记录保留来源与补跑说明。
+
 **网页数据更新（2026-11-16）：** 标准榜新增 Gemini 4 Hydrogen，全量 577/1,116（51.70%），公开题 536/1,049；Claude Fable 5.2 全量 496/1,116（44.44%），公开题 472/1,049；Qwen4 Max 全量 497/1,116（44.53%），公开题 464/1,049。Hydrogen 和 Fable 通过 Evamux、Qwen 通过 DashScope 评测，判题模型均为 Qwen3.8 Flash。Fable 的 9 条空响应按拒答计错，其中 8 条属于公开题，原始生成失败信息保留在记录中。网页现含 32 个标准评测模型、11 个工具增强模型和 45,107 条公开回答。
 
 **网页数据更新（2026-11-10）：** 交互网页新增腾讯 HY4：全量 476/1,116（42.65%），公开部分 443/1,049（42.23%）。HY4 工具能力探针未作为全量评测导入；下方论文概览和图表保留发表时的 28 模型口径。

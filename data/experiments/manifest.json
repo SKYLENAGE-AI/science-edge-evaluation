@@ -1,11 +1,11 @@
 {
-  "version": "1359ef0741a46600",
+  "version": "3788085c8a4099f8",
   "scope": "Public UUIDs only; standard multimodal and tool-augmented runs.",
   "question_count": 1049,
   "model_count": 32,
   "run_count": 43,
   "response_count": 45107,
-  "bytes": 54859519,
+  "bytes": 54875862,
   "runs": [
     {
       "id": "run-01",
@@ -67,10 +67,10 @@
       "id": "run-05",
       "model": "Gemini 3.1 Pro",
       "mode": "standard",
-      "sha256": "b9f1f81463f965e6c807db644221dc2dc2beb1d843cf859a616d9777a12d1306",
-      "source": "baseline/gemini-3.1-pro/data_judged.json",
-      "source_root": "historical",
-      "note": "",
+      "sha256": "a0db1190bb7f6780dbfbc6a3882455ce26f7efd4f389b914149aead6f73444c3",
+      "source": "data/results/website_missing_repair_20261116/legacy/gemini-3.1-pro/website_merged_judged.json",
+      "source_root": "live",
+      "note": "Five connection failures were retried through ModelRouter and judged by Qwen3.8 Flash on 2026-11-16. Other historical records are unchanged. Original judged SHA256: b9f1f81463f965e6c807db644221dc2dc2beb1d843cf859a616d9777a12d1306.",
       "full_count": 1116,
       "full_correct": 504,
       "public_count": 1049,
@@ -81,14 +81,14 @@
       "id": "run-06",
       "model": "Claude Opus 5 (Max)",
       "mode": "standard",
-      "sha256": "294414ff1d79fdc6b9da5684512b7604bbb88b5b965ce6c1df98a0d09a4bd703",
-      "source": "baseline/claude-opus-5-max/data_judged.json",
-      "source_root": "historical",
-      "note": "",
+      "sha256": "631edbe4f72bb60033915b15b0d7a56799db32f7d5f58700b882147d9f881c6f",
+      "source": "data/results/website_missing_repair_20261116/legacy/claude-opus-5-max/website_merged_judged.json",
+      "source_root": "live",
+      "note": "Eight missing responses were retried through ModelRouter on 2026-11-16; seven answers were judged by Qwen3.8 Flash and one returned a refusal. Other historical records are unchanged. Original judged SHA256: 294414ff1d79fdc6b9da5684512b7604bbb88b5b965ce6c1df98a0d09a4bd703.",
       "full_count": 1116,
-      "full_correct": 495,
+      "full_correct": 498,
       "public_count": 1049,
-      "public_correct": 465,
+      "public_correct": 468,
       "calls": 0
     },
     {
@@ -543,15 +543,15 @@
       "id": "run-39",
       "model": "Gemini 3.1 Pro",
       "mode": "tool",
-      "sha256": "d20b7355827c94b8a4e23fe3b2b4873a8a7eb6c4d263de66e93010509e9a988e",
-      "source": "with_tools_comparsion/gemini-3.1-pro-ci-search/data_judged.json",
-      "source_root": "historical",
-      "note": "",
+      "sha256": "2bef9d2f2cd43cb30e74769e834039f71d0be4eb731943242fec950de884ff4c",
+      "source": "data/results/website_missing_repair_20261116/legacy_tools/gemini-3.1-pro/website_merged_judged.json",
+      "source_root": "live",
+      "note": "One missing search-and-code response was retried through ModelRouter and judged by Qwen3.8 Flash on 2026-11-16. Original judged SHA256: d20b7355827c94b8a4e23fe3b2b4873a8a7eb6c4d263de66e93010509e9a988e.",
       "full_count": 1116,
       "full_correct": 525,
       "public_count": 1049,
       "public_correct": 497,
-      "calls": 2590
+      "calls": 2581
     },
     {
       "id": "run-40",
@@ -1947,7 +1947,7 @@
       "file": "01dc9363-4b20-459d-8482-7bc847624d12.json.gz",
       "standard": 32,
       "tool": 11,
-      "calls": 139
+      "calls": 130
     },
     "2f2cb20d-0172-4629-8dc8-1dc2e19a6b4b": {
       "file": "2f2cb20d-0172-4629-8dc8-1dc2e19a6b4b.json.gz",

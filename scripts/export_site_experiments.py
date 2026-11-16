@@ -100,8 +100,8 @@ def response_record(row, name, mode, source_id, public):
                 parsed = candidate
         except (ValueError, TypeError):
             pass
-    answer = text(row.get('extracted_answer') or parsed.get('answer'))
-    analysis = text(parsed.get('analysis'))
+    answer = text(row.get('extracted_answer') or parsed.get('answer') or parsed.get('答案'))
+    analysis = text(parsed.get('analysis') or parsed.get('分析') or parsed.get('分析过程'))
     if not parsed:
         analysis = text(raw)
     judge = row.get('judge_result')
