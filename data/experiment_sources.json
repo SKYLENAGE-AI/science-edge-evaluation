@@ -89,10 +89,11 @@
     {
       "model": "Claude Opus 4.8 (Max)",
       "mode": "standard",
-      "root": "historical",
-      "file": "baseline/claude-opus-4.8-max/data_judged.json",
-      "sha256": "a27340674ae3f57da1261f468453bb7b59fd9eef10ff8fa562f00c806d3b34af",
-      "expected_correct": 406
+      "root": "live",
+      "file": "data/results/website_missing_repair_20261116/legacy/claude-opus-4.8-max/website_merged_judged.json",
+      "sha256": "92a6256d7b50685d15eb17e85f7432e0c9a40d1d11c87939337c5cc4435fc97a",
+      "expected_correct": 409,
+      "note": "Twelve empty responses were retried through ModelRouter on 2026-11-16, producing nine answers and three refusals. The nine new answers and two original unjudged answers were judged by Qwen3.8 Flash. Other historical records are unchanged. Original judged SHA256: a27340674ae3f57da1261f468453bb7b59fd9eef10ff8fa562f00c806d3b34af."
     },
     {
       "model": "Seed2.1 Pro",

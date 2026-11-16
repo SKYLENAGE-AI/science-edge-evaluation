@@ -1,11 +1,11 @@
 {
-  "version": "3788085c8a4099f8",
+  "version": "16afc71cf77dc16c",
   "scope": "Public UUIDs only; standard multimodal and tool-augmented runs.",
   "question_count": 1049,
   "model_count": 32,
   "run_count": 43,
   "response_count": 45107,
-  "bytes": 54875862,
+  "bytes": 54881355,
   "runs": [
     {
       "id": "run-01",
@@ -151,14 +151,14 @@
       "id": "run-11",
       "model": "Claude Opus 4.8 (Max)",
       "mode": "standard",
-      "sha256": "a27340674ae3f57da1261f468453bb7b59fd9eef10ff8fa562f00c806d3b34af",
-      "source": "baseline/claude-opus-4.8-max/data_judged.json",
-      "source_root": "historical",
-      "note": "",
+      "sha256": "92a6256d7b50685d15eb17e85f7432e0c9a40d1d11c87939337c5cc4435fc97a",
+      "source": "data/results/website_missing_repair_20261116/legacy/claude-opus-4.8-max/website_merged_judged.json",
+      "source_root": "live",
+      "note": "Twelve empty responses were retried through ModelRouter on 2026-11-16, producing nine answers and three refusals. The nine new answers and two original unjudged answers were judged by Qwen3.8 Flash. Other historical records are unchanged. Original judged SHA256: a27340674ae3f57da1261f468453bb7b59fd9eef10ff8fa562f00c806d3b34af.",
       "full_count": 1116,
-      "full_correct": 406,
+      "full_correct": 409,
       "public_count": 1049,
-      "public_correct": 377,
+      "public_correct": 380,
       "calls": 0
     },
     {
