@@ -316,9 +316,9 @@
       "mode": "tool",
       "root": "live",
       "file": "data/results/website_missing_repair_20261116/legacy_tools/gemini-3.1-pro/website_merged_judged.json",
-      "sha256": "2bef9d2f2cd43cb30e74769e834039f71d0be4eb731943242fec950de884ff4c",
-      "expected_correct": 525,
-      "note": "One missing search-and-code response was retried through ModelRouter and judged by Qwen3.8 Flash on 2026-11-16. Original judged SHA256: d20b7355827c94b8a4e23fe3b2b4873a8a7eb6c4d263de66e93010509e9a988e."
+      "sha256": "a211d5bbc1299d274cf4172bcad6e0f804e115a5b12f3dcd82a21e21f9c5faf3",
+      "expected_correct": 527,
+      "note": "Twenty-six missing search-and-code responses were retried through ModelRouter on 2026-11-16. Nine answers were recovered and judged by Qwen3.8 Flash; 17 still lacked a final answer. Other historical records are unchanged. Original judged SHA256: d20b7355827c94b8a4e23fe3b2b4873a8a7eb6c4d263de66e93010509e9a988e."
     },
     {
       "model": "Claude Opus 5 (Max)",
@@ -339,10 +339,11 @@
     {
       "model": "Gemini 3.5 Flash",
       "mode": "tool",
-      "root": "historical",
-      "file": "with_tools_comparsion/gemini-3.5-flash-ci-search/data_judged.json",
-      "sha256": "ae12ccb7a8f70d857adb3d3e7309ae2637d6fc3f800a3f96f66da272f90b9ddf",
-      "expected_correct": 486
+      "root": "live",
+      "file": "data/results/website_missing_repair_20261116/legacy_tools/gemini-3.5-flash/website_merged_judged.json",
+      "sha256": "7349f3ae9a886e72a8e0e5d36fe88fc17dc11e1e41b57653e3ac1ea0815c8b17",
+      "expected_correct": 486,
+      "note": "Nineteen missing search-and-code responses were retried through ModelRouter on 2026-11-16. One answer was recovered and judged by Qwen3.8 Flash; 18 still lacked a final answer. Other historical records are unchanged. Original judged SHA256: ae12ccb7a8f70d857adb3d3e7309ae2637d6fc3f800a3f96f66da272f90b9ddf."
     },
     {
       "model": "Gemini 4 Hydrogen",

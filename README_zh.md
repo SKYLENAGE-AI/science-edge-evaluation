@@ -6,7 +6,7 @@
 
 🔗 **链接：** [论文 (arXiv:2608.06931)](https://arxiv.org/abs/2608.06931) | [网站](https://skylenage-ai.github.io/science-edge-evaluation/) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation)
 
-**记录补跑（2026-11-16）：** 已补跑 Gemini 3.1 Pro 的 5 条基线连接失败、Claude Opus 5 Max 的 8 条基线失败、Claude Opus 4.8 Max 的 12 条基线空响应，以及 Gemini 3.1 Pro 的 1 条工具回答。新增回答和 Claude Opus 4.8 Max 此前 2 条未判分回答由 Qwen3.8 Flash 判题。Claude Opus 5 Max 现为 498/1,116，Claude Opus 4.8 Max 为 409/1,116。网页记录保留来源与补跑说明。
+**记录补跑（2026-11-16）：** 已补跑 Gemini 3.1 Pro 的 5 条基线连接失败、Claude Opus 5 Max 的 8 条基线失败、Claude Opus 4.8 Max 的 12 条基线空响应，以及 Gemini 3.1 Pro 和 3.5 Flash 的 45 条工具缺失回答。新增回答和 Claude Opus 4.8 Max 此前 2 条未判分回答由 Qwen3.8 Flash 判题。Claude Opus 5 Max 现为 498/1,116，Claude Opus 4.8 Max 为 409/1,116，Gemini 3.1 Pro 工具模式为 527/1,116。Gemini 3.1 Pro 和 3.5 Flash 工具模式分别仍有 17、18 条未交付最终答案。网页记录保留来源与补跑说明。
 
 **网页数据更新（2026-11-16）：** 标准榜新增 Gemini 4 Hydrogen，全量 577/1,116（51.70%），公开题 536/1,049；Claude Fable 5.2 全量 496/1,116（44.44%），公开题 472/1,049；Qwen4 Max 全量 497/1,116（44.53%），公开题 464/1,049。Hydrogen 和 Fable 通过 Evamux、Qwen 通过 DashScope 评测，判题模型均为 Qwen3.8 Flash。Fable 的 9 条空响应按拒答计错，其中 8 条属于公开题，原始生成失败信息保留在记录中。网页现含 32 个标准评测模型、11 个工具增强模型和 45,107 条公开回答。
 

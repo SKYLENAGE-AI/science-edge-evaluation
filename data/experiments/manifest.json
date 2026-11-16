@@ -1,11 +1,11 @@
 {
-  "version": "16afc71cf77dc16c",
+  "version": "4f2a0c4b127fe691",
   "scope": "Public UUIDs only; standard multimodal and tool-augmented runs.",
   "question_count": 1049,
   "model_count": 32,
   "run_count": 43,
   "response_count": 45107,
-  "bytes": 54881355,
+  "bytes": 54891115,
   "runs": [
     {
       "id": "run-01",
@@ -543,15 +543,15 @@
       "id": "run-39",
       "model": "Gemini 3.1 Pro",
       "mode": "tool",
-      "sha256": "2bef9d2f2cd43cb30e74769e834039f71d0be4eb731943242fec950de884ff4c",
+      "sha256": "a211d5bbc1299d274cf4172bcad6e0f804e115a5b12f3dcd82a21e21f9c5faf3",
       "source": "data/results/website_missing_repair_20261116/legacy_tools/gemini-3.1-pro/website_merged_judged.json",
       "source_root": "live",
-      "note": "One missing search-and-code response was retried through ModelRouter and judged by Qwen3.8 Flash on 2026-11-16. Original judged SHA256: d20b7355827c94b8a4e23fe3b2b4873a8a7eb6c4d263de66e93010509e9a988e.",
+      "note": "Twenty-six missing search-and-code responses were retried through ModelRouter on 2026-11-16. Nine answers were recovered and judged by Qwen3.8 Flash; 17 still lacked a final answer. Other historical records are unchanged. Original judged SHA256: d20b7355827c94b8a4e23fe3b2b4873a8a7eb6c4d263de66e93010509e9a988e.",
       "full_count": 1116,
-      "full_correct": 525,
+      "full_correct": 527,
       "public_count": 1049,
-      "public_correct": 497,
-      "calls": 2581
+      "public_correct": 499,
+      "calls": 2578
     },
     {
       "id": "run-40",
@@ -585,15 +585,15 @@
       "id": "run-42",
       "model": "Gemini 3.5 Flash",
       "mode": "tool",
-      "sha256": "ae12ccb7a8f70d857adb3d3e7309ae2637d6fc3f800a3f96f66da272f90b9ddf",
-      "source": "with_tools_comparsion/gemini-3.5-flash-ci-search/data_judged.json",
-      "source_root": "historical",
-      "note": "",
+      "sha256": "7349f3ae9a886e72a8e0e5d36fe88fc17dc11e1e41b57653e3ac1ea0815c8b17",
+      "source": "data/results/website_missing_repair_20261116/legacy_tools/gemini-3.5-flash/website_merged_judged.json",
+      "source_root": "live",
+      "note": "Nineteen missing search-and-code responses were retried through ModelRouter on 2026-11-16. One answer was recovered and judged by Qwen3.8 Flash; 18 still lacked a final answer. Other historical records are unchanged. Original judged SHA256: ae12ccb7a8f70d857adb3d3e7309ae2637d6fc3f800a3f96f66da272f90b9ddf.",
       "full_count": 1116,
       "full_correct": 486,
       "public_count": 1049,
       "public_correct": 459,
-      "calls": 4083
+      "calls": 4084
     },
     {
       "id": "run-43",
@@ -1575,7 +1575,7 @@
       "file": "e1de4d70-c16b-4a6d-b31e-340e80b9a2b5.json.gz",
       "standard": 32,
       "tool": 11,
-      "calls": 177
+      "calls": 173
     },
     "36f20c14-49ec-4779-94a5-47343886ec75": {
       "file": "36f20c14-49ec-4779-94a5-47343886ec75.json.gz",
@@ -2001,7 +2001,7 @@
       "file": "bb5d09ce-9995-409f-b123-5ff445751e41.json.gz",
       "standard": 32,
       "tool": 11,
-      "calls": 175
+      "calls": 163
     },
     "0a23b7ce-aca0-4cb9-92c7-6e26a9849fd8": {
       "file": "0a23b7ce-aca0-4cb9-92c7-6e26a9849fd8.json.gz",
@@ -3627,7 +3627,7 @@
       "file": "8214760c-9080-4077-a83c-304b08572c7b.json.gz",
       "standard": 32,
       "tool": 11,
-      "calls": 160
+      "calls": 161
     },
     "4cd7e5c1-7790-45ac-b85b-dd89a01a73a0": {
       "file": "4cd7e5c1-7790-45ac-b85b-dd89a01a73a0.json.gz",
@@ -4281,7 +4281,7 @@
       "file": "bdf22d7b-3926-4aac-816b-a168f1d63078.json.gz",
       "standard": 32,
       "tool": 11,
-      "calls": 140
+      "calls": 133
     },
     "ec1bb3ff-08da-475b-b3a1-8d5db744c153": {
       "file": "ec1bb3ff-08da-475b-b3a1-8d5db744c153.json.gz",
@@ -4935,7 +4935,7 @@
       "file": "c5d8bb65-c2d2-42ac-a221-dac066a055dc.json.gz",
       "standard": 32,
       "tool": 11,
-      "calls": 143
+      "calls": 153
     },
     "6d849df7-a965-4a84-9422-2dbe61fafe1e": {
       "file": "6d849df7-a965-4a84-9422-2dbe61fafe1e.json.gz",
@@ -6201,7 +6201,7 @@
       "file": "5779e8ab-3757-41d7-a50f-ef36f109d2dd.json.gz",
       "standard": 32,
       "tool": 11,
-      "calls": 135
+      "calls": 140
     },
     "d5284f4b-e422-4fdc-96a5-1c92457ac067": {
       "file": "d5284f4b-e422-4fdc-96a5-1c92457ac067.json.gz",
@@ -6273,7 +6273,7 @@
       "file": "bd62eea7-3077-405b-891e-8cf62c53d5b5.json.gz",
       "standard": 32,
       "tool": 11,
-      "calls": 95
+      "calls": 100
     },
     "585fa0d8-a3a8-425b-a229-c00cfa9086fe": {
       "file": "585fa0d8-a3a8-425b-a229-c00cfa9086fe.json.gz",
