@@ -105,6 +105,11 @@ def response_record(row, name, mode, source_id, public):
     if not parsed:
         analysis = text(raw)
     judge = row.get('judge_result')
+    scored_as_refusal = (name == 'Claude Fable 5.2' and not raw
+                         and row.get('finish_reason') != 'refusal'
+                         and row.get('generate_error') == '模型返回为空')
+    if scored_as_refusal:
+        judge = False
     reference = text(row.get('answer') or row.get('答案'))
     input_question = row.get('question') or row.get('题目文本') or ''
     input_options = options(row.get('options', row.get('选项')))
@@ -119,6 +124,7 @@ def response_record(row, name, mode, source_id, public):
         'reference_matches_public': normalize(reference) == normalize(public['answer']),
         'input_matches_public': same_input,
         'generation_failed': bool(row.get('generate_error')),
+        **({'scored_as_refusal': True} if scored_as_refusal else {}),
         'latency_seconds': row.get('generate_latency'),
         'trace': [trace_step(call) for call in row.get('tool_calls', []) if isinstance(call, dict)],
     }
@@ -151,6 +157,10 @@ def build(output, config_path, current_root, historical_root, live_root=LIVE):
     for index, (name, mode, path, expected) in enumerate(runs):
         rows = read(path)
         assert len(rows) == 1116 and len({row['uuid'] for row in rows}) == 1116, path
+        if name == 'Claude Fable 5.2' and mode == 'standard':
+            empty = [row for row in rows if not row.get('model_response')
+                     and row.get('finish_reason') != 'refusal']
+            assert len(empty) == 9 and all(row.get('generate_error') == '模型返回为空' for row in empty)
         correct = sum(row.get('judge_result') is True for row in rows)
         assert expected is None or correct == expected, (name, correct, expected)
         source_id = f'run-{index + 1:02}'

@@ -2,6 +2,24 @@
   "description": "Website experiment sources. SHA256 pins original judged files; only public question UUIDs are exported. Modes: standard or tool.",
   "runs": [
     {
+      "model": "Claude Fable 5.2",
+      "mode": "standard",
+      "root": "live",
+      "file": "data/results/baseline_fable_20261113/claude-fable-5-2/data_judged.json",
+      "sha256": "f796d7bdf0675d8cb1bbc7f40b1bb4469faab2595ff5b557489b3ad4f33df236",
+      "expected_correct": 496,
+      "note": "Claude Fable 5.2 via Evamux, server-default reasoning, judged by Qwen3.8 Flash. Nine empty responses are scored as refusals at the owner's direction; their original generation failures are preserved."
+    },
+    {
+      "model": "Qwen4 Max",
+      "mode": "standard",
+      "root": "live",
+      "file": "data/results/baseline_qwen4_20261116/qwen4-max/data_judged.json",
+      "sha256": "63ff0a2167118ad9f270a8fc39bcaf58241dddba8157ac9657f1c7542883f201",
+      "expected_correct": 497,
+      "note": "Qwen4 Max via DashScope, server-default reasoning, judged by Qwen3.8 Flash."
+    },
+    {
       "model": "HY4",
       "mode": "standard",
       "root": "live",

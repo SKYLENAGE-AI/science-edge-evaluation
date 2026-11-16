@@ -38,7 +38,7 @@ const copy = {
       kicker: 'STANDARD EVALUATION',
       title: 'Overall accuracy',
       score: 'ACCURACY',
-      note: 'Full set: 1,116 questions. * Safety-filtered non-responses are counted as incorrect.'
+      note: 'Full set: 1,116 questions. * Safety-filtered non-responses are counted as incorrect. For Claude Fable 5.2, nine empty responses are scored as refusals.'
     },
     tool: {
       kicker: 'TOOL-AUGMENTED VISUAL AGENTS',
@@ -61,7 +61,7 @@ const copy = {
       kicker: '标准多模态评测',
       title: '总体准确率',
       score: '准确率',
-      note: '完整评测集共 1,116 道题。* 安全过滤导致的无响应计为错误。'
+      note: '完整评测集共 1,116 道题。* 安全过滤导致的无响应计为错误。Claude Fable 5.2 的 9 条空响应按拒答计错。'
     },
     tool: {
       kicker: '工具增强视觉智能体',
@@ -327,7 +327,7 @@ const responsesFor = example => (example.responses || []).filter(response => res
 const hasRuns = example => Boolean(experimentManifest?.questions[example.id]?.[experimentMode]);
 
 function verdictMarkup(response) {
-  const label = response.generation_failed ? localized('Generation failed', '生成失败') : response.judge_result === true ? localized('Judged correct', '判分正确') : response.judge_result === false ? localized('Judged incorrect', '判分错误') : localized('Not judged', '未判分');
+  const label = response.scored_as_refusal ? localized('Empty response · scored as refusal', '空响应 · 按拒答计错') : response.generation_failed ? localized('Generation failed', '生成失败') : response.judge_result === true ? localized('Judged correct', '判分正确') : response.judge_result === false ? localized('Judged incorrect', '判分错误') : localized('Not judged', '未判分');
   const style = response.judge_result === true ? 'correct' : response.judge_result === false ? 'incorrect' : 'unjudged';
   return `<span class="verdict-badge ${style}">${label}</span>`;
 }

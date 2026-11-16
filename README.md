@@ -6,9 +6,9 @@
 
 🔗 **Links:** [Paper (arXiv:2608.06931)](https://arxiv.org/abs/2608.06931) | [Website](https://skylenage-ai.github.io/science-edge-evaluation/) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation)
 
-**Claude Fable 5.2 preliminary result (2026-11-13):** In the standard no-tool evaluation, `claude-fable-5-2` via Evamux answered 496 of 1,116 questions correctly (44.44%), with Qwen3.8 Flash as judge. The run recorded 219 refusals and 9 empty responses. The 9 empty responses are counted as incorrect in this preliminary score and require follow-up; the interactive leaderboard currently retains its existing runs.
+**Website data update (2026-11-16):** The standard leaderboard includes Claude Fable 5.2 at 496/1,116 (44.44%; public 472/1,049) and Qwen4 Max at 497/1,116 (44.53%; public 464/1,049). Fable was evaluated through Evamux and Qwen through DashScope, with Qwen3.8 Flash as judge. Fable's nine empty responses are scored as refusals, including eight public questions; the original generation failures remain identified in the records. The website now contains 31 standard models, 11 tool-augmented models, and 44,058 public response records.
 
-**Website data update (2026-11-10):** The interactive website additionally includes Tencent HY4: 476/1,116 (42.65%) overall and 443/1,049 (42.23%) on public questions. It now contains 29 standard-evaluation models, 11 tool-augmented models, and 41,960 public response records. HY4 tool probes are not included as full evaluation runs. The paper snapshot and figures below retain their published 28-model scope.
+**Website data update (2026-11-10):** The interactive website added Tencent HY4: 476/1,116 (42.65%) overall and 443/1,049 (42.23%) on public questions. HY4 tool probes are not included as full evaluation runs. The paper snapshot and figures below retain their published 28-model scope.
 
 **Overall accuracy:** Gemini 4 Argon achieves the best result on the full SEE benchmark at 54.9% accuracy, and no model exceeds 55% in the standard evaluation setting.
 
