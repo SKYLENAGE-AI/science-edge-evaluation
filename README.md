@@ -6,7 +6,7 @@
 
 🔗 **Links:** [Paper (arXiv:2608.06931)](https://arxiv.org/abs/2608.06931) | [Website](https://skylenage-ai.github.io/science-edge-evaluation/) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation)
 
-**Website data update (2026-11-16):** The standard leaderboard includes Claude Fable 5.2 at 496/1,116 (44.44%; public 472/1,049) and Qwen4 Max at 497/1,116 (44.53%; public 464/1,049). Fable was evaluated through Evamux and Qwen through DashScope, with Qwen3.8 Flash as judge. Fable's nine empty responses are scored as refusals, including eight public questions; the original generation failures remain identified in the records. The website now contains 31 standard models, 11 tool-augmented models, and 44,058 public response records.
+**Website data update (2026-11-16):** The standard leaderboard includes Gemini 4 Hydrogen at 577/1,116 (51.70%; public 536/1,049), Claude Fable 5.2 at 496/1,116 (44.44%; public 472/1,049), and Qwen4 Max at 497/1,116 (44.53%; public 464/1,049). Hydrogen and Fable were evaluated through Evamux and Qwen through DashScope, with Qwen3.8 Flash as judge. Fable's nine empty responses are scored as refusals, including eight public questions; the original generation failures remain identified in the records. The website now contains 32 standard models, 11 tool-augmented models, and 45,107 public response records.
 
 **Website data update (2026-11-10):** The interactive website added Tencent HY4: 476/1,116 (42.65%) overall and 443/1,049 (42.23%) on public questions. HY4 tool probes are not included as full evaluation runs. The paper snapshot and figures below retain their published 28-model scope.
 

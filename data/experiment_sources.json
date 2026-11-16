@@ -339,6 +339,15 @@
       "file": "with_tools_comparsion/gemini-3.5-flash-ci-search/data_judged.json",
       "sha256": "ae12ccb7a8f70d857adb3d3e7309ae2637d6fc3f800a3f96f66da272f90b9ddf",
       "expected_correct": 486
+    },
+    {
+      "model": "Gemini 4 Hydrogen",
+      "mode": "standard",
+      "root": "live",
+      "file": "data/results/baseline_hydrogen_20261116/gemini-4-hydrogen/data_judged.json",
+      "sha256": "d1e1b8e1e443ea042bb847cb2fe50bed4a88832df97b6248420566c429eecd80",
+      "expected_correct": 577,
+      "note": "Gemini 4 Hydrogen via Evamux, server-default reasoning, judged by Qwen3.8 Flash."
     }
   ]
 }
