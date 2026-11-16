@@ -4,7 +4,7 @@
 
 **Science Edge Evaluation：“看见”大模型探索科学领域的能力边界**
 
-🔗 **链接：** [论文 (arXiv:2608.06931)](https://arxiv.org/abs/2608.06931) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation)
+🔗 **链接：** [论文 (arXiv:2608.06931)](https://arxiv.org/abs/2608.06931) | [网站](https://skylenage-ai.github.io/science-edge-evaluation/) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation)
 
 **网页数据更新（2026-11-10）：** 交互网页新增腾讯 HY4：全量 476/1,116（42.65%），公开部分 443/1,049（42.23%）。网页现含 29 个标准评测模型、11 个工具增强模型和 41,960 条公开回答。HY4 工具能力探针未作为全量评测导入；下方论文概览和图表保留发表时的 28 模型口径。
 

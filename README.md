@@ -4,7 +4,7 @@
 
 **Science Edge Evaluation: SEE the Missing Step Toward Real Scientific Discovery**
 
-🔗 **Links:** [Paper (arXiv:2608.06931)](https://arxiv.org/abs/2608.06931) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation)
+🔗 **Links:** [Paper (arXiv:2608.06931)](https://arxiv.org/abs/2608.06931) | [Website](https://skylenage-ai.github.io/science-edge-evaluation/) | [GitHub](https://github.com/SKYLENAGE-AI/science-edge-evaluation)
 
 **Website data update (2026-11-10):** The interactive website additionally includes Tencent HY4: 476/1,116 (42.65%) overall and 443/1,049 (42.23%) on public questions. It now contains 29 standard-evaluation models, 11 tool-augmented models, and 41,960 public response records. HY4 tool probes are not included as full evaluation runs. The paper snapshot and figures below retain their published 28-model scope.
 
