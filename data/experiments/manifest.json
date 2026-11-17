@@ -1,11 +1,11 @@
 {
-  "version": "4f2a0c4b127fe691",
+  "version": "1fe77d266e1e68de",
   "scope": "Public UUIDs only; standard multimodal and tool-augmented runs.",
   "question_count": 1049,
   "model_count": 32,
   "run_count": 43,
   "response_count": 45107,
-  "bytes": 54891115,
+  "bytes": 54885823,
   "runs": [
     {
       "id": "run-01",
@@ -543,15 +543,15 @@
       "id": "run-39",
       "model": "Gemini 3.1 Pro",
       "mode": "tool",
-      "sha256": "a211d5bbc1299d274cf4172bcad6e0f804e115a5b12f3dcd82a21e21f9c5faf3",
-      "source": "data/results/website_missing_repair_20261116/legacy_tools/gemini-3.1-pro/website_merged_judged.json",
+      "sha256": "50844d86b5ae766d8f1741b2d6340460e913e1a4866bf6e5a7e7ee8f0183266b",
+      "source": "data/results/website_missing_repair_20261117/gemini-3.1-pro/website_merged_judged.json",
       "source_root": "live",
-      "note": "Twenty-six missing search-and-code responses were retried through ModelRouter on 2026-11-16. Nine answers were recovered and judged by Qwen3.8 Flash; 17 still lacked a final answer. Other historical records are unchanged. Original judged SHA256: d20b7355827c94b8a4e23fe3b2b4873a8a7eb6c4d263de66e93010509e9a988e.",
+      "note": "On 2026-11-16, 26 missing search-and-code responses were retried through ModelRouter and nine judged answers were recovered. On 2026-11-17, two additional public answers were recovered using Evamux native Vertex, model ID vertex_ai.gemini-3.1-pro-preview. New answers were judged by Qwen3.8 Flash. Fifteen cases still lack final answers, including 14 public cases. Original judged SHA256: d20b7355827c94b8a4e23fe3b2b4873a8a7eb6c4d263de66e93010509e9a988e.",
       "full_count": 1116,
-      "full_correct": 527,
+      "full_correct": 528,
       "public_count": 1049,
-      "public_correct": 499,
-      "calls": 2578
+      "public_correct": 500,
+      "calls": 2576
     },
     {
       "id": "run-40",
@@ -2055,7 +2055,7 @@
       "file": "e6a624a9-b312-4c00-b9f1-017913011422.json.gz",
       "standard": 32,
       "tool": 11,
-      "calls": 122
+      "calls": 120
     },
     "e1b917e5-8309-4b1f-b567-0521977a4bd8": {
       "file": "e1b917e5-8309-4b1f-b567-0521977a4bd8.json.gz",

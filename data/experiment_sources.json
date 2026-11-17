@@ -315,10 +315,10 @@
       "model": "Gemini 3.1 Pro",
       "mode": "tool",
       "root": "live",
-      "file": "data/results/website_missing_repair_20261116/legacy_tools/gemini-3.1-pro/website_merged_judged.json",
-      "sha256": "a211d5bbc1299d274cf4172bcad6e0f804e115a5b12f3dcd82a21e21f9c5faf3",
-      "expected_correct": 527,
-      "note": "Twenty-six missing search-and-code responses were retried through ModelRouter on 2026-11-16. Nine answers were recovered and judged by Qwen3.8 Flash; 17 still lacked a final answer. Other historical records are unchanged. Original judged SHA256: d20b7355827c94b8a4e23fe3b2b4873a8a7eb6c4d263de66e93010509e9a988e."
+      "file": "data/results/website_missing_repair_20261117/gemini-3.1-pro/website_merged_judged.json",
+      "sha256": "50844d86b5ae766d8f1741b2d6340460e913e1a4866bf6e5a7e7ee8f0183266b",
+      "expected_correct": 528,
+      "note": "On 2026-11-16, 26 missing search-and-code responses were retried through ModelRouter and nine judged answers were recovered. On 2026-11-17, two additional public answers were recovered using Evamux native Vertex, model ID vertex_ai.gemini-3.1-pro-preview. New answers were judged by Qwen3.8 Flash. Fifteen cases still lack final answers, including 14 public cases. Original judged SHA256: d20b7355827c94b8a4e23fe3b2b4873a8a7eb6c4d263de66e93010509e9a988e."
     },
     {
       "model": "Claude Opus 5 (Max)",
