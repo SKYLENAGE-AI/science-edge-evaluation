@@ -26,3 +26,5 @@ The public benchmark is released in two equivalent formats:
 - Multiple-choice answers are represented as option letters, for example `A`, `BD`, or `B, C, D`, depending on the original annotation.
 - Open-answer and numerical questions use canonical short answers or numerical answers in the `answer` field.
 - Solution rationales, original primary-field labels, and English-translated fields are not included in the public data files.
+
+Per-question experiment records are stored in `experiments/<question-id>.json.gz`, with run provenance and benchmark totals in `experiments/manifest.json`. Each response includes its answer, judgment, and available search or code trace. A Gemini 4 Hydrogen response may include `provider_search_requests` from API usage metadata. This count covers reported requests, while its trace shows available grounding citations.

@@ -353,6 +353,26 @@
       "sha256": "d1e1b8e1e443ea042bb847cb2fe50bed4a88832df97b6248420566c429eecd80",
       "expected_correct": 577,
       "note": "Gemini 4 Hydrogen via Evamux, server-default reasoning, judged by Qwen3.8 Flash."
+    },
+    {
+      "model": "Qwen4 Max",
+      "mode": "tool",
+      "condition": "SC",
+      "root": "live",
+      "file": "data/results/with_tools_full_20261117/qwen4-max/SC/data_judged.json",
+      "sha256": "8332696769569d5863721cadfef92a5e1530e0c29c39924c09a6012d9f87689a",
+      "expected_correct": 552,
+      "note": "DashScope Responses with native search and code execution; Qwen3.8 Flash judge. One input filtered by the provider has no answer and contributes zero to the full score."
+    },
+    {
+      "model": "Gemini 4 Hydrogen",
+      "mode": "tool",
+      "condition": "S",
+      "root": "live",
+      "file": "data/results/with_tools_full_20261117/gemini-4-hydrogen/S/data_judged.json",
+      "sha256": "46e8b998795c33e688ba22827cca5d070954a4748ea707da813fc2ede8f0c12e",
+      "expected_correct": 611,
+      "note": "Evamux Responses with native search only; Qwen3.8 Flash judge. Four delivery failures and one output budget termination contribute zero to the full score. Provider-reported search request counts and available grounding citations are exported separately."
     }
   ]
 }

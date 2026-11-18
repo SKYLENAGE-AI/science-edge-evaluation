@@ -516,6 +516,12 @@ function renderTrace() {
   const searchCount = trace.filter(step => step.type === 'search').length;
   document.querySelector('.trace-help').textContent = trace.length ? localized('Select a step to inspect its recorded input and result. Arrows indicate call order.', '点击节点查看该步的真实输入与结果；箭头表示调用顺序。') : localized(experimentMode === 'standard' ? 'Standard evaluation uses no tools. Only the question and recorded answer are shown.' : 'No tool calls were recorded for this run. Tool availability does not imply tool use.', experimentMode === 'standard' ? '标准评测不使用工具，仅展示题目输入与原始答案。' : '该次运行未记录工具调用；工具可用不代表实际使用。');
   document.querySelector('#trace-count').textContent = localized(`${trace.length} CALLS RECORDED`, `记录了 ${trace.length} 次调用`);
+  if (Number.isInteger(response.provider_search_requests)) {
+    document.querySelector('.trace-help').textContent = localized(
+      `The provider reported ${response.provider_search_requests} search requests. This timeline shows available grounding citations.`,
+      `服务商报告了 ${response.provider_search_requests} 次搜索请求。下方时间线展示可用的来源引用。`
+    );
+  }
   document.querySelector('#trace-metrics').innerHTML = [[searchCount, localized('Web searches', '网页搜索')], [trace.length - searchCount, localized('Code calls', '代码调用')], [trace.length, localized('Total calls', '总调用数')]].map(([count, label]) => `<div><strong>${count}</strong><span>${label}</span></div>`).join('');
   const nodes = [{ type: 'input', label: localized('Question', '题目输入'), detail: example.label }, ...trace.map((step, index) => ({ type: step.type, label: step.type === 'search' ? localized('Search', '网页搜索') : localized('Code', '代码执行'), detail: `${localized('Call', '调用')} ${index + 1}` })), { type: 'answer', label: localized('Answer', '最终答案'), detail: localized('Recorded', '原始记录') }];
   document.querySelector('#trace-flow').innerHTML = nodes.map((node, index) => `<button type="button" class="trace-node ${node.type} ${index === activeTraceIndex ? 'active' : ''}" data-trace-index="${index}" aria-pressed="${index === activeTraceIndex}"><span class="node-symbol" aria-hidden="true">${node.type === 'search' ? '⌕' : node.type === 'code' ? '&lt;/&gt;' : node.type === 'input' ? '▧' : '✓'}</span><strong>${node.label}</strong><small>${escapeHtml(node.detail)}</small></button>${index < nodes.length - 1 ? '<span class="trace-arrow" aria-hidden="true">→</span>' : ''}`).join('');

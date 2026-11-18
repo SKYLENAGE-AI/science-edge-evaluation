@@ -20,6 +20,14 @@ MIRROR = WORKSPACE / 'see-arxiv/experiments/local/see-cvpr'
 LIVE = WORKSPACE.parent / 'see-cvpr'
 CURRENT = MIRROR / 'data/results'
 HISTORICAL = WORKSPACE.parent / 'past/SEE/data/results'
+PUBLIC_CREDENTIAL_PATTERN = re.compile(
+    r'\b(?:AKIA[A-Z0-9]{16}|ASIA[A-Z0-9]{16}|sk-[A-Za-z0-9._-]{18,}|'
+    r'gh[pousr]_[A-Za-z0-9]{25,}|github_pat_[A-Za-z0-9_]{20,}|AIza[A-Za-z0-9_-]{35})\b'
+)
+SIGNED_URL_PATTERN = re.compile(
+    r'''(https?://[^\s"'<>?]+)\?[^\s"'<>]*?\b(?:X-Amz-Signature|X-Goog-Signature|access_token|api_key)=[^\s"'<>]+''',
+    re.IGNORECASE,
+)
 
 
 def read(path):
@@ -49,7 +57,7 @@ def safe_url(value):
     return isinstance(value, str) and urlsplit(value).scheme in ('http', 'https')
 
 
-def trace_step(call):
+def trace_step(call, *, include_grounding=False):
     kind = call.get('type', 'other')
     action = call.get('action') or {}
     queries = call.get('queries') or action.get('queries') or []
@@ -58,7 +66,8 @@ def trace_step(call):
     if not queries and action.get('query'):
         queries = [action['query']]
     links = []
-    for item in [*(action.get('sources') or []), *(call.get('results') or [])]:
+    citations = (call.get('citations') or []) if include_grounding else []
+    for item in [*(action.get('sources') or []), *(call.get('results') or []), *citations]:
         if isinstance(item, dict) and safe_url(item.get('url')):
             link = {'url': item['url'], 'title': text(item.get('title'))}
             if link not in links:
@@ -126,12 +135,29 @@ def response_record(row, name, mode, source_id, public):
         'generation_failed': bool(row.get('generate_error')),
         **({'scored_as_refusal': True} if scored_as_refusal else {}),
         'latency_seconds': row.get('generate_latency'),
-        'trace': [trace_step(call) for call in row.get('tool_calls', []) if isinstance(call, dict)],
+        'trace': [trace_step(call, include_grounding=name == 'Gemini 4 Hydrogen')
+                  for call in row.get('tool_calls', []) if isinstance(call, dict)],
     }
     if not same_input:
         result['input_question'] = input_question
         result['input_options'] = input_options
+    if name == 'Gemini 4 Hydrogen' and mode == 'tool':
+        usage = (row.get('usage') or {}).get('input_tokens_details') or {}
+        search_requests = usage.get('web_search_requests')
+        if isinstance(search_requests, int):
+            result['provider_search_requests'] = search_requests
     return result
+
+
+def redact_credentials(value):
+    if isinstance(value, str):
+        value = SIGNED_URL_PATTERN.sub(r'\1', value)
+        return PUBLIC_CREDENTIAL_PATTERN.sub('[credential redacted]', value)
+    if isinstance(value, list):
+        return [redact_credentials(item) for item in value]
+    if isinstance(value, dict):
+        return {key: redact_credentials(item) for key, item in value.items()}
+    return value
 
 
 def source_path(original):
@@ -168,7 +194,10 @@ def build(output, config_path, current_root, historical_root, live_root=LIVE):
         assert len(selected) == 1049, path
         for row in selected:
             qid = row['uuid']
-            records[qid].append(response_record(row, name, mode, source_id, bank[qid]))
+            record = response_record(row, name, mode, source_id, bank[qid])
+            if config['runs'][index].get('condition'):
+                record = redact_credentials(record)
+            records[qid].append(record)
             if row.get('question_en') and qid not in translations:
                 translations[qid] = {'question_en': row['question_en'], 'options_en': options(row.get('options_en'))}
         metadata.append({
@@ -176,6 +205,7 @@ def build(output, config_path, current_root, historical_root, live_root=LIVE):
             'source': config['runs'][index]['file'],
             'source_root': config['runs'][index]['root'],
             'note': config['runs'][index].get('note', ''),
+            **({'condition': config['runs'][index]['condition']} if 'condition' in config['runs'][index] else {}),
             'full_count': len(rows), 'full_correct': correct,
             'public_count': len(selected), 'public_correct': sum(row.get('judge_result') is True for row in selected),
             'calls': sum(len(row.get('tool_calls', [])) for row in selected),
