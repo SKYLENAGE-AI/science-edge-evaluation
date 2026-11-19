@@ -400,6 +400,42 @@
       "sha256": "019402628f60ff6c332cd186e6069c037120179d62f630fef632d94e10049c8e",
       "expected_correct": 563,
       "note": "Evamux Responses with images, server-default reasoning, and tools disabled. Qwen3.8 Flash judged all 1,116 answers."
+    },
+    {
+      "model": "GPT-5.5 (Default)",
+      "mode": "standard",
+      "root": "historical",
+      "file": "baseline/gpt-5.5/data_judged.json",
+      "sha256": "5930c7e82498f2356bd32bf0d364c3eab637584cffa9742eb17f1389e1c44758",
+      "expected_correct": 461,
+      "note": "Historical image baseline archived under the unsuffixed model ID gpt-5.5. The archived records do not identify the judge model or resolved reasoning effort."
+    },
+    {
+      "model": "GPT-5.6-Sol (Default)",
+      "mode": "standard",
+      "root": "historical",
+      "file": "baseline/gpt-5.6-sol/data_judged.json",
+      "sha256": "a528d534789d6a711ec5cc0d3e8e97f87ff47cc3185ba17001847e123bff1862",
+      "expected_correct": 503,
+      "note": "Historical Evamux image baseline with default reasoning and tools disabled. The original judge log identifies Gemini 3.5 Flash via ModelRouter."
+    },
+    {
+      "model": "GPT-6 Astra (Default)",
+      "mode": "standard",
+      "root": "live",
+      "file": "data/results/baseline_astra_20261105/gpt-6-astra/data_judged.json",
+      "sha256": "f3e14cfa4a04ece8f443fee9223c935d9ca29dab7a0860b6cb5a1d0921771247",
+      "expected_correct": 556,
+      "note": "Evamux image baseline with server-default reasoning and tools disabled. Qwen3.8 Flash judged all 1,116 answers."
+    },
+    {
+      "model": "GPT-6.1 Sol (Default)",
+      "mode": "standard",
+      "root": "live",
+      "file": "data/results/baseline_20261029/gpt-6.1-sol/data_judged.json",
+      "sha256": "1be2ac9ad4942abb68da81f45398b8cb42e4b66426552d7a131e658937b93f60",
+      "expected_correct": 561,
+      "note": "Evamux image baseline with server-default reasoning and tools disabled. Qwen3.8 Flash judged all 1,116 answers."
     }
   ]
 }
