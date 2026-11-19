@@ -12,7 +12,7 @@
 
 **Tool leaderboard update (2026-11-18):** Qwen4 Max with search and code scores 552/1,116 (public 516/1,049), and Gemini 4 Hydrogen with search scores 611/1,116 (public 566/1,049). Both use Qwen3.8 Flash as judge.
 
-**Standard leaderboard update (2026-11-19):** Meta Muse Wonder scores 434/1,116 (38.89%) with images and no tools. On the 1,049 public questions it scores 408 correct, with 1,034 answers judged and 15 records marked as missing an answer. The website now contains 33 standard models, 13 tool-augmented models, and 48,254 public evaluation records.
+**Standard leaderboard update (2026-11-19):** With images and no tools, GPT-6.2 Astra scores 576/1,116 (public 533/1,049), and GPT-6.2 Sol scores 563/1,116 (public 526/1,049). Qwen3.8 Flash judged all answers for both. Meta Muse Wonder scores 434/1,116 (public 408/1,049), with 15 public records marked as missing an answer. The website now contains 35 standard models, 13 tool-augmented models, and 50,352 public evaluation records.
 
 **Website data update (2026-11-10):** The interactive website added Tencent HY4: 476/1,116 (42.65%) overall and 443/1,049 (42.23%) on public questions. HY4 tool probes are not included as full evaluation runs. The paper snapshot and figures below retain their published 28-model scope.
 
