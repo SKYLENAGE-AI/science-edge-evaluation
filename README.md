@@ -10,7 +10,9 @@
 
 **Website data update (2026-11-16):** The standard leaderboard includes Gemini 4 Hydrogen at 577/1,116 (51.70%; public 536/1,049), Claude Fable 5.2 at 496/1,116 (44.44%; public 472/1,049), and Qwen4 Max at 497/1,116 (44.53%; public 464/1,049). Hydrogen and Fable were evaluated through Evamux and Qwen through DashScope, with Qwen3.8 Flash as judge. Fable's nine empty responses are scored as refusals, including eight public questions. The records retain the generation-failure flag.
 
-**Tool leaderboard update (2026-11-18):** Qwen4 Max with search and code scores 552/1,116 (public 516/1,049), and Gemini 4 Hydrogen with search scores 611/1,116 (public 566/1,049). Both use Qwen3.8 Flash as judge. The website now contains 32 standard models, 13 tool-augmented models, and 47,205 public evaluation records, including per-question answers, judgments, and available tool traces.
+**Tool leaderboard update (2026-11-18):** Qwen4 Max with search and code scores 552/1,116 (public 516/1,049), and Gemini 4 Hydrogen with search scores 611/1,116 (public 566/1,049). Both use Qwen3.8 Flash as judge.
+
+**Standard leaderboard update (2026-11-19):** Meta Muse Wonder scores 434/1,116 (38.89%) with images and no tools. On the 1,049 public questions it scores 408 correct, with 1,034 answers judged and 15 records marked as missing an answer. The website now contains 33 standard models, 13 tool-augmented models, and 48,254 public evaluation records.
 
 **Website data update (2026-11-10):** The interactive website added Tencent HY4: 476/1,116 (42.65%) overall and 443/1,049 (42.23%) on public questions. HY4 tool probes are not included as full evaluation runs. The paper snapshot and figures below retain their published 28-model scope.
 

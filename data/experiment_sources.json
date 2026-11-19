@@ -373,6 +373,15 @@
       "sha256": "46e8b998795c33e688ba22827cca5d070954a4748ea707da813fc2ede8f0c12e",
       "expected_correct": 611,
       "note": "Evamux Responses with native search only; Qwen3.8 Flash judge. Four delivery failures and one output budget termination contribute zero to the full score. Provider-reported search request counts and available grounding citations are exported separately."
+    },
+    {
+      "model": "Muse Wonder",
+      "mode": "standard",
+      "root": "live",
+      "file": "data/results/baseline_muse_wonder_20261119/muse-wonder-1.0/data_judged.json",
+      "sha256": "41450ee534002da95e6919d2e158f182de4ee3095a830c8365d1ec7b39cd5c7c",
+      "expected_correct": 434,
+      "note": "Meta Muse Wonder (muse-wonder-1.0) via Evamux with images, server-default reasoning, and tools disabled. Qwen3.8 Flash judged all 1,101 delivered answers. Fifteen questions lacked an answer, all in the public subset. The provider filtered all four transport retries. Missing answers remain marked as generation failures with no per-question judgment and contribute zero to the aggregate score."
     }
   ]
 }
