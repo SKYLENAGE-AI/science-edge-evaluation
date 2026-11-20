@@ -445,6 +445,33 @@
       "sha256": "cd0852c2c08b5d5d037d1308a3d5ec5c4c49b76fc0af5a484b60ea8f649adec8",
       "expected_correct": 440,
       "note": "Evamux image baseline with server-default reasoning and tools disabled. Qwen3.8 Flash judged the delivered answers. The 285 refusals without answers (257 public) contribute zero to the aggregate score and remain marked as missing answers with no per-question judgment."
+    },
+    {
+      "model": "Claude Sonnet 5.5",
+      "mode": "standard",
+      "root": "live",
+      "file": "data/results/baseline_claude_20261119/claude-sonnet-5-5/data_judged.json",
+      "sha256": "ac16960445525404a2f23e053aa4b24ea073578f2f563e60d5c3e13312812bd9",
+      "expected_correct": 504,
+      "note": "Evamux Messages with images, server-default reasoning, and tools disabled. Qwen3.8 Flash judged all 1,108 delivered answers. Eight refusals lack answers, all public. They contribute zero to the aggregate score and retain missing-answer markers with no per-question judgment."
+    },
+    {
+      "model": "Claude Fable 5.1",
+      "mode": "standard",
+      "root": "live",
+      "file": "data/results/baseline_claude_20261119/claude-fable-5-1/data_judged.json",
+      "sha256": "1133bfd46d5c3d999888dfe60b014de8db935eb426b680c00c4600f5de618887",
+      "expected_correct": 376,
+      "note": "Evamux Messages with images, server-default reasoning, and tools disabled. Qwen3.8 Flash judged all 769 delivered answers. The 347 refusals without answers (313 public) contribute zero to the aggregate score and retain missing-answer markers with no per-question judgment."
+    },
+    {
+      "model": "Gemini 4 Neon",
+      "mode": "standard",
+      "root": "live",
+      "file": "data/results/baseline_neon_20261119/gemini-4-neon/data_judged.json",
+      "sha256": "95655ede4fb3a17dd7a6e0f39bb05f7692e822ce77b3d47cdf37080bc31ead3d",
+      "expected_correct": 571,
+      "note": "Evamux Chat Completions with images, server-default reasoning, and tools disabled. Qwen3.8 Flash judged all 1,000 delivered answers. The 116 missing answers (112 public) include 107 HTTP 429 failures and nine timeouts. They contribute zero to the aggregate score and retain missing-answer markers with no per-question judgment."
     }
   ]
 }

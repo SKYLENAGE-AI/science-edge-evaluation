@@ -18,6 +18,8 @@
 
 **Overall accuracy:** Gemini 4 Argon achieves the best result on the full SEE benchmark at 54.9% accuracy, and no model exceeds 55% in the standard evaluation setting.
 
+**Standard leaderboard update (2026-11-20).** Claude Sonnet 5.5 scores 504/1,116 (public 474/1,049), Claude Fable 5.1 scores 376/1,116 (public 361/1,049), and Gemini 4 Neon scores 571/1,116 (public 528/1,049). Their public records retain 8, 313, and 112 missing-answer markers, respectively. Qwen3.8 Flash judged every delivered answer. The website now contains 43 standard configurations, 13 tool-augmented configurations, and 58,744 public evaluation records.
+
 **Current evaluation snapshot:** We evaluate 28 MLLMs, including 24 general-purpose and 4 science-specialized models. Science-specialized models reach 25.0% accuracy on average, below the 37.3% average of general-purpose models, although Intern-S2 Preview-397B reaches 29.0%, narrowing the gap relative to earlier science-specialized models and outperforming several mid-tier general-purpose models.
 
 **Model-version note:** Intern-S2 Preview-397B refers to the InternLM release.
