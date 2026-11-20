@@ -192,6 +192,8 @@
             <div class="view-tabs" role="tablist" aria-label="Evaluation view">
               <button class="view-tab active" id="tab-standard" type="button" role="tab" aria-selected="true" data-view="standard" data-en="Standard" data-zh="标准评测">Standard</button>
               <button class="view-tab" id="tab-tool" type="button" role="tab" aria-selected="false" data-view="tool" data-en="With tools" data-zh="工具增强">With tools</button>
+              <button class="view-tab" id="tab-common" type="button" role="tab" aria-selected="false" tabindex="-1" data-view="common" data-en="Common no-refusal" data-zh="共同未拒答" disabled>Common no-refusal</button>
+              <button class="view-tab" id="tab-discipline" type="button" role="tab" aria-selected="false" tabindex="-1" data-view="discipline" data-en="By discipline" data-zh="按学科" disabled>By discipline</button>
             </div>
             <div class="filter-group" role="group" aria-label="Model type">
               <button class="filter-button active" type="button" data-filter="all" data-en="All models" data-zh="全部模型">All models</button>
@@ -200,6 +202,21 @@
             </div>
           </div>
 
+          <div class="discipline-controls" id="discipline-controls" hidden>
+            <label><span data-en="Discipline" data-zh="学科">Discipline</span>
+              <select id="leaderboard-discipline">
+                <option value="化学" data-en="Chemistry" data-zh="化学">Chemistry</option>
+                <option value="生物学" data-en="Biology" data-zh="生物学">Biology</option>
+                <option value="材料科学" data-en="Materials science" data-zh="材料科学">Materials science</option>
+              </select>
+            </label>
+            <label><span data-en="Question set" data-zh="题目范围">Question set</span>
+              <select id="leaderboard-scope">
+                <option value="full" data-en="All questions" data-zh="全量题目">All questions</option>
+                <option value="common" data-en="Common no-refusal" data-zh="共同未拒答">Common no-refusal</option>
+              </select>
+            </label>
+          </div>
           <div class="results-heading">
             <div>
               <span class="results-kicker" id="results-kicker">STANDARD EVALUATION</span>

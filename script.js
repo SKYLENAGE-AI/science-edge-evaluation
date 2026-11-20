@@ -93,6 +93,7 @@ let language = localStorage.getItem('see-language') === 'zh' ? 'zh' : 'en';
 let activeView = 'standard';
 let activeFilter = 'all';
 let showAll = false;
+let leaderboardViews = null;
 
 const resultsList = document.querySelector('#results-list');
 const resultsCount = document.querySelector('#results-count');
@@ -103,6 +104,9 @@ const scoreLabel = document.querySelector('#score-label');
 const showAllButton = document.querySelector('#show-all');
 const emptyState = document.querySelector('#empty-state');
 const baselineLegend = document.querySelector('#baseline-legend');
+const disciplineControls = document.querySelector('#discipline-controls');
+const leaderboardDiscipline = document.querySelector('#leaderboard-discipline');
+const leaderboardScope = document.querySelector('#leaderboard-scope');
 const menuToggle = document.querySelector('#menu-toggle');
 const navLinks = document.querySelector('#nav-links');
 const languageToggle = document.querySelector('#language-toggle');
@@ -112,13 +116,15 @@ function formatDelta(value) {
   return `${rounded > 0 ? '+' : '−'}${Math.abs(rounded).toFixed(1)} pp`;
 }
 
-function getViewModels() {
+function getViewModels(aggregate) {
   return models
     .filter(model => activeView !== 'tool' || typeof model.tool === 'number')
     .filter(model => activeFilter === 'all' || (activeFilter === 'science' ? model.science : !model.science))
     .map(model => ({
       ...model,
-      displayValue: activeView === 'standard' ? model.value : model.tool
+      correct: aggregate?.correct[model.name],
+      displayValue: aggregate ? aggregate.correct[model.name] / aggregate.questions * 100
+        : activeView === 'tool' ? model.tool : model.value
     }))
     .sort((a, b) => b.displayValue - a.displayValue);
 }
@@ -141,39 +147,64 @@ function renderTopModels() {
 }
 
 function renderResults() {
-  const viewCopy = copy[language][activeView];
-  const filteredModels = getViewModels();
+  const disciplineView = activeView === 'discipline';
+  const commonView = activeView === 'common' || (disciplineView && leaderboardScope.value === 'common');
+  const toolView = activeView === 'tool';
+  const aggregate = disciplineView
+    ? leaderboardViews.disciplines[leaderboardDiscipline.value][leaderboardScope.value]
+    : activeView === 'common' ? leaderboardViews.common : null;
+  const viewCopy = copy[language][toolView ? 'tool' : 'standard'];
+  const filteredModels = getViewModels(aggregate);
   const visibleModels = showAll ? filteredModels : filteredModels.slice(0, 8);
+  const questions = (aggregate?.questions ?? 1116).toLocaleString('en-US');
+  const scopeLabel = commonView ? localized('Common no-refusal', '共同未拒答') : localized('Full set', '全量');
 
-  resultsKicker.textContent = viewCopy.kicker;
-  resultsTitle.textContent = viewCopy.title;
-  resultsNote.textContent = viewCopy.note;
+  disciplineControls.hidden = !disciplineView;
+  resultsKicker.textContent = aggregate ? localized('STANDARD · NO TOOLS', '标准评测 · 无工具') : viewCopy.kicker;
+  resultsTitle.textContent = disciplineView
+    ? leaderboardDiscipline.selectedOptions[0].textContent
+    : commonView ? scopeLabel : viewCopy.title;
+  const commonNote = commonView ? localized(
+    `This set excludes questions refused or blocked in any of the ${leaderboardViews.model_count} no-tool configurations. Timeouts and other missing answers count as incorrect.`,
+    `若任一无工具配置在某题上拒答或被内容审核拦截，该题从共同集排除。此口径基于全部 ${leaderboardViews.model_count} 个配置，超时等其他缺答计错。`
+  ) : '';
+  const disciplineNote = disciplineView ? localized(
+    'A cross-disciplinary question counts once in each of its tagged disciplines.',
+    '跨学科题在它所属的每个学科内各计一次。'
+  ) : '';
+  resultsNote.textContent = aggregate ? [commonNote, disciplineNote].filter(Boolean).join(' ') : viewCopy.note;
   scoreLabel.textContent = viewCopy.score;
-  resultsCount.textContent = copy[language].showing(visibleModels.length, filteredModels.length);
-  baselineLegend.hidden = activeView === 'standard';
+  resultsCount.textContent = localized(
+    `${scopeLabel} · ${questions} questions · ${copy[language].showing(visibleModels.length, filteredModels.length)}`,
+    `${scopeLabel} · ${questions} 道题 · ${copy[language].showing(visibleModels.length, filteredModels.length)}`
+  );
+  baselineLegend.hidden = !toolView;
   resultsList.setAttribute('aria-labelledby', `tab-${activeView}`);
   resultsList.hidden = filteredModels.length === 0;
   emptyState.hidden = filteredModels.length !== 0;
   emptyState.textContent = filteredModels.length === 0 ? copy[language].empty : '';
 
+  let rank = 0;
   resultsList.innerHTML = visibleModels.map((model, index) => {
-    const delta = activeView === 'tool' ? model.tool - model.value : 0;
-    const deltaMarkup = activeView === 'standard'
-      ? '<span></span>'
-      : `<span class="result-delta ${delta < 0 ? 'negative' : ''}">${formatDelta(delta)}</span>`;
-    const marker = activeView === 'standard'
-      ? ''
-      : `<span class="baseline-marker" style="left:${model.value}%" title="No-tool baseline: ${model.value.toFixed(1)}%"></span>`;
+    if (!index || model.displayValue !== visibleModels[index - 1].displayValue) rank = index + 1;
+    const delta = toolView ? model.tool - model.value : 0;
+    const deltaMarkup = toolView
+      ? `<span class="result-delta ${delta < 0 ? 'negative' : ''}">${formatDelta(delta)}</span>`
+      : '<span></span>';
+    const marker = toolView
+      ? `<span class="baseline-marker" style="left:${model.value}%" title="No-tool baseline: ${model.value.toFixed(1)}%"></span>`
+      : '';
+    const count = aggregate ? `<small class="result-fraction">${model.correct}/${aggregate.questions}</small>` : '';
 
     return `
       <div class="result-row ${model.science ? 'science' : ''}">
-        <span class="result-rank">${String(index + 1).padStart(2, '0')}</span>
-        <div class="result-model">${logoMarkup(model)}<span class="result-name" title="${model.name}">${model.name}${model.flagged ? '<sup>*</sup>' : ''}</span></div>
+        <span class="result-rank">${String(rank).padStart(2, '0')}</span>
+        <div class="result-model">${logoMarkup(model)}<span class="result-name" title="${model.name}">${model.name}${model.flagged && !aggregate ? '<sup>*</sup>' : ''}</span></div>
         <div class="result-track" aria-hidden="true">
           <span class="result-bar" style="width:${model.displayValue}%; animation-delay:${index * 35}ms"></span>
           ${marker}
         </div>
-        <span class="result-score">${model.displayValue.toFixed(1)}%</span>
+        <span class="result-score">${model.displayValue.toFixed(aggregate ? 2 : 1)}%${count}</span>
         ${deltaMarkup}
       </div>`;
   }).join('');
@@ -181,6 +212,11 @@ function renderResults() {
   showAllButton.hidden = filteredModels.length <= 8;
   showAllButton.textContent = showAll ? copy[language].showLess : copy[language].showAll(filteredModels.length);
 }
+
+[leaderboardDiscipline, leaderboardScope].forEach(select => select.addEventListener('change', () => {
+  showAll = false;
+  renderResults();
+}));
 
 function closeMenu() {
   navLinks.classList.remove('is-open');
@@ -211,6 +247,7 @@ function setLanguage(nextLanguage) {
 document.querySelectorAll('.view-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     activeView = tab.dataset.view;
+    if (activeView === 'discipline') leaderboardScope.value = 'full';
     showAll = false;
     document.querySelectorAll('.view-tab').forEach(button => {
       const selected = button === tab;
@@ -224,7 +261,7 @@ document.querySelectorAll('.view-tab').forEach(tab => {
   tab.addEventListener('keydown', event => {
     if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
     event.preventDefault();
-    const tabs = [...document.querySelectorAll('.view-tab')];
+    const tabs = [...document.querySelectorAll('.view-tab:not(:disabled)')];
     const direction = event.key === 'ArrowRight' ? 1 : -1;
     const nextTab = tabs[(tabs.indexOf(tab) + direction + tabs.length) % tabs.length];
     nextTab.focus();
@@ -552,6 +589,20 @@ function renderTrace() {
   document.querySelector('#response-trace').innerHTML = `<li class="trace-inspector">${content}</li>`;
 }
 
+async function loadLeaderboardViews(version) {
+  try {
+    const response = await fetch('./data/leaderboard_views.json');
+    if (!response.ok) return;
+    const views = await response.json();
+    if (views.manifest_version !== version || views.model_count !== models.length) return;
+    leaderboardViews = views;
+    document.querySelector('#tab-common').disabled = false;
+    document.querySelector('#tab-discipline').disabled = false;
+  } catch (error) {
+    console.warn('Additional leaderboard views could not be loaded.', error);
+  }
+}
+
 async function loadQuestionExamples() {
   try {
     const files = ['./data/questions_public.json', './data/site_examples.json', './data/experiments/manifest.json'];
@@ -569,6 +620,7 @@ async function loadQuestionExamples() {
     }));
     renderTopModels();
     renderResults();
+    loadLeaderboardViews(manifest.version);
     questionExamples = bank.map(question => {
       const example = featured.find(example => example.id === question.id);
       const title = question.knowledge_point_tags.join(' · ') || question.subject_tags.join(' · ') || `SEE–${String(question.index).padStart(3, '0')}`;

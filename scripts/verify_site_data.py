@@ -69,6 +69,9 @@ def assemble(destination):
     (destination / 'data').mkdir(exist_ok=True)
     for filename in ('questions_public.json', 'questions_public.jsonl', 'schema.md'):
         shutil.copy2(SITE / 'data' / filename, destination / 'data' / filename)
+    views = SITE / 'data/leaderboard_views.json'
+    if views.is_file():
+        shutil.copy2(views, destination / 'data' / views.name)
     shutil.copytree(SITE / 'data/experiments', destination / 'data/experiments', dirs_exist_ok=True)
     shutil.copytree(SITE / 'data/images', destination / 'data/images', dirs_exist_ok=True)
     shutil.copy2(SITE / 'data/site_examples.json', destination / 'data/site_examples.json')

@@ -783,6 +783,7 @@ html[lang="zh-CN"] h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 20px;
   padding-bottom: 28px;
   border-bottom: 1px solid var(--dark-line);
@@ -813,6 +814,43 @@ html[lang="zh-CN"] h1 {
 .view-tab.active {
   color: var(--ink);
   background: var(--acid);
+}
+
+.view-tab:disabled {
+  opacity: .5;
+  cursor: default;
+}
+
+.discipline-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  padding-top: 20px;
+}
+
+.discipline-controls label {
+  display: grid;
+  gap: 6px;
+  color: #536c8e;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.discipline-controls select {
+  min-width: 145px;
+  padding: 8px 10px;
+  border: 1px solid #d8e6f8;
+  border-radius: 6px;
+  background: #f5f8fd;
+  color: #244c83;
+  font: inherit;
+}
+
+.result-fraction {
+  display: block;
+  color: #607696;
+  font-size: 10px;
+  font-weight: 500;
 }
 
 .filter-group {
