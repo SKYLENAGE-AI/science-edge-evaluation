@@ -10,9 +10,9 @@
   <meta property="og:type" content="website">
   <title>SEE — Science Edge Evaluation</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=beafb0f5103f">
+  <link rel="stylesheet" href="./styles.css?v=subdiscipline-comparison">
   <link rel="stylesheet" href="./blue-theme.css?v=experiments-hy4-20261110">
-  <script src="./script.js?v=experiments-hy4-logo-20261110" defer></script>
+  <script src="./script.js?v=subdiscipline-comparison" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-en="Skip to content" data-zh="跳转到主要内容">Skip to content</a>
@@ -210,6 +210,9 @@
                 <option value="材料科学" data-en="Materials science" data-zh="材料科学">Materials science</option>
               </select>
             </label>
+            <label><span data-en="Subdiscipline" data-zh="子学科">Subdiscipline</span>
+              <select id="leaderboard-subdiscipline"></select>
+            </label>
             <label><span data-en="Question set" data-zh="题目范围">Question set</span>
               <select id="leaderboard-scope">
                 <option value="full" data-en="All questions" data-zh="全量题目">All questions</option>
@@ -233,6 +236,37 @@
             <div class="legend"><span><i class="legend-general"></i><span data-en="General-purpose" data-zh="通用模型">General-purpose</span></span><span><i class="legend-science"></i><span data-en="Science-specialized" data-zh="科学专门模型">Science-specialized</span></span><span id="baseline-legend" hidden><i class="legend-baseline"></i><span data-en="No-tool baseline" data-zh="无工具基线">No-tool baseline</span></span></div>
             <p id="results-note"></p>
           </div>
+          <section class="discipline-comparison" id="discipline-comparison" aria-labelledby="comparison-title" hidden>
+            <div class="comparison-heading">
+              <div>
+                <h3 id="comparison-title" data-en="Compare across subdisciplines" data-zh="跨子学科对比">Compare across subdisciplines</h3>
+                <p id="comparison-scope"></p>
+              </div>
+              <div class="comparison-modes">
+                <button type="button" data-chart="heatmap" aria-pressed="true" data-en="Heatmap" data-zh="热力图">Heatmap</button>
+                <button type="button" data-chart="radar" aria-pressed="false" data-en="Radar" data-zh="雷达图">Radar</button>
+              </div>
+            </div>
+            <div id="comparison-heatmap">
+              <p class="comparison-scale" data-en="Accuracy · light to dark · 0–100%" data-zh="准确率 · 由浅到深 · 0–100%">Accuracy · light to dark · 0–100%</p>
+              <div class="comparison-scroll heatmap-scroll" id="heatmap-table" role="region" tabindex="0"></div>
+            </div>
+            <div id="comparison-radar" hidden>
+              <div class="radar-controls">
+                <label><span data-en="Model 1" data-zh="模型 1">Model 1</span><select></select></label>
+                <label><span data-en="Model 2" data-zh="模型 2">Model 2</span><select></select></label>
+                <label><span data-en="Model 3 (optional)" data-zh="模型 3（可选）">Model 3 (optional)</span><select></select></label>
+              </div>
+              <figure class="radar-figure">
+                <div class="comparison-scroll radar-scroll" id="radar-plot" role="region" tabindex="0"></div>
+                <figcaption id="radar-legend" class="radar-legend"></figcaption>
+              </figure>
+              <details class="radar-details">
+                <summary data-en="Exact scores by subdiscipline" data-zh="查看各子学科准确率和题数">Exact scores by subdiscipline</summary>
+                <div class="comparison-scroll" id="radar-table" role="region" tabindex="0"></div>
+              </details>
+            </div>
+          </section>
         </div>
       </div>
     </section>

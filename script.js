@@ -106,7 +106,11 @@ const emptyState = document.querySelector('#empty-state');
 const baselineLegend = document.querySelector('#baseline-legend');
 const disciplineControls = document.querySelector('#discipline-controls');
 const leaderboardDiscipline = document.querySelector('#leaderboard-discipline');
+const leaderboardSubdiscipline = document.querySelector('#leaderboard-subdiscipline');
 const leaderboardScope = document.querySelector('#leaderboard-scope');
+const disciplineComparison = document.querySelector('#discipline-comparison');
+const chartButtons = [...disciplineComparison.querySelectorAll('[data-chart]')];
+const radarSelectors = [...disciplineComparison.querySelectorAll('.radar-controls select')];
 const menuToggle = document.querySelector('#menu-toggle');
 const navLinks = document.querySelector('#nav-links');
 const languageToggle = document.querySelector('#language-toggle');
@@ -117,6 +121,7 @@ function formatDelta(value) {
 }
 
 function getViewModels(aggregate) {
+  if (aggregate?.questions === 0) return [];
   return models
     .filter(model => activeView !== 'tool' || typeof model.tool === 'number')
     .filter(model => activeFilter === 'all' || (activeFilter === 'science' ? model.science : !model.science))
@@ -148,10 +153,13 @@ function renderTopModels() {
 
 function renderResults() {
   const disciplineView = activeView === 'discipline';
+  const parent = leaderboardDiscipline.value;
+  const subdiscipline = disciplineView && leaderboardViews.subdisciplines[parent]
+    .find(child => child.zh === leaderboardSubdiscipline.value);
   const commonView = activeView === 'common' || (disciplineView && leaderboardScope.value === 'common');
   const toolView = activeView === 'tool';
   const aggregate = disciplineView
-    ? leaderboardViews.disciplines[leaderboardDiscipline.value][leaderboardScope.value]
+    ? (subdiscipline || leaderboardViews.disciplines[parent])[leaderboardScope.value]
     : activeView === 'common' ? leaderboardViews.common : null;
   const viewCopy = copy[language][toolView ? 'tool' : 'standard'];
   const filteredModels = getViewModels(aggregate);
@@ -160,9 +168,10 @@ function renderResults() {
   const scopeLabel = commonView ? localized('Common no-refusal', '共同未拒答') : localized('Full set', '全量');
 
   disciplineControls.hidden = !disciplineView;
+  disciplineComparison.hidden = !disciplineView;
   resultsKicker.textContent = aggregate ? localized('STANDARD · NO TOOLS', '标准评测 · 无工具') : viewCopy.kicker;
   resultsTitle.textContent = disciplineView
-    ? leaderboardDiscipline.selectedOptions[0].textContent
+    ? subdiscipline?.[language] || leaderboardDiscipline.selectedOptions[0].textContent
     : commonView ? scopeLabel : viewCopy.title;
   const commonNote = commonView ? localized(
     `This set excludes questions refused or blocked in any of the ${leaderboardViews.model_count} no-tool configurations. Timeouts and other missing answers count as incorrect.`,
@@ -182,7 +191,9 @@ function renderResults() {
   resultsList.setAttribute('aria-labelledby', `tab-${activeView}`);
   resultsList.hidden = filteredModels.length === 0;
   emptyState.hidden = filteredModels.length !== 0;
-  emptyState.textContent = filteredModels.length === 0 ? copy[language].empty : '';
+  emptyState.textContent = aggregate?.questions === 0
+    ? localized('No questions in this subdiscipline for the selected set.', '所选题目范围内，这个子学科没有题目。')
+    : copy[language].empty;
 
   let rank = 0;
   resultsList.innerHTML = visibleModels.map((model, index) => {
@@ -213,10 +224,152 @@ function renderResults() {
   showAllButton.textContent = showAll ? copy[language].showLess : copy[language].showAll(filteredModels.length);
 }
 
-[leaderboardDiscipline, leaderboardScope].forEach(select => select.addEventListener('change', () => {
+function updateSubdisciplineOptions(value = leaderboardSubdiscipline.value) {
+  const children = leaderboardViews.subdisciplines[leaderboardDiscipline.value];
+  leaderboardSubdiscipline.replaceChildren(
+    new Option(localized('Whole discipline', '大类总榜'), ''),
+    ...children.map(child => new Option(child[language], child.zh))
+  );
+  leaderboardSubdiscipline.value = children.some(child => child.zh === value) ? value : '';
+}
+
+function chartScore(aggregate, model) {
+  const correct = aggregate.correct[model];
+  const percent = aggregate.questions ? correct / aggregate.questions * 100 : null;
+  return { correct, percent, label: percent === null ? '—' : `${percent.toFixed(2)}%` };
+}
+
+function renderHeatmap(groups) {
+  const scope = leaderboardScope.value;
+  const subjects = groups.flatMap(group => group.children);
+  const target = document.querySelector('#heatmap-table');
+  const modelNames = getViewModels(null).map(model => model.name);
+  const modelLabel = localized('Model', '模型');
+  const title = localized('Subdiscipline heatmap', '子学科热力图');
+  target.setAttribute('aria-label', title);
+  target.innerHTML = `<table class="comparison-table" aria-label="${title}">
+    <colgroup span="1"></colgroup>${groups.map(group => `<colgroup span="${group.children.length}"></colgroup>`).join('')}
+    <thead><tr><th class="comparison-model" rowspan="2" scope="col">${modelLabel}</th>
+    ${groups.map(group => `<th scope="colgroup" colspan="${group.children.length}">${escapeHtml(group.name)}</th>`).join('')}</tr>
+    <tr>${subjects.map(subject => `<th scope="col">${escapeHtml(subject[language])}<small>n = ${subject[scope].questions}</small></th>`).join('')}</tr></thead>
+    <tbody>${modelNames.map(model => `<tr><th class="comparison-model" scope="row">${escapeHtml(model)}</th>${subjects.map(subject => {
+      const aggregate = subject[scope];
+      const { correct, percent, label } = chartScore(aggregate, model);
+      const level = percent === null ? '' : ` data-level="${Math.min(5, Math.floor(percent / 20) + 1)}"`;
+      const fraction = `${correct}/${aggregate.questions}`;
+      const detail = percent === null ? localized('No questions', '无题目') : `${label} (${fraction})`;
+      return `<td${level} title="${detail}">${label}</td>`;
+    }).join('')}</tr>`).join('')}</tbody>
+  </table>`;
+}
+
+const radarColors = ['#245db6', '#b34813', '#08755f'];
+
+function renderRadar(groups) {
+  const scope = leaderboardScope.value;
+  const subjects = groups.flatMap(group => group.children);
+  const ranking = [...models].sort((a, b) => b.value - a.value).map(model => model.name);
+  const current = radarSelectors.map((select, index) => select.options.length ? select.value : ranking[index]);
+  radarSelectors.forEach((select, index) => {
+    const available = ranking.filter(name => !current.some((selected, slot) => slot !== index && selected === name));
+    const options = available.map(name => new Option(name, name));
+    if (index === 2) options.unshift(new Option(localized('None', '不选第三个模型'), ''));
+    select.replaceChildren(...options);
+    select.value = current[index];
+  });
+
+  const coordinate = (axis, radius) => {
+    const angle = 2 * Math.PI * axis / subjects.length;
+    return [480 + radius * Math.sin(angle), 334 - radius * Math.cos(angle)];
+  };
+  const point = (axis, radius) => coordinate(axis, radius).map(value => value.toFixed(2)).join(',');
+  const rings = [25, 50, 75, 100].map(percent =>
+    `<polygon points="${subjects.map((_, axis) => point(axis, percent * 2.02)).join(' ')}"/><text class="radar-tick" x="484" y="${329 - percent * 2.02}">${percent}%</text>`
+  ).join('');
+  const axes = subjects.map((subject, axis) => {
+    const [x] = coordinate(axis, 237);
+    const [, y] = coordinate(axis, 294);
+    const [endX, endY] = coordinate(axis, 202);
+    const anchor = Math.abs(x - 480) < 40 ? 'middle' : x > 480 ? 'start' : 'end';
+    const lines = subject[language].match(/.{1,18}(?:\s|$)|\S+/g);
+    const label = [...lines.map(line => line.trim()), `n = ${subject[scope].questions}`]
+      .map((line, index) => `<tspan x="${x}" dy="${index === 0 ? 0 : 16}"${index === lines.length ? ' class="radar-tick"' : ''}>${escapeHtml(line)}</tspan>`).join('');
+    return `<line x1="480" y1="334" x2="${endX}" y2="${endY}"/><text x="${x}" y="${y - lines.length * 8}" text-anchor="${anchor}">${label}</text>`;
+  }).join('');
+  const series = current.map((model, index) => {
+    if (!model) return '';
+    const color = radarColors[index];
+    const values = subjects.map(subject => chartScore(subject[scope], model));
+    const markers = values.map(({ percent, label, correct }, axis) => {
+      if (percent === null) return '';
+      const [x, y] = coordinate(axis, percent * 2.02);
+      const subject = subjects[axis];
+      return `<circle cx="${x}" cy="${y}" r="3" fill="${color}"><title>${escapeHtml(`${model} · ${subject[language]} · ${label} (${correct}/${subject[scope].questions})`)}</title></circle>`;
+    }).join('');
+    const lines = values.every(({ percent }) => percent !== null)
+      ? `<polygon points="${values.map(({ percent }, axis) => point(axis, percent * 2.02)).join(' ')}" fill="${color}" fill-opacity=".055" stroke="${color}" stroke-width="2.4"/>`
+      : values.map(({ percent }, axis) => {
+        const next = (axis + 1) % values.length;
+        return percent === null || values[next].percent === null ? ''
+          : `<polyline points="${point(axis, percent * 2.02)} ${point(next, values[next].percent * 2.02)}" stroke="${color}" stroke-width="2.4"/>`;
+      }).join('');
+    return `<g>${lines}${markers}</g>`;
+  }).join('');
+  const title = localized('Subdiscipline radar, accuracy from 0 to 100 percent', '子学科准确率雷达图，范围 0 到 100%');
+  const plot = document.querySelector('#radar-plot');
+  plot.setAttribute('aria-label', title);
+  plot.innerHTML = `<svg viewBox="0 0 960 668" role="img" aria-labelledby="radar-title"><title id="radar-title">${title}</title><g class="radar-grid">${rings}${axes}</g>${series}</svg>`;
+  document.querySelector('#radar-legend').innerHTML = current.map((model, index) => model
+    ? `<span><i style="background:${radarColors[index]}"></i>${escapeHtml(model)}</span>` : '').join('');
+  const names = current.filter(Boolean);
+  const details = document.querySelector('#radar-table');
+  const detailsTitle = localized('Exact scores by subdiscipline', '各子学科准确率和题数');
+  details.setAttribute('aria-label', detailsTitle);
+  details.innerHTML = `<table class="comparison-table" aria-label="${detailsTitle}">
+    <thead><tr><th class="comparison-model" scope="col">${localized('Subdiscipline', '子学科')}</th>${names.map(name => `<th scope="col">${escapeHtml(name)}</th>`).join('')}</tr></thead>
+    ${groups.map(group => `<tbody><tr><th scope="rowgroup" colspan="${1 + names.length}">${escapeHtml(group.name)}</th></tr>${group.children.map(subject => {
+      const aggregate = subject[scope];
+      return `<tr><th class="comparison-model" scope="row">${escapeHtml(subject[language])}<small>n = ${aggregate.questions}</small></th>${names.map(name => {
+        const { correct, percent, label } = chartScore(aggregate, name);
+        return `<td>${label}${percent === null ? '' : `<small>${correct}/${aggregate.questions}</small>`}</td>`;
+      }).join('')}</tr>`;
+    }).join('')}</tbody>`).join('')}
+  </table>`;
+}
+
+function renderDisciplineComparison() {
+  if (activeView !== 'discipline') return;
+  const groups = [...leaderboardDiscipline.options].map(option => ({
+    name: option.textContent,
+    children: leaderboardViews.subdisciplines[option.value]
+  }));
+  const radar = chartButtons.find(button => button.getAttribute('aria-pressed') === 'true').dataset.chart === 'radar';
+  const scope = leaderboardScope.selectedOptions[0].textContent;
+  const count = groups.flatMap(group => group.children).length;
+  document.querySelector('#comparison-scope').textContent = localized(
+    `${scope} · ${count} benchmark subdisciplines. Each column or axis shows its question count (n).`,
+    `${scope} · 评测报告中的 ${count} 个子学科，题数标在每列或每个轴上（n）。`
+  );
+  document.querySelector('#comparison-radar').hidden = !radar;
+  document.querySelector('#comparison-heatmap').hidden = radar;
+  if (radar) {
+    renderRadar(groups);
+  } else {
+    renderHeatmap(groups);
+  }
+}
+
+leaderboardDiscipline.addEventListener('change', () => updateSubdisciplineOptions(''));
+[leaderboardDiscipline, leaderboardSubdiscipline, leaderboardScope].forEach(select => select.addEventListener('change', () => {
   showAll = false;
   renderResults();
+  if (select === leaderboardScope) renderDisciplineComparison();
 }));
+chartButtons.forEach(button => button.addEventListener('click', () => {
+  chartButtons.forEach(chart => chart.setAttribute('aria-pressed', String(chart === button)));
+  renderDisciplineComparison();
+}));
+radarSelectors.forEach(select => select.addEventListener('change', renderDisciplineComparison));
 
 function closeMenu() {
   navLinks.classList.remove('is-open');
@@ -237,7 +390,9 @@ function setLanguage(nextLanguage) {
   languageToggle.textContent = language === 'en' ? '中文' : 'EN';
   languageToggle.setAttribute('aria-label', copy[language].language);
   closeMenu();
+  if (leaderboardViews) updateSubdisciplineOptions();
   renderResults();
+  renderDisciplineComparison();
   if (questionExamples.length) {
     renderLibrary();
     renderQuestion();
@@ -256,6 +411,7 @@ document.querySelectorAll('.view-tab').forEach(tab => {
       button.tabIndex = selected ? 0 : -1;
     });
     renderResults();
+    renderDisciplineComparison();
   });
 
   tab.addEventListener('keydown', event => {
@@ -275,6 +431,7 @@ document.querySelectorAll('.filter-button').forEach(button => {
     showAll = false;
     document.querySelectorAll('.filter-button').forEach(filter => filter.classList.toggle('active', filter === button));
     renderResults();
+    renderDisciplineComparison();
   });
 });
 
@@ -594,8 +751,9 @@ async function loadLeaderboardViews(version) {
     const response = await fetch('./data/leaderboard_views.json');
     if (!response.ok) return;
     const views = await response.json();
-    if (views.manifest_version !== version || views.model_count !== models.length) return;
+    if (views.manifest_version !== version || views.model_count !== models.length || !views.subdisciplines) return;
     leaderboardViews = views;
+    updateSubdisciplineOptions();
     document.querySelector('#tab-common').disabled = false;
     document.querySelector('#tab-discipline').disabled = false;
   } catch (error) {

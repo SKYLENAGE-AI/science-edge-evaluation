@@ -828,7 +828,8 @@ html[lang="zh-CN"] h1 {
   padding-top: 20px;
 }
 
-.discipline-controls label {
+.discipline-controls label,
+.radar-controls label {
   display: grid;
   gap: 6px;
   color: #536c8e;
@@ -836,7 +837,8 @@ html[lang="zh-CN"] h1 {
   font-weight: 650;
 }
 
-.discipline-controls select {
+.discipline-controls select,
+.radar-controls select {
   min-width: 145px;
   padding: 8px 10px;
   border: 1px solid #d8e6f8;
@@ -844,6 +846,209 @@ html[lang="zh-CN"] h1 {
   background: #f5f8fd;
   color: #244c83;
   font: inherit;
+}
+
+.discipline-comparison {
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid #dfeaf8;
+  color: #244c83;
+}
+
+.comparison-heading,
+.comparison-modes,
+.radar-controls,
+.radar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+}
+
+.comparison-heading {
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.comparison-heading h3 {
+  margin-bottom: 4px;
+  color: #153662;
+  font-size: 20px;
+}
+
+.comparison-heading p,
+.comparison-scale {
+  margin-bottom: 0;
+  color: #536c8e;
+  font-size: 12px;
+}
+
+.comparison-modes {
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid #d8e6f8;
+  border-radius: 9px;
+  background: #f5f8fd;
+}
+
+.comparison-modes button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: transparent;
+  color: #244c83;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.comparison-modes button[aria-pressed="true"] {
+  background: #155eef;
+  color: #fff;
+}
+
+.comparison-scale {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.comparison-scale::before {
+  width: 74px;
+  height: 10px;
+  border: 1px solid #d8e6f8;
+  border-radius: 2px;
+  background: linear-gradient(to right, #f3f7fd 20%, #d9e9fb 20% 40%, #a8cef7 40% 60%, #376baa 60% 80%, #173e77 80%);
+  content: '';
+}
+
+.comparison-scroll {
+  max-width: 100%;
+  overflow: auto;
+  border: 1px solid #d8e6f8;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.heatmap-scroll {
+  max-height: 500px;
+}
+
+.comparison-table {
+  width: 100%;
+  border-spacing: 0;
+  text-align: center;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 8px;
+  border-right: 1px solid #dfeaf8;
+  border-bottom: 1px solid #dfeaf8;
+}
+
+.comparison-table thead {
+  position: sticky;
+  z-index: 2;
+  top: 0;
+}
+
+.comparison-table thead th {
+  min-width: 106px;
+  background: #f5f8fd;
+  line-height: 1.3;
+}
+
+.comparison-table th[scope="colgroup"],
+.comparison-table th[scope="rowgroup"] {
+  background: #e6effd;
+}
+
+.comparison-table .comparison-model {
+  position: sticky;
+  z-index: 1;
+  left: 0;
+  min-width: 132px;
+  max-width: 170px;
+  background: #f5f8fd;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.comparison-table small {
+  display: block;
+  margin-top: 4px;
+  color: #536c8e;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.comparison-table td[data-level="1"] { background: #f3f7fd; }
+.comparison-table td[data-level="2"] { background: #d9e9fb; }
+.comparison-table td[data-level="3"] { background: #a8cef7; }
+.comparison-table td[data-level="4"] { background: #376baa; color: #fff; }
+.comparison-table td[data-level="5"] { background: #173e77; color: #fff; }
+
+.radar-controls {
+  margin-bottom: 12px;
+}
+
+.radar-controls select {
+  max-width: min(240px, 100%);
+}
+
+.radar-figure {
+  margin: 0;
+}
+
+.radar-scroll svg {
+  display: block;
+  width: 100%;
+  min-width: 690px;
+}
+
+.radar-grid polygon,
+.radar-grid line {
+  fill: none;
+  stroke: #b4c8e2;
+}
+
+.radar-grid text {
+  fill: #244c83;
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.radar-grid .radar-tick {
+  fill: #536c8e;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.radar-legend {
+  justify-content: center;
+  margin: 12px 0;
+  font-size: 12px;
+}
+
+.radar-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.radar-legend i {
+  width: 16px;
+  height: 3px;
+}
+
+.radar-details summary {
+  width: fit-content;
+  margin-bottom: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 650;
 }
 
 .result-fraction {

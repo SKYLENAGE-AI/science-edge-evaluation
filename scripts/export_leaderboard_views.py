@@ -7,7 +7,32 @@ import re
 
 from export_site_experiments import HISTORICAL, MIRROR, SITE, WORKSPACE, read, sha
 
-DISCIPLINES = ('化学', '生物学', '材料科学')
+# The 17 subdisciplines reported in the benchmark analysis.
+DISCIPLINES = {
+    '化学': (
+        ('分析化学', 'Analytical Chemistry'),
+        ('物理化学', 'Physical Chemistry'),
+        ('有机化学', 'Organic Chemistry'),
+        ('高分子化学和物理', 'Polymer Chemistry and Physics'),
+        ('无机化学', 'Inorganic Chemistry'),
+    ),
+    '生物学': (
+        ('生物化学', 'Biochemistry'),
+        ('分子生物学', 'Molecular Biology'),
+        ('细胞生物学', 'Cell Biology'),
+        ('结构生物学', 'Structural Biology'),
+        ('生物物理学', 'Biophysics'),
+        ('遗传学', 'Genetics'),
+        ('免疫学', 'Immunology'),
+        ('生理学', 'Physiology'),
+    ),
+    '材料科学': (
+        ('有机和高分子材料', 'Organic and Polymer Materials'),
+        ('无机非金属材料', 'Inorganic Non-metallic Materials'),
+        ('复合材料', 'Composite Materials'),
+        ('金属材料', 'Metallic Materials'),
+    ),
+}
 REFUSAL_REASONS = {'refusal', 'content_filter', 'safety', 'blocked', 'content_filtered'}
 REFUSAL_ERROR = re.compile(r'\brefusal\b|拒绝回答|拒答|content.policy|data.?inspection|content.?filter', re.I)
 
@@ -20,10 +45,12 @@ def export(input_file, live_root, output):
             examples[tag].append(set(question['main_disciplines']))
     tags = {tag: set.intersection(*labels) for tag, labels in examples.items()}
     assert all(len(labels) == 1 for labels in tags.values())
+    assert tags == {tag: {parent} for parent, children in DISCIPLINES.items() for tag, _ in children}
     tags['生态学'] = {'生物学'}
+    subject_tags = {row['uuid']: set(row['level1_subject_tag']) for row in read(input_file)}
     disciplines = {
-        row['uuid']: set.union(*(tags[tag] for tag in row['level1_subject_tag']))
-        for row in read(input_file)
+        uuid: set.union(*(tags[tag] for tag in labels))
+        for uuid, labels in subject_tags.items()
     }
     assert len(disciplines) == 1116
     assert all(disciplines[row['id']] == set(row['main_disciplines']) for row in public)
@@ -62,18 +89,23 @@ def export(input_file, live_root, output):
                 common.discard(row['uuid'])
 
     def scores(ids):
-        assert ids
         return {'questions': len(ids), 'correct': {model: len(ids & hits) for model, hits in correct.items()}}
 
-    scoped_disciplines = {}
-    for name in DISCIPLINES:
-        questions = {uuid for uuid, labels in disciplines.items() if name in labels}
-        scoped_disciplines[name] = {'full': scores(questions), 'common': scores(questions & common)}
+    def scoped_scores(name, labels_by_id):
+        questions = {uuid for uuid, labels in labels_by_id.items() if name in labels}
+        return {'full': scores(questions), 'common': scores(questions & common)}
+
     result = {
         'manifest_version': manifest['version'],
         'model_count': len(correct),
         'common': scores(common),
-        'disciplines': scoped_disciplines,
+        'disciplines': {parent: scoped_scores(parent, disciplines) for parent in DISCIPLINES},
+        'subdisciplines': {
+            parent: [
+                {'zh': tag, 'en': en, **scoped_scores(tag, subject_tags)} for tag, en in children
+            ]
+            for parent, children in DISCIPLINES.items()
+        },
     }
     output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
     print(f"Exported scores for {len(correct)} models on {len(common)} common questions")
